@@ -9,7 +9,6 @@ exports.initialize = function(paramIO, paramSOCKET){
     //on sauvegarde le serveur et la socket dans ce fichier
     io = paramIO;
     socket = paramSOCKET;
-    //socket.emit('connected', { message: "You are connected!" });
 
     // On écoute les évenements de l'host
     socket.on('hostCreateNewGame', hostCreateNewGame);

@@ -1,25 +1,20 @@
 (function($){
+
     // Tout le code qui concerne les connections socket
     var IO = {
 
-        /**
-         * This is called when the page is displayed. It connects the Socket.IO client
-         * to the Socket.IO server
-         */
+        // Lancé quand la page se charge, connecte la socket entre client et serveur
         init: function() {
             IO.socket = io.connect();
-            IO.bindEvents();
-            //si on est sur mobile
+            IO.listeners();
+            //si on est sur mobile, on charge le template pour join
             if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/webOS/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) ){
                 App.$gameArea.html(App.$templateJoinGame);
             }
         },
 
-        /**
-         * While connected, Socket.IO will listen to the following events emitted
-         * by the Socket.IO server, then run the appropriate function.
-         */
-        bindEvents : function() {
+        // Ecoute les évenements émits par le serveur, et lance les fonction appropriées
+        listeners : function() {
             IO.socket.on('connected', IO.onConnected );
             IO.socket.on('newGameCreated', IO.onNewGameCreated );
             IO.socket.on('playerJoinedRoom', IO.playerJoinedRoom );
