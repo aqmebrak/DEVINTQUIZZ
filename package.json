@@ -4,6 +4,7 @@
   "description": "implémentation du quizz",
   "dependencies": {
     "express": "^4.12.2",
-    "socket.io": "^1.3.5"
+    "socket.io": "^1.3.5",
+    "path": "0.11.14"
   }
 }

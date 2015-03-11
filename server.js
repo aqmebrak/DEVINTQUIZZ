@@ -8,7 +8,7 @@ var path = require('path');
 var app = express();
 
 //On importe le fichier de jeu js
-var game = require('game');
+var game = require('./game');
 
 //On crée l'application express en utilisant les fichiers du répertoire racine
 app.configure(function() {
