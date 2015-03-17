@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0da17b56-72ff-4bee-bc88-9b7d0b1870e5" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Ugo\Documents\Devint\smart\agxgame.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ugo\Documents\Devint\smart\public\app.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ugo\Documents\Devint\smart\public\css\styles.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ugo\Documents\Devint\smart\public\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ugo\Documents\Devint\smart\public\libs\fastclick.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ugo\Documents\Devint\smart\public\libs\jquery-2.0.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ugo\Documents\Devint\smart\public\libs\textFit.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="smart.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,11 +37,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6449086" vertical-offset="1317" max-vertical-offset="1700">
-              <caret line="92" column="7" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
+            <state vertical-scroll-proportion="-60.46154" vertical-offset="26" max-vertical-offset="1887">
+              <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../original/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20365535" vertical-offset="1486" max-vertical-offset="2023">
+              <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -207,7 +211,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -309,8 +313,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6449086" vertical-offset="1317" max-vertical-offset="1700">
-          <caret line="92" column="7" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
+        <state vertical-scroll-proportion="-60.46154" vertical-offset="26" max-vertical-offset="1887">
+          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../original/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20365535" vertical-offset="1486" max-vertical-offset="2023">
+          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
           <folding />
         </state>
       </provider>
