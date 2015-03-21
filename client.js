@@ -185,11 +185,21 @@
              */
             currentCorrectAnswer: '',
 
-            /**
-             * Handler for the "Start" button on the Title Screen.
-             */
-            onCreateClick: function () {
-                IO.socket.emit('hostCreateNewGame');
+            //Quand on clique sur jouer dans le menu
+            onJouer: function () {
+                App.$main.html(App.$templateJouer);
+            },
+
+            //Quand on clique sur jouer dans le menu
+            onMouvement: function () {
+                //on sauvegarde le jeu ??
+                App.$main.html(App.$templateNbPlayers);
+            },
+
+            //Quand on clique sur jouer dans le menu
+            onQuizz: function () {
+                //on sauvegarde le jeu ??
+                App.$main.html(App.$templateNbPlayers);
             },
 
             /**
@@ -389,22 +399,7 @@
              */
             myName: '',
 
-            //Quand on clique sur jouer dans le menu
-            onJouer: function () {
-                App.$main.html(App.$templateJouer);
-            },
 
-            //Quand on clique sur jouer dans le menu
-            onMouvement: function () {
-                //on sauvegarde le jeu ??
-                App.$main.html(App.$templateNbPlayers);
-            },
-
-            //Quand on clique sur jouer dans le menu
-            onQuizz: function () {
-                //on sauvegarde le jeu ??
-                App.$main.html(App.$templateNbPlayers);
-            },
 
             /**
              * The player entered their name and gameId (hopefully)
