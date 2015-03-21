@@ -137,6 +137,7 @@
             App.$main = $('#main');
             App.$templateMenu = $('#menu').html();
             App.$templateJouer = $('#menu-jouer').html();
+            App.$templateNbPlayers = $('#menu-jouer').html();
             App.$templateNewGame = $('#create-game-template').html();
             App.$templateJoinGame = $('#join-game-template').html();
             App.$hostGame = $('#host-game-template').html();
@@ -146,6 +147,8 @@
         //puis lance la fonction appropriée
         initListeners: function () {
             App.$doc.on('click', '#btnJouer', App.Host.onJouer);
+            App.$doc.on('click', '#btnMouvement', App.Host.onMouvement);
+            App.$doc.on('click', '#btnQuizz', App.Host.onQuizz);
             App.$doc.on('click', '#btnScores', App.Host.onJoinClick);
             App.$doc.on('click', '#btnStart',App.Player.onPlayerStartClick);
             App.$doc.on('click', '.btnAnswer',App.Player.onPlayerAnswerClick);
@@ -386,11 +389,21 @@
              */
             myName: '',
 
-            /**
-             * Click handler for the 'JOIN' button
-             */
+            //Quand on clique sur jouer dans le menu
             onJouer: function () {
                 App.$main.html(App.$templateJouer);
+            },
+
+            //Quand on clique sur jouer dans le menu
+            onMouvement: function () {
+                //on sauvegarde le jeu ??
+                App.$main.html(App.$templateNbPlayers);
+            },
+
+            //Quand on clique sur jouer dans le menu
+            onQuizz: function () {
+                //on sauvegarde le jeu ??
+                App.$main.html(App.$templateNbPlayers);
             },
 
             /**

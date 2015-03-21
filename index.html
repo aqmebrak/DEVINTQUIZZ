@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-
+    <title>Smart Vision</title>
     <!-- Ensure that lol everything scales appropriately on a mobile device -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link href="css/styles.css" rel="stylesheet">
@@ -17,17 +17,25 @@
 
 <!-- menu principal -->
 <script id="menu" type="text/template">
-        <div class="title">
-            Smart Vision
-        </div>
         <ul>
-            <li><a href="" id="btnJouer">JOUER</a></li>
-            <li><a href="" id="btnScores">MEILLEURS SCORES</a></li>
+            <li><a id="btnJouer">JOUER</a></li>
+            <li><a id="btnScores">MEILLEURS SCORES</a></li>
         </ul>
 </script>
 
 <!-- menu jouer -->
 <script id="menu-jouer" type="text/template">
+    <p>CHOISISSEZ VOTRE JEU</p>
+    <ul>
+        <li><a id="btnMouvement">MOVE YOUR BODY</a></li>
+        <li><a id="btnQuizz">QUIZZ MOUVEMENTÉ</a></li>
+    </ul>
+</script>
+
+<!-- menu nombre de joueurs -->
+<script id="menu-nbPlayers" type="text/template">
+    <p>COMBIEN DE JOUEURS ? (0 SI VOUS ETES SEUL)</p>
+    <input id="inputNbPlayers" type="text" />
 </script>
 
 <!-- This screen appears when a user clicks "CREATE" on the Title Screen -->
