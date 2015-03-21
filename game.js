@@ -22,24 +22,16 @@ exports.initGame = function(paramIO, paramSocket){
     clientSocket.on('playerRestart', playerRestart);
 }
 
-/* *******************************
-   *                             *
-   *       HOST FUNCTIONS        *
-   *                             *
-   ******************************* */
-
-/**
- * The 'START' button was clicked and 'hostCreateNewGame' event occurred.
- */
+//quand on a rentré tous les paramètres on va sur la page classique host et cette fonction est appelée
 function hostCreateNewRoom() {
-    // Create a unique Socket.IO Room
-    var thisGameId = ( Math.random() * 100 ) | 0;
+    // on crée une room unique socket io
+    var roomId = ( Math.random() * 100 ) | 0;
 
-    // Return the Room ID (gameId) and the socket ID (mySocketId) to the browser client
-    this.emit('newGameCreated', {gameId: thisGameId, mySocketId: this.id});
+    // on envoie l'id de la room et l'id de la socket au navigateur du smartphone
+    this.emit('newRoomCreated', {gameId: roomId, mySocketId: this.id});
 
-    // Join the Room and wait for the players
-    this.join(thisGameId.toString());
+    // on rejoint la room et on attend les autres joueurs
+    this.join(roomId.toString());
 };
 
 /*

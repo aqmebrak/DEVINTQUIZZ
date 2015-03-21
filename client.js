@@ -16,7 +16,7 @@
         //puis lance la fonction appropriée
         initListeners : function() {
             IO.socket.on('connected', IO.onConnected );
-            IO.socket.on('newGameCreated', IO.onNewGameCreated );
+            IO.socket.on('newRoomCreated', IO.onNewRoomCreated );
             IO.socket.on('playerJoinedRoom', IO.playerJoinedRoom );
             IO.socket.on('beginNewGame', IO.beginNewGame );
             //IO.socket.on('newWordData', IO.onNewWordData);
@@ -34,11 +34,9 @@
             // console.log(data.message);
         },
 
-        /**
-         * A new game has been created and a random game ID has been generated.
-         * @param data {{ gameId: int, mySocketId: * }}
-         */
-        onNewGameCreated : function(data) {
+        //une room a été crée avec un id de room généré
+        //data est de la forme {{ roomId, mySocketId }}
+        onNewRoomCreated : function(data) {
             App.Host.gameInit(data);
         },
 
@@ -107,7 +105,7 @@
     var App = {
 
         //l'id du game qui est identique à l'id de la room socket (où les players et l'host communiquent)
-        gameId: 0,
+        roomId: 0,
         //le type du navigateur (soit Player soit Host)
         myRole: '',
         //l'id de l'objet socket io, unique pour chaque player et host.
@@ -160,11 +158,6 @@
         },
 
 
-
-
-        /* *******************************
-           *         HOST CODE           *
-           ******************************* */
         Host : {
 
             /**
@@ -179,10 +172,8 @@
              */
             isNewGame : false,
 
-            /**
-             * Keep track of the number of players that have joined the game.
-             */
-            numPlayersInRoom: 0,
+            //nombre de joueurs qui ont rejoint la room
+            nbPlayersInRoom: 0,
 
             /**
              * A reference to the correct answer for the current round.
@@ -226,33 +217,22 @@
             },
 
 
-            /**
-             * The Host screen is displayed for the first time.
-             * @param data{{ gameId: int, mySocketId: * }}
-             */
+            //lance la room de l'host
+            //data est de la forme {{ roomId, mySocketId }}
             gameInit: function (data) {
-                App.gameId = data.gameId;
+                App.roomId = data.roomId;
                 App.mySocketId = data.mySocketId;
                 App.myRole = 'Host';
-                App.Host.numPlayersInRoom = 0;
-
+                App.Host.nbPlayersInRoom = 0;
                 App.Host.displayNewGameScreen();
-                // console.log("Game started with ID: " + App.gameId + ' by host: ' + App.mySocketId);
             },
 
-            /**
-             * Show the Host screen containing the game URL and unique game ID
-             */
+            //affiche le template de l'host avec le lien goog gl et le room id...
             displayNewGameScreen : function() {
-                // Fill the game screen with the appropriate HTML
                 App.$main.html(App.$templateNewGame);
-
-                // Display the URL on screen
-                $('#gameURL').text(window.location.href);
+                $('#gameURL').text("goo.gl/wQLS6f");
                 App.doTextFit('#gameURL');
-
-                // Show the gameId / room id on screen
-                $('#spanNewGameCode').text(App.gameId);
+                $('#spanNewGameCode').text(App.roomId);
             },
 
             /**
@@ -273,10 +253,10 @@
                 App.Host.players.push(data);
 
                 // Increment the number of players in the room
-                App.Host.numPlayersInRoom += 1;
+                App.Host.nbPlayersInRoom += 1;
 
                 // If two players have joined, start the game!
-                if (App.Host.numPlayersInRoom === nbPlayers) {
+                if (App.Host.nbPlayersInRoom === nbPlayers) {
                     // console.log('Room is full. Almost ready!');
 
                     // Let the server know that two players are present.
@@ -393,7 +373,7 @@
                 App.doTextFit('#hostWord');
 
                 // Reset game data
-                App.Host.numPlayersInRoom = 0;
+                App.Host.nbPlayersInRoom = 0;
                 App.Host.isNewGame = true;
             },
 
