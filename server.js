@@ -11,12 +11,11 @@ var app = express();
 var game = require('./game');
 
 //On crée l'application express en utilisant les fichiers du répertoire racine
-app.configure(function() {
     app.use(express.static(path.join(__dirname)));
-});
 
 // On crée un serveur http basé sur node js, sur le port 8080
-var server = require('http').createServer(app).listen(process.env.PORT || 8080);
+//var server = require('http').createServer(app).listen(process.env.PORT || 8080);
+var server = app.listen(process.env.PORT || 8080);
 
 // On crée un serveur socket io et on l'attache au serveur node
 var io = require('socket.io').listen(server);
