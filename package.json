@@ -9,3 +9,29 @@
     }
 }
 
+{
+"name": "smartvision-devint test",
+"version": "0.1.2",
+"description": "Devint project",
+"main": "index.html",
+"scripts": {
+"start": "node server.js"
+},
+"dependencies": {
+"express": "~4.9.x",
+"socket.io":"0.9"
+},
+"engines": {
+"node": "0.10.x"
+},
+"repository": {
+"type": "git",
+"url": "https://github.com/aqmebrak/DEVINTQUIZZ"
+},
+"keywords": [
+"node",
+"heroku",
+"express"
+],
+"license": "Polytech"
+}
