@@ -147,9 +147,13 @@
         //puis lance la fonction appropriée
         initListeners: function () {
             App.$doc.on('click', '#btnJouer', App.Host.onJouer);
+            App.$doc.on('click', '#btnScores', App.Host.onJoinClick);
             App.$doc.on('click', '#btnMouvement', App.Host.onMouvement);
             App.$doc.on('click', '#btnQuizz', App.Host.onQuizz);
-            App.$doc.on('click', '#btnScores', App.Host.onJoinClick);
+            App.$doc.on('click', '#btn1', App.Host.on1);
+            App.$doc.on('click', '#btn2', App.Host.on2);
+            App.$doc.on('click', '#btn3', App.Host.on3);
+            App.$doc.on('click', '#btn4', App.Host.on4);
             App.$doc.on('click', '#btnStart',App.Player.onPlayerStartClick);
             App.$doc.on('click', '.btnAnswer',App.Player.onPlayerAnswerClick);
             App.$doc.on('click', '#btnPlayerRestart', App.Player.onPlayerRestart);
@@ -190,17 +194,37 @@
                 App.$main.html(App.$templateJouer);
             },
 
-            //Quand on clique sur jouer dans le menu
+            //Quand on choisit le jeu des mouvements
             onMouvement: function () {
                 //on sauvegarde le jeu ??
                 App.$main.html(App.$templateNbPlayers);
             },
 
-            //Quand on clique sur jouer dans le menu
+            //Quand on choisit le jeu du quizz
             onQuizz: function () {
                 //on sauvegarde le jeu ??
                 App.$main.html(App.$templateNbPlayers);
             },
+
+            on1: function () {
+                nbPlayers=1;
+                IO.socket.emit('hostCreateNewRoom');
+            },
+
+            on2: function () {
+                nbPlayers=2;
+                IO.socket.emit('hostCreateNewRoom');
+            },
+
+            on3: function () {
+                nbPlayers=3;
+                IO.socket.emit('hostCreateNewRoom');
+            },
+            on4: function () {
+                nbPlayers=4;
+                IO.socket.emit('hostCreateNewRoom');
+            },
+
 
             /**
              * The Host screen is displayed for the first time.

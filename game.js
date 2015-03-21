@@ -11,7 +11,7 @@ exports.initGame = function(paramIO, paramSocket){
     clientSocket = paramSocket;
 
     // On écoute les évenements de l'host
-    clientSocket.on('hostCreateNewGame', hostCreateNewGame);
+    clientSocket.on('hostCreateNewRoom', hostCreateNewRoom);
     clientSocket.on('hostRoomFull', hostPrepareGame);
     clientSocket.on('hostCountdownFinished', hostStartGame);
     clientSocket.on('hostNextRound', hostNextRound);
@@ -31,7 +31,7 @@ exports.initGame = function(paramIO, paramSocket){
 /**
  * The 'START' button was clicked and 'hostCreateNewGame' event occurred.
  */
-function hostCreateNewGame() {
+function hostCreateNewRoom() {
     // Create a unique Socket.IO Room
     var thisGameId = ( Math.random() * 100 ) | 0;
 
