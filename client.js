@@ -466,7 +466,7 @@
             updateWaitingScreen : function(data) {
                 if(IO.socket.socket.sessionid === data.mySocketId){
                     App.myRole = 'Player';
-                    App.gameId = data.gameId;
+                    App.roomId = data.roomId;
 
                     $('#playerWaitingMessage')
                         .append('<p/>')

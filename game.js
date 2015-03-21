@@ -28,7 +28,7 @@ function hostCreateNewRoom() {
     var roomId = ( Math.random() * 100 ) | 0;
 
     // on envoie l'id de la room et l'id de la socket au navigateur du smartphone
-    this.emit('newRoomCreated', {gameId: roomId, mySocketId: this.id});
+    this.emit('newRoomCreated', {roomId: roomId, mySocketId: this.id});
 
     // on rejoint la room et on attend les autres joueurs
     this.join(roomId.toString());
