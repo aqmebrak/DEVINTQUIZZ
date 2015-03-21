@@ -145,7 +145,7 @@
         //initialise les différents listeners qui vont écouter les évènements émis par le serveur socket
         //puis lance la fonction appropriée
         initListeners: function () {
-            App.$doc.on('click', '#btnJouer', App.Host.onCreateClick);
+            App.$doc.on('click', '#btnJouer', App.Host.onJouer);
             App.$doc.on('click', '#btnScores', App.Host.onJoinClick);
             App.$doc.on('click', '#btnStart',App.Player.onPlayerStartClick);
             App.$doc.on('click', '.btnAnswer',App.Player.onPlayerAnswerClick);
