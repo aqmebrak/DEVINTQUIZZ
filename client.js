@@ -7,14 +7,7 @@
         init: function() {
             IO.socket = io.connect();
             IO.initListeners();
-            //si on est sur mobile on charge direct le template Join
-            if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/webOS/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) ){
-                App.$main.html(App.$templateJoinGame);
-            }
-            //sinon on se met on mode host
-            else{
-                IO.socket.emit('hostCreateNewGame');
-            }
+
         },
 
         //initialise les différents listeners qui vont écouter les évènements émis par le serveur socket
@@ -582,5 +575,13 @@
 
     IO.init();
     App.init();
+    //si on est sur mobile on charge direct le template Join
+    if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/webOS/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) ){
+        App.$main.html(App.$templateJoinGame);
+    }
+    //sinon on se met on mode host
+    else{
+        IO.socket.emit('hostCreateNewGame');
+    }
 
 }($));
