@@ -1,5 +1,7 @@
 (function($){
 
+    var nbPlayers=2;
+
     // Tout le code qui concerne les connections socket
     var IO = {
 
@@ -122,6 +124,7 @@
         //est appelée en bas de la page
         init: function () {
             App.initVariables();
+            App.$main.html(App.$templateMenu);
             //App.doTextFit('.title');
             App.initListeners();
             // Initialize the fastclick library
@@ -132,7 +135,8 @@
         initVariables: function () {
             App.$doc = $(document);
             App.$main = $('#main');
-            App.$templateIntroScreen = $('#intro-screen-template').html();
+            App.$templateMenu = $('#menu').html();
+            App.$templateJouer = $('#menu-jouer').html();
             App.$templateNewGame = $('#create-game-template').html();
             App.$templateJoinGame = $('#join-game-template').html();
             App.$hostGame = $('#host-game-template').html();
@@ -141,6 +145,8 @@
         //initialise les différents listeners qui vont écouter les évènements émis par le serveur socket
         //puis lance la fonction appropriée
         initListeners: function () {
+            App.$doc.on('click', '#btnJouer', App.Host.onCreateClick);
+            App.$doc.on('click', '#btnScores', App.Host.onJoinClick);
             App.$doc.on('click', '#btnStart',App.Player.onPlayerStartClick);
             App.$doc.on('click', '.btnAnswer',App.Player.onPlayerAnswerClick);
             App.$doc.on('click', '#btnPlayerRestart', App.Player.onPlayerRestart);
@@ -233,7 +239,7 @@
                 App.Host.numPlayersInRoom += 1;
 
                 // If two players have joined, start the game!
-                if (App.Host.numPlayersInRoom === 2) {
+                if (App.Host.numPlayersInRoom === nbPlayers) {
                     // console.log('Room is full. Almost ready!');
 
                     // Let the server know that two players are present.
@@ -383,11 +389,8 @@
             /**
              * Click handler for the 'JOIN' button
              */
-            onJoinClick: function () {
-                // console.log('Clicked "Join A Game"');
-
-                // Display the Join Game HTML on the player's screen.
-                App.$main.html(App.$templateJoinGame);
+            onJouer: function () {
+                App.$main.html(App.$templateJouer);
             },
 
             /**
@@ -580,8 +583,8 @@
         App.$main.html(App.$templateJoinGame);
     }
     //sinon on se met on mode host
-    else{
-        IO.socket.emit('hostCreateNewGame');
-    }
+    //else{
+        //IO.socket.emit('hostCreateNewGame');
+    //}
 
 }($));
