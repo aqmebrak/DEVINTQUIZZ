@@ -11,7 +11,7 @@
 <body>
 
 
-<div id="gameArea">
+<div id="main">
     <!-- This is where the templates defined below will be used -->
 </div>
 
@@ -84,22 +84,11 @@
     </div>
 </script>
 
-<!-- JavaScript Libraries -->
-
-<!-- jQuery! -->
 <script src="libs/jquery-2.0.2.min.js"></script>
-
-<!-- TextFit resizes text to fill a container.
-    It's used so the titles and game words fit properly on any size screen.
-    https://github.com/STRML/textFit   -->
 <script src="libs/textFit.min.js"></script>
-
-<!-- If Socket.IO is used with Express, then the /socket.io/ path will
-    serve the proper Socket.IO javascript files used by the browser -->
 <script src="/socket.io/socket.io.js"></script>
-
 <!-- app.js is where all the client-side Anagrammatix game logic -->
-<script src="app.js"></script>
+<script src="client.js"></script>
 
 </body>
 </html>
