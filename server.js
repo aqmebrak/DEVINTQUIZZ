@@ -10,7 +10,7 @@ var app = express();
 //On importe le fichier de jeu js
 var game = require('./game');
 
-//On crée l'application express en utilisant les fichiers du répertoire racine
+//On dit à l'application express d'utiliser les fichiers du répertoire racine
     app.use(express.static(__dirname));
 
 // On crée un serveur http basé sur node js, sur le port 8080
