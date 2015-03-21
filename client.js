@@ -473,7 +473,7 @@
             },
 
             /**
-             * Show the list of words for the current round.
+             * Show the list of words  for the current round.
              * @param data{{round: *, word: *, answer: *, list: Array}}
              */
             newWord : function(data) {
