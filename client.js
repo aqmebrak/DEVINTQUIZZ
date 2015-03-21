@@ -141,9 +141,6 @@
         //initialise les différents listeners qui vont écouter les évènements émis par le serveur socket
         //puis lance la fonction appropriée
         initListeners: function () {
-            App.$doc.on('click', '#btnCreateGame', App.Host.onCreateClick);
-            // Players
-            App.$doc.on('click', '#btnJoinGame', App.Player.onJoinClick);
             App.$doc.on('click', '#btnStart',App.Player.onPlayerStartClick);
             App.$doc.on('click', '.btnAnswer',App.Player.onPlayerAnswerClick);
             App.$doc.on('click', '#btnPlayerRestart', App.Player.onPlayerRestart);
@@ -473,7 +470,7 @@
             },
 
             /**
-             * Show the list of words  for the current round.
+             * Show the list of words for the current round.
              * @param data{{round: *, word: *, answer: *, list: Array}}
              */
             newWord : function(data) {
@@ -588,4 +585,3 @@
     }
 
 }($));
-  
