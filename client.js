@@ -137,7 +137,7 @@
             App.$main = $('#main');
             App.$templateMenu = $('#menu').html();
             App.$templateJouer = $('#menu-jouer').html();
-            App.$templateNbPlayers = $('#menu-jouer').html();
+            App.$templateNbPlayers = $('#menu-nbPlayers').html();
             App.$templateNewGame = $('#create-game-template').html();
             App.$templateJoinGame = $('#join-game-template').html();
             App.$hostGame = $('#host-game-template').html();
