@@ -152,7 +152,7 @@
             App.$doc.on('click', '#btn2', App.Host.on2);
             App.$doc.on('click', '#btn3', App.Host.on3);
             App.$doc.on('click', '#btn4', App.Host.on4);
-            App.$doc.on('click', '#btnStart',App.Player.onPlayerStartClick);
+            App.$doc.on('click', '#btnCommencer',App.Player.onPlayerCommencer);
             App.$doc.on('click', '.btnAnswer',App.Player.onPlayerAnswerClick);
             App.$doc.on('click', '#btnPlayerRestart', App.Player.onPlayerRestart);
         },
@@ -387,43 +387,28 @@
         },
 
 
-        /* *****************************
-           *        PLAYER CODE        *
-           ***************************** */
-
         Player : {
 
-            /**
-             * A reference to the socket ID of the Host
-             */
+            // l'id socket de l'host
             hostSocketId: '',
 
-            /**
-             * The player's name entered on the 'Join' screen.
-             */
-            myName: '',
+            // le pseudo du player
+            pseudo: '',
 
-
-
-            /**
-             * The player entered their name and gameId (hopefully)
-             * and clicked Start.
-             */
-            onPlayerStartClick: function() {
-                // console.log('Player clicked "Start"');
-
-                // collect data to send to the server
+            //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
+            onPlayerCommencer: function() {
+                //on collecte les infos à envoyer au serveur
                 var data = {
-                    gameId : +($('#inputGameId').val()),
-                    playerName : $('#inputPlayerName').val() || 'anon'
+                    roomId : +($('#inputRoomId').val()),
+                    pseudo : $('#inputPseudo').val() || 'Anonyme'
                 };
 
-                // Send the gameId and playerName to the server
-                IO.socket.emit('playerJoinGame', data);
+                //on envoie donc la room id et le pseudo au serveur
+                IO.socket.emit('playerJoinRoom', data);
 
-                // Set the appropriate properties for the current player.
+                //et on sauvegarde les infos du player
                 App.myRole = 'Player';
-                App.Player.myName = data.playerName;
+                App.Player.pseudo = data.pseudo;
             },
 
             /**
@@ -452,7 +437,7 @@
             onPlayerRestart : function() {
                 var data = {
                     gameId : App.gameId,
-                    playerName : App.Player.myName
+                    playerName : App.Player.pseudo
                 }
                 IO.socket.emit('playerRestart',data);
                 App.currentRound = 0;
