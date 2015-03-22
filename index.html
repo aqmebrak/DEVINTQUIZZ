@@ -46,33 +46,27 @@
 
 <!-- This screen appears when a user clicks "CREATE" on the Title Screen -->
 <script id="create-game-template" type="text/template">
-        <div class="info">Open this site on your mobile device:</div>
+        <div class="info">ALLEZ SUR CE SITE AVEC VOTRE MOBILE :</div>
         <div id="gameURL" class="infoBig">Error!</div>
 
-        <div class="info">Then click <strong>JOIN</strong> and <br/> enter the following Game ID:</div>
+        <div class="info">PUIS RENTREZ CE NUMERO DE JEU :</div>
         <div id="spanNewGameCode" class="roomId">Error!</div>
 
         <div id="playersWaiting"></div>
 </script>
 
-<!-- This scrreen appears when a player clicks "JOIN" on the Title Screen -->
+<!-- Ecran par défaut quand on se connecte sur mobile -->
 <script id="join-game-template" type="text/template">
-    <div class="joinGameWrapper">
-        <div class="info">
-            <label for="inputPlayerName">Your Name:</label>
+            <label for="inputPlayerName">VOTRE PSEUDO :</label>
             <input id="inputPlayerName" type="text" />
-        </div>
 
-        <div class="info">
-            <label for="inputGameId">Game ID:</label>
+            <label for="inputGameId">NUMERO DE JEU :</label>
             <input id="inputGameId" type="text"/>
-        </div>
 
         <div class="info buttons">
             <button id="btnStart" class="btn">Start</button>
             <div id="playerWaitingMessage"></div>
         </div>
-    </div>
 </script>
 
 <!-- This is the 'Host' screen. It displays the word for each player to match -->
