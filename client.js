@@ -22,7 +22,7 @@
             //IO.socket.on('newWordData', IO.onNewWordData);
             //IO.socket.on('hostCheckAnswer', IO.hostCheckAnswer);
             //IO.socket.on('gameOver', IO.gameOver);
-            //IO.socket.on('error', IO.error );
+            IO.socket.on('error', IO.error );
         },
 
         /**
@@ -40,17 +40,11 @@
             App.Host.gameInit(data);
         },
 
-        /**
-         * A player has successfully joined the game.
-         * @param data {{playerName: string, gameId: int, mySocketId: int}}
-         */
+        //un joueur (sur mobile) a rejoint la room, on va donc mettre à jour l'écran du navigateur de l'host
+        //data contient le room id et le pseudo
         playerJoinedRoom : function(data) {
-            // When a player joins a room, do the updateWaitingScreen funciton.
-            // There are two versions of this function: one for the 'host' and
-            // another for the 'player'.
-            //
-            // So on the 'host' browser window, the App.Host.updateWiatingScreen function is called.
-            // And on the player's browser, App.Player.updateWaitingScreen is called.
+            //il y a 2 versions de la fonction updateWaitingScreen, 1 pour l'host et 1 pour le player
+            //par ex, pour l'host ce sera App.Host.updateWaitingScreen qui sera appelé
             App[App.myRole].updateWaitingScreen(data);
         },
 
@@ -92,10 +86,7 @@
             App[App.myRole].endGame(data);
         },
 
-        /**
-         * An error has occurred.
-         * @param data
-         */
+        //affiche une erreur
         error : function(data) {
             alert(data.message);
         }
@@ -160,9 +151,7 @@
 
         Host : {
 
-            /**
-             * Contains references to player data
-             */
+            //contient les infos des différents players
             players : [],
 
             /**
@@ -235,19 +224,17 @@
                 $('#spanNewGameCode').text(App.roomId);
             },
 
-            /**
-             * Update the Host screen when the first player joins
-             * @param data{{playerName: string}}
-             */
+            //met à jour l'écran d'attente de l'host
+            //data contient le room id et le pseudo
             updateWaitingScreen: function(data) {
                 // If this is a restarted game, show the screen.
                 if ( App.Host.isNewGame ) {
                     App.Host.displayNewGameScreen();
                 }
-                // Update host screen
+                //on indique que le joueur a rejoint la room
                 $('#playersWaiting')
                     .append('<p/>')
-                    .text('Player ' + data.playerName + ' joined the game.');
+                    .text('LE JOUEUR' + data.pseudo + ' A REJOINT LA PARTIE');
 
                 // Store the new player's data on the Host.
                 App.Host.players.push(data);
