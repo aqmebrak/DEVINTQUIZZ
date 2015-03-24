@@ -4,8 +4,19 @@
     <meta charset="utf-8"/>
     <title>Smart Vision</title>
     <!-- Ensure that lol everything scales appropriately on a mobile device -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link href="css/styles.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/libs/jquery-2.0.2.min.js"></script>
+
 </head>
 
 <body>
@@ -18,19 +29,15 @@
 
 <!-- menu principal -->
 <script id="menu" type="text/template">
-        <ul>
-            <li><a id="btnJouer">JOUER</a></li>
-            <li><a id="btnScores">MEILLEURS SCORES</a></li>
-        </ul>
+        <a id="btnJouer" class="btn btn-primary btn-lg btn-block" role="button"><strong>JOUER</strong></a>
+        <a id="btnScores" class="btn btn-primary btn-lg btn-block" role="button"><strong>MEILLEURS SCORES</strong></a>
 </script>
 
 <!-- menu jouer -->
 <script id="menu-jouer" type="text/template">
     <p>CHOISISSEZ VOTRE JEU</p>
-    <ul>
-        <li><a id="btnMouvement">MOVE YOUR BODY</a></li>
-        <li><a id="btnQuizz">QUIZZ MOUVEMENTÉ</a></li>
-    </ul>
+    <a id="btnMouvement">MOVE YOUR BODY</a>
+    <a id="btnQuizz">QUIZZ MOUVEMENTÉ</a>
 </script>
 
 <!-- menu nombre de joueurs -->
@@ -46,27 +53,27 @@
 
 <!-- This screen appears when a user clicks "CREATE" on the Title Screen -->
 <script id="create-game-template" type="text/template">
-        <div class="info">ALLEZ SUR CE SITE AVEC VOTRE MOBILE :</div>
-        <div id="gameURL" class="infoBig">Error!</div>
+    <div class="info">ALLEZ SUR CE SITE AVEC VOTRE MOBILE :</div>
+    <div id="gameURL" class="infoBig">Error!</div>
 
-        <div class="info">PUIS RENTREZ CE NUMERO DE JEU :</div>
-        <div id="spanNewGameCode" class="roomId">Error!</div>
+    <div class="info">PUIS RENTREZ CE NUMERO DE JEU :</div>
+    <div id="spanNewGameCode" class="roomId">Error!</div>
 
-        <div id="playersWaiting"></div>
+    <div id="playersWaiting"></div>
 </script>
 
 <!-- Ecran par défaut quand on se connecte sur mobile  -->
 <script id="join-game-template" type="text/template">
-            <label for="inputPseudo">VOTRE PSEUDO :</label>
-            <input id="inputPseudo" type="text" />
+    <label for="inputPseudo">VOTRE PSEUDO :</label>
+    <input id="inputPseudo" type="text"/>
 
-            <label for="inputRoomId">NUMERO DE JEU :</label>
-            <input id="inputRoomId" type="text"/>
+    <label for="inputRoomId">NUMERO DE JEU :</label>
+    <input id="inputRoomId" type="text"/>
 
-        <div class="info buttons">
-            <button id="btnCommencer" class="btn">COMMENCER</button>
-            <div id="playerWaitingMessage"></div>
-        </div>
+    <div class="info buttons">
+        <button id="btnCommencer" class="btn">COMMENCER</button>
+        <div id="playerWaitingMessage"></div>
+    </div>
 </script>
 
 <!-- This is the 'Host' screen. It displays the word for each player to match -->
