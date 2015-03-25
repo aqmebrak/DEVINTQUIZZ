@@ -32,6 +32,7 @@
          */
         onConnected : function() {
             // Cache a copy of the client's socket.IO session ID on the App
+
             App.mySocketId = IO.socket.socket.sessionid;
             // console.log(data.message);
         },
@@ -114,10 +115,12 @@
         init: function () {
             App.initVariables();
             App.$main.html(App.$templateMenu);
-            //App.doTextFit('.title');
+            App.doTextFit('#btnScores');
+            App.doTextFit('#btnJouer');
             App.initListeners();
             // Initialize the fastclick library
             //FastClick.attach(document.body);
+
         },
 
         //initialise les variables utilisées pour définir les différents templates
