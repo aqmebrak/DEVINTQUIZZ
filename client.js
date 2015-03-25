@@ -21,7 +21,7 @@
             IO.socket.on('newRoomCreated', IO.onNewRoomCreated );
             IO.socket.on('playerJoinedRoom', IO.playerJoinedRoom );
             IO.socket.on('beginNewGame', IO.beginNewGame );
-            //IO.socket.on('newWordData', IO.onNewWordData);
+            IO.socket.on('newQuestionData', IO.onNewQuestionData);
             //IO.socket.on('hostCheckAnswer', IO.hostCheckAnswer);
             //IO.socket.on('gameOver', IO.gameOver);
             IO.socket.on('error', IO.error );
@@ -57,16 +57,12 @@
             App[App.myRole].gameCountdown(data);
         },
 
-        /**
-         * A new set of words for the round is returned from the server.
-         * @param data
-         */
-        onNewWordData : function(data) {
-            // Update the current round
+        //quand le jeu envoie une nouvelle question
+        onNewQuestionData : function(data) {
+            //on met à jour le  numéro du round
             App.currentRound = data.round;
-
-            // Change the word for the Host and Player
-            App[App.myRole].newWord(data);
+            //on actualise la question pour l'host et le player
+            App[App.myRole].newQuestion(data);
         },
 
         /**
@@ -104,11 +100,7 @@
         //il est généré quand le navigateur se connecte au serveur pour la première fois
         mySocketId: '',
 
-        /**
-         * Identifies the current round. Starts at 0 because it corresponds
-         * to the array of word data stored on the server.
-         */
-            //????????
+        //numéro du round actuel
         currentRound: 0,
 
         //est appelée en bas de la page
@@ -283,13 +275,10 @@
                 $('#player2Score').find('.score').attr('id',App.Host.players[1].mySocketId);
             },
 
-            /**
-             * Show the word for the current round on screen.
-             * @param data{{round: *, word: *, answer: *, list: Array}}
-             */
-            newWord : function(data) {
+            //montre la question pour l'host
+            newQuestion : function(data) {
                 // Insert the new word into the DOM
-                $('#hostWord').text(data.word);
+                $('#hostWord').text(data.question);
                 App.doTextFit('#hostWord');
 
                 // Update the data for the current round
@@ -458,7 +447,7 @@
              * Show the list of words for the current round.
              * @param data{{round: *, word: *, answer: *, list: Array}}
              */
-            newWord : function(data) {
+            newQuestion : function(data) {
                 // Create an unordered list element
                 var $list = $('<ul/>').attr('id','ulAnswers');
 

@@ -129,8 +129,8 @@ function playerRestart(data) {
  * @param gameId The room identifier
  */
 function sendQuestion(questionsIndex, roomId) {
-    var data = getQuestion(questionsIndex);
-    io.sockets.in(data.gameId).emit('newWordData', data);
+    var questionData = getQuestion(questionsIndex);
+    io.sockets.in(data.gameId).emit('newQuestionData', Data);
 }
 
 /**
@@ -144,24 +144,26 @@ function getQuestion(i){
     // Randomize the order of the available words.
     // The first element in the randomized array will be displayed on the host screen.
     // The second element will be hidden in a list of decoys as the correct answer
-    var words = shuffle(wordPool[i].words);
-
-    // Randomize the order of the decoy words and choose the first 5
-    var decoys = shuffle(wordPool[i].decoys).slice(0,5);
-
-    // Pick a random spot in the decoy list to put the correct answer
-    var rnd = Math.floor(Math.random() * 5);
-    decoys.splice(rnd, 0, words[1]);
+    //var question = shuffle(questions[i].question);
+    var question = questions[i].question;
+    var answer=questions[i].answer;
+    var A=questions[i].A;
+    var B=questions[i].B;
+    var C=questions[i].C;
+    var D=questions[i].D;
 
     // Package the words into a single object.
-    var wordData = {
+    var questionData = {
         round: i,
-        word : words[0],   // Displayed Word
-        answer : words[1], // Correct Answer
-        list : decoys      // Word list for player (decoys and answer)
+        question : question[0],   //question affichée
+        answer : answer[0], // Correct Answer
+        A : A[0],
+        B : B[0],
+        C : C[0],
+        D : D[0]
     };
 
-    return wordData;
+    return questionData;
 }
 
 /*
