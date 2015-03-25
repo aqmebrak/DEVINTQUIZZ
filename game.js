@@ -13,7 +13,8 @@ exports.initGame = function(paramIO, paramSocket){
     // On écoute les évenements de l'host
     clientSocket.on('hostCreateNewRoom', hostCreateNewRoom);
     clientSocket.on('hostRoomFull', hostPrepareGame);
-    clientSocket.on('hostCountdownFinished', hostStartGame);
+    clientSocket.on('hostQuizzCountdownFinished', hostStartQuizz);
+    clientSocket.on('hostMvtCountdownFinished', hostStartMvt);
     clientSocket.on('hostNextRound', hostNextRound);
 
     // On écoute les évenements du player
@@ -34,27 +35,25 @@ function hostCreateNewRoom() {
     this.join(roomId.toString());
 };
 
-/*
- * Two players have joined. Alert the host!
- * @param gameId The game ID / room ID
- */
-function hostPrepareGame(gameId) {
+//tout le monde a rejoint la room, on l'indique à l'host
+function hostPrepareGame(roomId) {
     var sock = this;
     var data = {
         mySocketId : sock.id,
-        gameId : gameId
+        roomId : roomId
     };
-    //console.log("All Players Present. Preparing game...");
-    io.sockets.in(data.gameId).emit('beginNewGame', data);
+    //in avec un room id en paramètre permet d'envoyer seulement aux participants de la room
+    io.sockets.in(data.roomId).emit('beginNewGame', data);
 }
 
-/*
- * The Countdown has finished, and the game begins!
- * @param gameId The game ID / room ID
- */
-function hostStartGame(gameId) {
-    console.log('Game Started.');
-    sendWord(0,gameId);
+//le compta a rebours est fini, on lance le jeu quizz
+function hostStartQuizz(roomId) {
+    sendQuestion(0,roomId);
+};
+
+//le compta a rebours est fini, on lance le jeu mvt
+function hostStartMvt(roomId) {
+    //sendWord(0,roomId);
 };
 
 /**
@@ -121,20 +120,16 @@ function playerRestart(data) {
     io.sockets.in(data.gameId).emit('playerJoinedRoom',data);
 }
 
-/* *************************
-   *                       *
-   *      GAME LOGIC       *
-   *                       *
-   ************************* */
+// PARTIE GAME LOGIC
 
 /**
  * Get a word for the host, and a list of words for the player.
  *
- * @param wordPoolIndex
+ * @param questionsIndex
  * @param gameId The room identifier
  */
-function sendWord(wordPoolIndex, gameId) {
-    var data = getWordData(wordPoolIndex);
+function sendQuestion(questionsIndex, roomId) {
+    var data = getQuestion(questionsIndex);
     io.sockets.in(data.gameId).emit('newWordData', data);
 }
 
@@ -145,7 +140,7 @@ function sendWord(wordPoolIndex, gameId) {
  * @param i The index of the wordPool.
  * @returns {{round: *, word: *, answer: *, list: Array}}
  */
-function getWordData(i){
+function getQuestion(i){
     // Randomize the order of the available words.
     // The first element in the randomized array will be displayed on the host screen.
     // The second element will be hidden in a list of decoys as the correct answer
@@ -203,54 +198,22 @@ function shuffle(array) {
  *
  * @type {Array}
  */
-var wordPool = [
+var questions = [
     {
-        "words"  : [ "sale","seal","ales","leas" ],
-        "decoys" : [ "lead","lamp","seed","eels","lean","cels","lyse","sloe","tels","self" ]
+        "question"  : [ "QUEL EST LE SURNOM DE JEREMY ?" ],
+        "A" : [ "MICHEL" ],
+        "B" : [ "JEFFREY" ],
+        "C" : [ "VOMITO" ],
+        "D" : [ "FDP" ],
+        "answer" : [ "C" ]
     },
 
     {
-        "words"  : [ "item","time","mite","emit" ],
-        "decoys" : [ "neat","team","omit","tame","mate","idem","mile","lime","tire","exit" ]
-    },
-
-    {
-        "words"  : [ "spat","past","pats","taps" ],
-        "decoys" : [ "pots","laps","step","lets","pint","atop","tapa","rapt","swap","yaps" ]
-    },
-
-    {
-        "words"  : [ "nest","sent","nets","tens" ],
-        "decoys" : [ "tend","went","lent","teen","neat","ante","tone","newt","vent","elan" ]
-    },
-
-    {
-        "words"  : [ "pale","leap","plea","peal" ],
-        "decoys" : [ "sale","pail","play","lips","slip","pile","pleb","pled","help","lope" ]
-    },
-
-    {
-        "words"  : [ "races","cares","scare","acres" ],
-        "decoys" : [ "crass","scary","seeds","score","screw","cager","clear","recap","trace","cadre" ]
-    },
-
-    {
-        "words"  : [ "bowel","elbow","below","beowl" ],
-        "decoys" : [ "bowed","bower","robed","probe","roble","bowls","blows","brawl","bylaw","ebola" ]
-    },
-
-    {
-        "words"  : [ "dates","stead","sated","adset" ],
-        "decoys" : [ "seats","diety","seeds","today","sited","dotes","tides","duets","deist","diets" ]
-    },
-
-    {
-        "words"  : [ "spear","parse","reaps","pares" ],
-        "decoys" : [ "ramps","tarps","strep","spore","repos","peris","strap","perms","ropes","super" ]
-    },
-
-    {
-        "words"  : [ "stone","tones","steno","onset" ],
-        "decoys" : [ "snout","tongs","stent","tense","terns","santo","stony","toons","snort","stint" ]
+        "question"  : [ "QUI EST LE PROF DE LFA ?" ],
+        "A" : [ "Y'EN A PAS" ],
+        "B" : [ "BOND" ],
+        "C" : [ "MOMEGE" ],
+        "D" : [ "PAPY RICARD" ],
+        "answer" : [ "A" ]
     }
 ]

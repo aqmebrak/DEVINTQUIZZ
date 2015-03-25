@@ -1,6 +1,8 @@
 (function($){
-
+    //nb de joueurs par défaut
     var nbPlayers=2;
+    //indique le jeu choisi ("quizz" ou "mvt")
+    var typeOfGame="";
 
     // Tout le code qui concerne les connections socket
     var IO = {
@@ -48,10 +50,8 @@
             App[App.myRole].updateWaitingScreen(data);
         },
 
-        /**
-         * Both players have joined the game.
-         * @param data
-         */
+        //le serveur nous confirme que tout le monde a rejoint la room, on lance le compte à rebour
+        // (en fonction du role cad host ou player)
         beginNewGame : function(data) {
             App[App.myRole].gameCountdown(data);
         },
@@ -127,9 +127,9 @@
             App.$templateMenu = $('#menu').html();
             App.$templateJouer = $('#menu-jouer').html();
             App.$templateNbPlayers = $('#menu-nbPlayers').html();
-            App.$templateNewGame = $('#create-game-template').html();
-            App.$templateJoinGame = $('#join-game-template').html();
-            App.$hostGame = $('#host-game-template').html();
+            App.$templateHostGameId = $('#templateHostGameId').html();
+            App.$templateJoinGame = $('#templateJoinGame').html();
+            App.$templateQuizzGame = $('#templateQuizzGame').html();
         },
 
         //initialise les différents listeners qui vont écouter les évènements émis par le serveur socket
@@ -176,13 +176,15 @@
 
             //Quand on choisit le jeu des mouvements
             onMouvement: function () {
-                //on sauvegarde le jeu ??
+                //on sauvegarde la décision
+                typeOfGame="mvt";
                 App.$main.html(App.$templateNbPlayers);
             },
 
             //Quand on choisit le jeu du quizz
             onQuizz: function () {
-                //on sauvegarde le jeu ??
+                //on sauvegarde la décision
+                typeOfGame="quizz";
                 App.$main.html(App.$templateNbPlayers);
             },
 
@@ -218,7 +220,7 @@
 
             //affiche le template de l'host avec le lien goog gl et le room id...
             displayNewGameScreen : function() {
-                App.$main.html(App.$templateNewGame);
+                App.$main.html(App.$templateHostGameId);
                 $('#gameURL').text("goo.gl/wQLS6f");
                 App.doTextFit('#gameURL');
                 $('#spanNewGameCode').text(App.roomId);
@@ -234,36 +236,34 @@
                 //on indique que le joueur a rejoint la room
                 $('#playersWaiting')
                     .append('<p/>')
-                    .text('LE JOUEUR' + data.pseudo + ' A REJOINT LA PARTIE');
+                    .text('LE JOUEUR ' + data.pseudo + ' A REJOINT LA PARTIE');
 
-                // Store the new player's data on the Host.
+                //on stocke les informations du player
                 App.Host.players.push(data);
-
-                // Increment the number of players in the room
+                //on incrémente le nb de joueurs dans la room
                 App.Host.nbPlayersInRoom += 1;
-
-                // If two players have joined, start the game!
+                //si le nb de joueur correspond au nb voulu
                 if (App.Host.nbPlayersInRoom === nbPlayers) {
-                    // console.log('Room is full. Almost ready!');
-
-                    // Let the server know that two players are present.
+                    // on envoie un event au serveur avec le gameId pour lui dire que la room est full
                     IO.socket.emit('hostRoomFull',App.gameId);
                 }
             },
 
-            /**
-             * Show the countdown screen
-             */
+            //affiche le compte à rebour de l'host
             gameCountdown : function() {
-
-                // Prepare the game screen with new HTML
-                App.$main.html(App.$hostGame);
+                // on charge le template de jeu
+                App.$main.html(App.$templateQuizzGame);
                 App.doTextFit('#hostWord');
 
-                // Begin the on-screen countdown timer
+                //on commence le timer
                 var $secondsLeft = $('#hostWord');
                 App.countDown( $secondsLeft, 5, function(){
-                    IO.socket.emit('hostCountdownFinished', App.gameId);
+                    if(typeOfGame=="mvt"){
+                        IO.socket.emit('hostMvtCountdownFinished', App.roomId);
+                    }
+                    if(typeOfGame=="quizz"){
+                        IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
+                    }
                 });
 
                 // Display the players' names on screen
@@ -368,7 +368,7 @@
              * A player hit the 'Start Again' button after the end of a game.
              */
             restartGame : function() {
-                App.$main.html(App.$templateNewGame);
+                App.$main.html(App.$templateHostGameId);
                 $('#spanNewGameCode').text(App.gameId);
             }
         },
@@ -431,10 +431,7 @@
                 $('#main').html("<h3>Waiting on host to start new game.</h3>");
             },
 
-            /**
-             * Display the waiting screen for player 1
-             * @param data
-             */
+            //confirme que au joueur qu'il s'est bien connecté à la room
             updateWaitingScreen : function(data) {
                 if(IO.socket.socket.sessionid === data.mySocketId){
                     App.myRole = 'Player';
@@ -442,18 +439,16 @@
 
                     $('#playerWaitingMessage')
                         .append('<p/>')
-                        .text('Joined Game ' + data.gameId + '. Please wait for game to begin.');
+                        .text('VOUS AVEZ REJOINT LE JEU NUMERO ' + data.roomId + '. ATTENDEZ QUE LE JEU COMMENCE');
                 }
             },
 
-            /**
-             * Display 'Get Ready' while the countdown timer ticks down.
-             * @param hostData
-             */
+
+            //affiche un message d'attente sur le mobile tant que le compteur tourne
             gameCountdown : function(hostData) {
                 App.Player.hostSocketId = hostData.mySocketId;
                 $('#main')
-                    .html('<div class="gameOver">Get Ready!</div>');
+                    .html('<div class="gameOver">REGARDEZ L\'ORDINATEUR</div>');
             },
 
             /**
