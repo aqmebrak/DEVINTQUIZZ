@@ -279,7 +279,8 @@
             //montre la question pour l'host
             newQuestion : function(data) {
                 // Insert the new word into the DOM
-                $('#hostWord').text(data.question);
+                //$('#hostWord').text(data.question);
+                $('#hostWord').text("HEY");
                 App.doTextFit('#hostWord');
 
                 // Update the data for the current round
