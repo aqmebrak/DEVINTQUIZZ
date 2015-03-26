@@ -254,6 +254,7 @@
                 App.countDown( $secondsLeft, 5, function(){
                     //on commence à capter l'accéléromètre
                     motion=true;
+                    alert(motion);
                     if(typeOfGame=="mvt"){
                         IO.socket.emit('hostMvtCountdownFinished', App.roomId);
                     }
