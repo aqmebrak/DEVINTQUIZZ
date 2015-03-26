@@ -281,7 +281,14 @@
                 // Insert the new word into the DOM
                 $('#hostWord').text(data.question);
                 App.doTextFit('#hostWord');
-
+                $('#A').text(data.A);
+                App.doTextFit('#A');
+                $('#B').text(data.B);
+                App.doTextFit('#B');
+                $('#C').text(data.C);
+                App.doTextFit('#C');
+                $('#D').text(data.D);
+                App.doTextFit('#D');
                 // Update the data for the current round
                 App.Host.currentCorrectAnswer = data.answer;
                 App.Host.currentRound = data.round;
