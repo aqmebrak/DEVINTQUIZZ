@@ -4,7 +4,7 @@
     //indique le jeu choisi ("quizz" ou "mvt")
     var typeOfGame="";
     //indique si on peut capter l'accéléromètre
-    var motion=false;
+    var motionActivated=false;
 
     // Tout le code qui concerne les connections socket
     var IO = {
@@ -70,7 +70,7 @@
         //une réponse a été proposée, on vérifie si c'est bien l'host
         hostCheckAnswer : function(data) {
             if(App.myRole === 'Host') {
-                if(motion){
+                if(motionActivated){
                     App.Host.checkAnswer(data);
                 }
             }
@@ -255,7 +255,7 @@
                 var $secondsLeft = $('#hostQuestion');
                 App.countDown( $secondsLeft, 5, function(){
                     //on commence à capter l'accéléromètre
-                    motion=true;
+                    motionActivated=true;
                     if(typeOfGame=="mvt"){
                         IO.socket.emit('hostMvtCountdownFinished', App.roomId);
                     }
@@ -378,26 +378,6 @@
 
             // le pseudo du player
             pseudo: '',
-
-            /**
-             * Renvoie la direction selon x y, et z ne peut pas etre une direction composée
-             */
-            getDirection : function(x,y,z){
-                var direc;
-                if (Math.abs(x)>=Math.abs(y) && Math.abs(x)>=Math.abs(z)) {
-                    if (x>0) direc = "back";
-                    else direc = "forward";
-                }
-                else if (Math.abs(y)>=Math.abs(x) && Math.abs(y)>=Math.abs(z)){
-                    if (y>0) direc = "H";
-                    else direc = "B";
-                }
-                else {
-                    if (z>0) direc = "G";
-                    else direc = "D";
-                }
-                return direc;
-            },
 
             //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
             onPlayerCommencer: function() {
@@ -593,8 +573,8 @@
                     if (nbj == 0) nbj = 1;
                     if (nbk == 0) nbk = 1;
 
-                    //direction = App.Player.getDirection(i / nbi, j / nbj, k / nbk);
-                    direction="B";
+                    direction = getDirection(i / nbi, j / nbj, k / nbk);
+                    //direction="B";
 
                     timer = undefined;
                     //on récupère les infos
@@ -613,6 +593,26 @@
 
                 }
             }
+        }
+
+        /**
+         * Renvoie la direction selon x y, et z ne peut pas etre une direction composée
+         */
+        function getDirection(x,y,z){
+            var direc;
+            if (Math.abs(x)>=Math.abs(y) && Math.abs(x)>=Math.abs(z)) {
+                if (x>0) direc = "back";
+                else direc = "forward";
+            }
+            else if (Math.abs(y)>=Math.abs(x) && Math.abs(y)>=Math.abs(z)){
+                if (y>0) direc = "H";
+                else direc = "B";
+            }
+            else {
+                if (z>0) direc = "G";
+                else direc = "D";
+            }
+            return direc;
         }
 
 }($));
