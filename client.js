@@ -70,8 +70,9 @@
         //une réponse a été proposée, on vérifie si c'est bien l'host
         hostCheckAnswer : function(data) {
             if(App.myRole === 'Host') {
-                alert("ON VERIFIE");
-                App.Host.checkAnswer(data);
+                if(motion){
+                    App.Host.checkAnswer(data);
+                }
             }
         },
 
