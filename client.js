@@ -59,9 +59,8 @@
 
         //quand le jeu envoie une nouvelle question
         onNewQuestionData : function(data) {
-            //on met à jour le  numéro du round
+            //on met à jour le numéro du round
             App.currentRound = data.round;
-            alert("MICHEL");
             //on actualise la question pour l'host et le player
             App[App.myRole].newQuestion(data);
         },
@@ -254,12 +253,12 @@
                 //on commence le timer
                 var $secondsLeft = $('#hostWord');
                 App.countDown( $secondsLeft, 5, function(){
-                    //if(typeOfGame=="mvt"){
-                        //IO.socket.emit('hostMvtCountdownFinished', App.roomId);
-                    //}
-                    //if(typeOfGame=="quizz"){
-                        //IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
-                    //}
+                    if(typeOfGame=="mvt"){
+                        IO.socket.emit('hostMvtCountdownFinished', App.roomId);
+                    }
+                    if(typeOfGame=="quizz"){
+                        IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
+                    }
                     IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
                 });
 
@@ -280,9 +279,7 @@
             //montre la question pour l'host
             newQuestion : function(data) {
                 // Insert the new word into the DOM
-                //$('#hostWord').text(data.question);
-                alert("caca");
-                $('#hostWord').text("HEY");
+                $('#hostWord').text(data.question);
                 App.doTextFit('#hostWord');
 
                 // Update the data for the current round
