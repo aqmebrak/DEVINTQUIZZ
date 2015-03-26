@@ -259,7 +259,6 @@
                     //if(typeOfGame=="quizz"){
                         //IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
                     //}
-                    alert("LOL");
                     IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
                 });
 
