@@ -561,7 +561,7 @@
         window.addEventListener("devicemotion", process, true);
     }
     function process(event) {
-        //if(motion){
+        if(motion){
             alert("mec");
             var x = Math.round(event.acceleration.x);
             var y = Math.round(event.acceleration.y);
@@ -613,7 +613,7 @@
 
                 }
             }
-        //}
+        }
     }
 
 }($));
