@@ -70,10 +70,8 @@
         //une réponse a été proposée, on vérifie si c'est bien l'host
         hostCheckAnswer : function(data) {
             if(App.myRole === 'Host') {
-                if(motion){
-                    alert("LOOOLLL");
-                    App.Host.checkAnswer(data);
-                }
+                alert("ON VERIFIE");
+                App.Host.checkAnswer(data);
             }
         },
 
@@ -594,7 +592,8 @@
                     if (nbj == 0) nbj = 1;
                     if (nbk == 0) nbk = 1;
 
-                    direction = App.Player.getDirection(i / nbi, j / nbj, k / nbk);
+                    //direction = App.Player.getDirection(i / nbi, j / nbj, k / nbk);
+                    direction="B";
 
                     timer = undefined;
                     //on récupère les infos
