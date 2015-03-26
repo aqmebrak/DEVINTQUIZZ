@@ -259,7 +259,6 @@
                     if(typeOfGame=="quizz"){
                         IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
                     }
-                    IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
                 });
 
                 // Display the players' names on screen
