@@ -53,7 +53,7 @@ function hostStartQuizz(roomId) {
 
 //le compta a rebours est fini, on lance le jeu mvt
 function hostStartMvt(roomId) {
-    //sendWord(0,roomId);
+    //TODO JEFFRAY ET CHRISTOF
 };
 
 /**
@@ -96,15 +96,9 @@ function playerJoinRoom(data) {
     }
 }
 
-/**
- * A player has tapped a word in the word list.
- * @param data gameId
- */
+//on recoit la réponse proposée par le player
 function playerAnswer(data) {
-    // console.log('Player ID: ' + data.playerId + ' answered a question with: ' + data.answer);
-
-    // The player's answer is attached to the data object.  \
-    // Emit an event with the answer so it can be checked by the 'Host'
+    //on va demander à l'host si c'est la bonne réponse
     io.sockets.in(data.gameId).emit('hostCheckAnswer', data);
 }
 
@@ -147,20 +141,20 @@ function getQuestion(i){
     //var question = shuffle(questions[i].question);
     var question = questions[i].question;
     var answer=questions[i].answer;
-    var A=questions[i].A;
-    var B=questions[i].B;
-    var C=questions[i].C;
+    var H=questions[i].H;
     var D=questions[i].D;
+    var B=questions[i].B;
+    var G=questions[i].G;
 
     // Package the words into a single object.
     var questionData = {
         round: i,
         question : question[0],   //question affichée
         answer : answer[0], // Correct Answer
-        A : A[0],
+        H : H[0],
+        D : D[0],
         B : B[0],
-        C : C[0],
-        D : D[0]
+        G : G[0]
     };
 
     return questionData;
@@ -203,19 +197,19 @@ function shuffle(array) {
 var questions = [
     {
         "question"  : [ "QUEL EST LE SURNOM DE JEREMY ?" ],
-        "A" : [ "MICHEL" ],
-        "B" : [ "JEFFREY" ],
-        "C" : [ "VOMITO" ],
-        "D" : [ "FDP" ],
-        "answer" : [ "C" ]
+        "H" : [ "MICHEL" ],
+        "D" : [ "JEFFREY" ],
+        "B" : [ "VOMITO" ],
+        "G" : [ "FDP" ],
+        "answer" : [ "B" ]
     },
 
     {
         "question"  : [ "QUI EST LE PROF DE LFA ?" ],
-        "A" : [ "Y'EN A PAS" ],
-        "B" : [ "BOND" ],
-        "C" : [ "MOMEGE" ],
-        "D" : [ "PAPY RICARD" ],
-        "answer" : [ "A" ]
+        "H" : [ "Y'EN A PAS" ],
+        "D" : [ "BOND" ],
+        "B" : [ "MOMEGE" ],
+        "G" : [ "PAPY RICARD" ],
+        "answer" : [ "H" ]
     }
 ]

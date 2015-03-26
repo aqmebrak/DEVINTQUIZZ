@@ -3,6 +3,8 @@
     var nbPlayers=2;
     //indique le jeu choisi ("quizz" ou "mvt")
     var typeOfGame="";
+    //indique si on peut capter l'accéléromètre
+    var motion=false;
 
     // Tout le code qui concerne les connections socket
     var IO = {
@@ -22,7 +24,7 @@
             IO.socket.on('playerJoinedRoom', IO.playerJoinedRoom );
             IO.socket.on('beginNewGame', IO.beginNewGame );
             IO.socket.on('newQuestionData', IO.onNewQuestionData);
-            //IO.socket.on('hostCheckAnswer', IO.hostCheckAnswer);
+            IO.socket.on('hostCheckAnswer', IO.hostCheckAnswer);
             //IO.socket.on('gameOver', IO.gameOver);
             IO.socket.on('error', IO.error );
         },
@@ -65,10 +67,7 @@
             App[App.myRole].newQuestion(data);
         },
 
-        /**
-         * A player answered. If this is the host, check the answer.
-         * @param data
-         */
+        //une réponse a été proposée, on vérifie si c'est bien l'host
         hostCheckAnswer : function(data) {
             if(App.myRole === 'Host') {
                 App.Host.checkAnswer(data);
@@ -248,11 +247,13 @@
             gameCountdown : function() {
                 // on charge le template de jeu
                 App.$main.html(App.$templateQuizzGame);
-                App.doTextFit('#hostWord');
+                App.doTextFit('#hostQuestion');
 
                 //on commence le timer
-                var $secondsLeft = $('#hostWord');
+                var $secondsLeft = $('#hostQuestion');
                 App.countDown( $secondsLeft, 5, function(){
+                    //on commence à capter l'accéléromètre
+                    motion=true;
                     if(typeOfGame=="mvt"){
                         IO.socket.emit('hostMvtCountdownFinished', App.roomId);
                     }
@@ -277,22 +278,20 @@
 
             //montre la question pour l'host
             newQuestion : function(data) {
-                // Insert the new word into the DOM
-                $('#hostWord').text(data.question);
-                App.doTextFit('#hostWord');
-                $('#A').text(data.A);
-                $('#B').text(data.B);
-                $('#C').text(data.C);
+                //on remplace la question dans le div
+                $('#hostQuestion').text(data.question);
+                App.doTextFit('#hostQuestion');
+                //on affiche les proposition
+                $('#H').text(data.H);
                 $('#D').text(data.D);
-                // Update the data for the current round
+                $('#B').text(data.B);
+                $('#G').text(data.G);
+                //on met à jour les infos du round courant (réponse et numéro de round)
                 App.Host.currentCorrectAnswer = data.answer;
                 App.Host.currentRound = data.round;
             },
 
-            /**
-             * Check the answer clicked by a player.
-             * @param data{{round: *, playerId: *, answer: *, gameId: *}}
-             */
+            //on vérifie si la réponse est bonne
             checkAnswer : function(data) {
                 // Verify that the answer clicked is from the current round.
                 // This prevents a 'late entry' from a player whos screen has not
@@ -300,10 +299,11 @@
                 if (data.round === App.currentRound){
 
                     // Get the player's score
-                    var $pScore = $('#' + data.playerId);
+                    //var $pScore = $('#' + data.playerId);
 
                     // Advance player's score if it is correct
                     if( App.Host.currentCorrectAnswer === data.answer ) {
+                        alert("YOLO");
                         // Add 5 to the player's score
                         $pScore.text( +$pScore.text() + 5 );
 
@@ -312,7 +312,7 @@
 
                         // Prepare data to send to the server
                         var data = {
-                            gameId : App.gameId,
+                            roomId : App.roomId,
                             round : App.currentRound
                         }
 
@@ -377,6 +377,26 @@
             // le pseudo du player
             pseudo: '',
 
+            /**
+             * Renvoie la direction selon x y, et z ne peut pas etre une direction composée
+             */
+            getDirection : function(x,y,z){
+                var direc;
+                if (Math.abs(x)>=Math.abs(y) && Math.abs(x)>=Math.abs(z)) {
+                    if (x>0) direc = "back";
+                    else direc = "forward";
+                }
+                else if (Math.abs(y)>=Math.abs(x) && Math.abs(y)>=Math.abs(z)){
+                    if (y>0) direc = "H";
+                    else direc = "B";
+                }
+                else {
+                    if (z>0) direc = "G";
+                    else direc = "D";
+                }
+                return direc;
+            },
+
             //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
             onPlayerCommencer: function() {
                 //on collecte les infos à envoyer au serveur
@@ -393,18 +413,15 @@
                 App.Player.pseudo = data.pseudo;
             },
 
-            /**
-             *  Click handler for the Player hitting a word in the word list.
-             */
+            //quand quelqu'un répond en bougeant son tel
             onPlayerAnswerClick: function() {
-                // console.log('Clicked Answer Button');
                 var $btn = $(this);      // the tapped button
                 var answer = $btn.val(); // The tapped word
 
                 // Send the player info and tapped word to the server so
                 // the host can check the answer.
                 var data = {
-                    gameId: App.gameId,
+                    roomId: App.roomId,
                     playerId: App.mySocketId,
                     answer: answer,
                     round: App.currentRound
@@ -446,10 +463,7 @@
                     .html('<div class="gameOver">REGARDEZ L\'ORDINATEUR</div>');
             },
 
-            /**
-             * Show the list of words for the current round.
-             * @param data{{round: *, word: *, answer: *, list: Array}}
-             */
+            //ce qui s'affiche pour le player quand ya une question
             newQuestion : function(data) {
                 // Create an unordered list element
                 var $list = $('<ul/>').attr('id','ulAnswers');
@@ -489,44 +503,21 @@
         },
 
 
-        /* **************************
-                  UTILITY CODE
-           ************************** */
-
-        /**
-         * Display the countdown timer on the Host screen
-         *
-         * @param $el The container element for the countdown timer
-         * @param startTime
-         * @param callback The function to call when the timer ends.
-         */
+        //fonction toute faite qui fait un compte à rebour
         countDown : function( $el, startTime, callback) {
-
-            // Display the starting time on the screen.
             $el.text(startTime);
-            App.doTextFit('#hostWord');
-
-            // console.log('Starting Countdown...');
-
-            // Start a 1 second timer
+            App.doTextFit('#hostQuestion');
             var timer = setInterval(countItDown,1000);
-
-            // Decrement the displayed timer value on each 'tick'
-            function countItDown(){
+                function countItDown(){
                 startTime -= 1
                 $el.text(startTime);
-                App.doTextFit('#hostWord');
-
+                App.doTextFit('#hostQuestion');
                 if( startTime <= 0 ){
-                    // console.log('Countdown Finished.');
-
-                    // Stop the timer and do the callback.
                     clearInterval(timer);
                     callback();
                     return;
                 }
             }
-
         },
 
         /**
@@ -549,6 +540,15 @@
         }
 
     };
+    //pour motion
+    const seuil = 10;
+    var direction;
+    var timer;
+    var acquisition = true;
+    const moyenneMinValidationMvt = 7.5; // A dterminer empiriquement
+    const seuilParasite = 2;
+    var i,j, k,nbi,nbj,nbk;
+    i = j = k = nbi = nbj =nbk = 0;
 
     IO.init();
     App.init();
@@ -556,9 +556,62 @@
     if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/webOS/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) ){
         App.$main.html(App.$templateJoinGame);
     }
-    //sinon on se met on mode host
-    //else{
-        //IO.socket.emit('hostCreateNewGame');
-    //}
+    //si on peut capter l'acceleromètre
+    if(window.DeviceOrientationEvent) {
+        window.addEventListener("devicemotion", process, true);
+    }
+    function process(event) {
+        if(motion){
+            var x = Math.round(event.acceleration.x);
+            var y = Math.round(event.acceleration.y);
+            var z = Math.round(event.acceleration.z);
+            //if (event.beta > 45) z = y;
+            if ((Math.abs(x) > seuil || Math.abs(y) > seuil || Math.abs(z) > seuil ) && acquisition) {
+
+                if (typeof timer == "undefined") timer = new Date();
+                if ((new Date().getTime() - timer.getTime()) < 100) {
+                    if (Math.abs(x) > seuilParasite) {
+                        i += x;
+                        nbi++;
+                    }
+                    if (Math.abs(y) > seuilParasite) {
+                        j += y;
+                        nbj++;
+                    }
+                    if (Math.abs(z) > seuilParasite) {
+                        k += z;
+                        nbk++;
+                    }
+                }
+                else { //acquisition de points terminée
+                    acquisition = false;
+                    /* On empêche la division par 0 qui peut se faire si le mouvement est parfait et
+                     * qu'il ne provoque aucune accélération sur l'autre axe
+                     */
+                    if (nbi == 0) nbi = 1;
+                    if (nbj == 0) nbj = 1;
+                    if (nbk == 0) nbk = 1;
+
+                    direction = App.Player.getDirection(i / nbi, j / nbj, k / nbk);
+
+                    timer = undefined;
+                    //on récupère les infos
+                    var data = {
+                        roomId: App.roomId,
+                        playerId: App.mySocketId,
+                        answer: direction,
+                        round: App.currentRound
+                    }
+                    //et on les envoie au serveur pour voir si c'est la bonne réponse
+                    IO.socket.emit('playerAnswer',data);
+
+                    setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
+                    setTimeout("document.body.style.backgroundColor = \"green\"", 800);
+                    setTimeout("acquisition=true", 801); //pour laisser le temps de revenir à la position de base
+
+                }
+            }
+        }
+    }
 
 }($));
