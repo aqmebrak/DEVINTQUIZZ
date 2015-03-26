@@ -267,7 +267,7 @@
                 // Display the players' names on screen
                 $('#player1Score')
                     .find('.playerName')
-                    .html(App.Host.players[0].playerName);
+                    .html(App.Host.players[0].pseudo);
 
                 //$('#player2Score')
                     //.find('.playerName')
@@ -305,7 +305,7 @@
 
                     // Advance player's score if it is correct
                     if( App.Host.currentCorrectAnswer === data.answer ) {
-                        alert("YOLO");
+                        alert("BONNE REPONSE BATARD");
                         // Add 5 to the player's score
                         $pScore.text( +$pScore.text() + 5 );
 
@@ -322,6 +322,7 @@
                         IO.socket.emit('hostNextRound',data);
 
                     } else {
+                        alert("MAUVAISE REPONSE SALE MERDE");
                         // A wrong answer was submitted, so decrement the player's score.
                         $pScore.text( +$pScore.text() - 3 );
                     }
@@ -534,6 +535,7 @@
 
     IO.init();
     App.init();
+
     //si on est sur mobile on charge direct le template Join
     if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/webOS/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) ){
         App.$main.html(App.$templateJoinGame);
