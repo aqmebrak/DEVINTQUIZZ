@@ -130,7 +130,7 @@ function playerRestart(data) {
  */
 function sendQuestion(questionsIndex, roomId) {
     var questionData = getQuestion(questionsIndex);
-    io.sockets.in(questionsData.roomId).emit('newQuestionData', questionData);
+    io.sockets.in(roomId).emit('newQuestionData', questionData);
 }
 
 /**
