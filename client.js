@@ -253,12 +253,13 @@
                 //on commence le timer
                 var $secondsLeft = $('#hostWord');
                 App.countDown( $secondsLeft, 5, function(){
-                    if(typeOfGame=="mvt"){
-                        IO.socket.emit('hostMvtCountdownFinished', App.roomId);
-                    }
-                    if(typeOfGame=="quizz"){
-                        IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
-                    }
+                    //if(typeOfGame=="mvt"){
+                        //IO.socket.emit('hostMvtCountdownFinished', App.roomId);
+                    //}
+                    //if(typeOfGame=="quizz"){
+                        //IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
+                    //}
+                    IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
                 });
 
                 // Display the players' names on screen
@@ -266,13 +267,13 @@
                     .find('.playerName')
                     .html(App.Host.players[0].playerName);
 
-                $('#player2Score')
-                    .find('.playerName')
-                    .html(App.Host.players[1].playerName);
+                //$('#player2Score')
+                    //.find('.playerName')
+                    //.html(App.Host.players[1].playerName);
 
                 // Set the Score section on screen to 0 for each player.
                 $('#player1Score').find('.score').attr('id',App.Host.players[0].mySocketId);
-                $('#player2Score').find('.score').attr('id',App.Host.players[1].mySocketId);
+                //$('#player2Score').find('.score').attr('id',App.Host.players[1].mySocketId);
             },
 
             //montre la question pour l'host
