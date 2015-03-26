@@ -61,6 +61,7 @@
         onNewQuestionData : function(data) {
             //on met à jour le  numéro du round
             App.currentRound = data.round;
+            alert("MICHEL");
             //on actualise la question pour l'host et le player
             App[App.myRole].newQuestion(data);
         },
