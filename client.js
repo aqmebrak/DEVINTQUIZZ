@@ -254,7 +254,6 @@
                 App.countDown( $secondsLeft, 5, function(){
                     //on commence à capter l'accéléromètre
                     motion=true;
-                    alert(motion);
                     if(typeOfGame=="mvt"){
                         IO.socket.emit('hostMvtCountdownFinished', App.roomId);
                     }
@@ -563,6 +562,7 @@
     }
     function process(event) {
         if(motion){
+            alert("mec");
             var x = Math.round(event.acceleration.x);
             var y = Math.round(event.acceleration.y);
             var z = Math.round(event.acceleration.z);
