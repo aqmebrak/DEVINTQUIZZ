@@ -565,6 +565,7 @@
             var x = Math.round(event.acceleration.x);
             var y = Math.round(event.acceleration.y);
             var z = Math.round(event.acceleration.z);
+            if(x>10) alert("VITE");
             //if (event.beta > 45) z = y;
             if ((Math.abs(x) > seuil || Math.abs(y) > seuil || Math.abs(z) > seuil ) && acquisition) {
 
