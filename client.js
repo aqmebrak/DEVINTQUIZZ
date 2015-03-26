@@ -70,7 +70,10 @@
         //une réponse a été proposée, on vérifie si c'est bien l'host
         hostCheckAnswer : function(data) {
             if(App.myRole === 'Host') {
-                App.Host.checkAnswer(data);
+                if(motion){
+                    alert("LOOOLLL");
+                    App.Host.checkAnswer(data);
+                }
             }
         },
 
@@ -561,12 +564,9 @@
         window.addEventListener("devicemotion", process, true);
     }
     function process(event) {
-        if(motion){
-            alert("mec");
             var x = Math.round(event.acceleration.x);
             var y = Math.round(event.acceleration.y);
             var z = Math.round(event.acceleration.z);
-            if(x>10) alert("VITE");
             //if (event.beta > 45) z = y;
             if ((Math.abs(x) > seuil || Math.abs(y) > seuil || Math.abs(z) > seuil ) && acquisition) {
 
@@ -614,6 +614,5 @@
                 }
             }
         }
-    }
 
 }($));
