@@ -280,6 +280,7 @@
             newQuestion : function(data) {
                 // Insert the new word into the DOM
                 //$('#hostWord').text(data.question);
+                alert("caca");
                 $('#hostWord').text("HEY");
                 App.doTextFit('#hostWord');
 
