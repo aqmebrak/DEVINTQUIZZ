@@ -240,7 +240,7 @@
                 //si le nb de joueur correspond au nb voulu
                 if (App.Host.nbPlayersInRoom === nbPlayers) {
                     // on envoie un event au serveur avec le gameId pour lui dire que la room est full
-                    IO.socket.emit('hostRoomFull',App.gameId);
+                    IO.socket.emit('hostRoomFull',App.roomId);
                 }
             },
 
