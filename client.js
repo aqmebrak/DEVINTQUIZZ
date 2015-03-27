@@ -308,7 +308,8 @@
 
                     //si c'est la bonne réponse
                     if( App.Host.currentCorrectAnswer === data.answer ) {
-                        alert("BONNE REPONSE BATARD");
+                        //alert("BONNE REPONSE BATARD");
+                        $('#answerAndWinner').text("LA BONNE REPONSE ETAIT "+App.Host.currentCorrectAnswer+" BRAVO A "+data.pseudo);
                         // Add 5 to the player's score
                         $pScore.text( +$pScore.text() + 5 );
                         //on affiche la réponse et le le nom de celui qui a répondu
@@ -321,10 +322,11 @@
                             round : App.currentRound
                         };
                         //on dit au serveur de commencer le prochain round
-                        IO.socket.emit('hostNextRound',data);
+                        //IO.socket.emit('hostNextRound',data);
 
                     } else {
-                        alert("MAUVAISE REPONSE SALE MERDE");
+                        //alert("MAUVAISE REPONSE SALE MERDE");
+                        $('#answerAndWinner').text("LA MAUVAISE REPONSE ETAIT "+App.Host.currentCorrectAnswer+" BRAVO A "+data.pseudo);
                         // A wrong answer was submitted, so decrement the player's score.
                         $pScore.text( +$pScore.text() - 3 );
                     }
@@ -553,7 +555,6 @@
                     }
                 }
                 else { //acquisition de points terminée
-                    alert("lol");
                     acquisition = false;
                     /* On empêche la division par 0 qui peut se faire si le mouvement est parfait et
                      * qu'il ne provoque aucune accélération sur l'autre axe
@@ -575,7 +576,6 @@
                     };
                     //et on les envoie au serveur pour voir si c'est la bonne réponse
                     //IO.socket.emit('playerAnswer',data);
-                   // alert("on a bougé");
 
                     setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
                     setTimeout("document.body.style.backgroundColor = \"green\"", 800);
