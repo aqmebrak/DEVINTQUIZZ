@@ -576,9 +576,9 @@
                     //et on les envoie au serveur pour voir si c'est la bonne réponse
                     IO.socket.emit('playerAnswer',data);
 
-                    //setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
-                    //setTimeout("document.body.style.backgroundColor = \"green\"", 800);
-                    //setTimeout("acquisition=true", 801); //pour laisser le temps de revenir à la position de base
+                    setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
+                    setTimeout("document.body.style.backgroundColor = \"green\"", 800);
+                    setTimeout("acquisition=true", 801); //pour laisser le temps de revenir à la position de base
 
                 }
             }
