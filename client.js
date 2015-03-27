@@ -309,11 +309,11 @@
                     //si c'est la bonne réponse
                     if( App.Host.currentCorrectAnswer === data.answer ) {
                         //alert("BONNE REPONSE BATARD");
-                        $('#answerAndWinner').text("LA BONNE REPONSE ETAIT "+App.Host.currentCorrectAnswer+" BRAVO A "+data.pseudo);
+                        $('#answerAndWinner').text("OUI");
                         // Add 5 to the player's score
                         $pScore.text( +$pScore.text() + 5 );
                         //on affiche la réponse et le le nom de celui qui a répondu
-                        App.Host.showAnswerAndWinner(data);
+                        //App.Host.showAnswerAndWinner(data);
                         //on incrémente le numéro de room
                         App.currentRound += 1;
                         //on prépare les données à envoyer au serveur (roomId et le numéro de round)
@@ -326,7 +326,7 @@
 
                     } else {
                         //alert("MAUVAISE REPONSE SALE MERDE");
-                        $('#answerAndWinner').text("LA MAUVAISE REPONSE ETAIT "+App.Host.currentCorrectAnswer+" BRAVO A "+data.pseudo);
+                        $('#answerAndWinner').text("NON");
                         // A wrong answer was submitted, so decrement the player's score.
                         $pScore.text( +$pScore.text() - 3 );
                     }
