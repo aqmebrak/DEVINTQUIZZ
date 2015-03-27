@@ -70,6 +70,7 @@
         //une réponse a été proposée, on vérifie si c'est bien l'host
         hostCheckAnswer : function(data) {
             if(App.myRole === 'Host') {
+                //si on est en phase de réponse
                 if(motionActivated){
                     App.Host.checkAnswer(data);
                 }
@@ -140,7 +141,6 @@
             App.$doc.on('click', '#btn3', App.Host.on3);
             App.$doc.on('click', '#btn4', App.Host.on4);
             App.$doc.on('click', '#btnCommencer',App.Player.onPlayerCommencer);
-            App.$doc.on('click', '.btnAnswer',App.Player.onPlayerAnswerClick);
             App.$doc.on('click', '#btnPlayerRestart', App.Player.onPlayerRestart);
         },
 
@@ -201,6 +201,11 @@
             on4: function () {
                 nbPlayers=4;
                 IO.socket.emit('hostCreateNewRoom');
+            },
+
+            //affiche la bonne réponse et celui qui a répondu
+            showAnswerAndWinner: function (data){
+                $('#answerAndWinner').text("LA BONNE REPONSE ETAIT "+App.Host.currentCorrectAnswer+" BRAVO A "+data.pseudo);
             },
 
 
@@ -284,10 +289,10 @@
                 $('#hostQuestion').text(data.question);
                 App.doTextFit('#hostQuestion');
                 //on affiche les proposition
-                $('#H').text(data.H);
-                $('#D').text(data.D);
-                $('#B').text(data.B);
-                $('#G').text(data.G);
+                $('#H').text("HAUT "+data.H);
+                $('#D').text("DROITE "+data.D);
+                $('#B').text("BAS "+data.B);
+                $('#G').text("GAUCHE "+data.G);
                 //on met à jour les infos du round courant (réponse et numéro de round)
                 App.Host.currentCorrectAnswer = data.answer;
                 App.Host.currentRound = data.round;
@@ -295,30 +300,27 @@
 
             //on vérifie si la réponse est bonne
             checkAnswer : function(data) {
-                // Verify that the answer clicked is from the current round.
-                // This prevents a 'late entry' from a player whos screen has not
-                // yet updated to the current round.
+                //on vérifie que c'est le bon round
                 if (data.round === App.currentRound){
 
-                    // Get the player's score
-                    //var $pScore = $('#' + data.playerId);
+                    //on récupère le score du joueur qui a répondu
+                    var $pScore = $('#' + data.playerId);
 
-                    // Advance player's score if it is correct
+                    //si c'est la bonne réponse
                     if( App.Host.currentCorrectAnswer === data.answer ) {
                         alert("BONNE REPONSE BATARD");
                         // Add 5 to the player's score
                         $pScore.text( +$pScore.text() + 5 );
-
-                        // Advance the round
+                        //on affiche la réponse et le le nom de celui qui a répondu
+                        App.Host.showAnswerAndWinner(data);
+                        //on incrémente le numéro de room
                         App.currentRound += 1;
-
-                        // Prepare data to send to the server
+                        //on prépare les données à envoyer au serveur (roomId et le numéro de round)
                         var data = {
                             roomId : App.roomId,
                             round : App.currentRound
-                        }
-
-                        // Notify the server to start the next round.
+                        };
+                        //on dit au serveur de commencer le prochain round
                         IO.socket.emit('hostNextRound',data);
 
                     } else {
@@ -394,22 +396,6 @@
                 //et on sauvegarde les infos du player
                 App.myRole = 'Player';
                 App.Player.pseudo = data.pseudo;
-            },
-
-            //quand quelqu'un répond en bougeant son tel
-            onPlayerAnswerClick: function() {
-                var $btn = $(this);      // the tapped button
-                var answer = $btn.val(); // The tapped word
-
-                // Send the player info and tapped word to the server so
-                // the host can check the answer.
-                var data = {
-                    roomId: App.roomId,
-                    playerId: App.mySocketId,
-                    answer: answer,
-                    round: App.currentRound
-                }
-                IO.socket.emit('playerAnswer',data);
             },
 
             /**
@@ -584,14 +570,15 @@
                         roomId: App.roomId,
                         playerId: App.mySocketId,
                         answer: direction,
-                        round: App.currentRound
-                    }
+                        round: App.currentRound,
+                        pseudo: App.Player.pseudo
+                    };
                     //et on les envoie au serveur pour voir si c'est la bonne réponse
                     IO.socket.emit('playerAnswer',data);
 
-                    setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
-                    setTimeout("document.body.style.backgroundColor = \"green\"", 800);
-                    setTimeout("acquisition=true", 801); //pour laisser le temps de revenir à la position de base
+                    //setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
+                    //setTimeout("document.body.style.backgroundColor = \"green\"", 800);
+                    //setTimeout("acquisition=true", 801); //pour laisser le temps de revenir à la position de base
 
                 }
             }

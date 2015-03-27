@@ -56,14 +56,11 @@ function hostStartMvt(roomId) {
     //TODO JEFFRAY ET CHRISTOF
 };
 
-/**
- * A player answered correctly. Time for the next word.
- * @param data Sent from the client. Contains the current round and gameId (room)
- */
+//une bonne réponse a été faite, on passe à la question suivante
 function hostNextRound(data) {
-    if(data.round < wordPool.length ){
-        // Send a new set of words back to the host and players.
-        sendWord(data.round, data.gameId);
+    if(data.round < questions.length ){
+        //on envoie une nouvelle question
+        sendQuestion(data.round, data.roomId);
     } else {
         // If the current round exceeds the number of words, send the 'gameOver' event.
         io.sockets.in(data.gameId).emit('gameOver',data);
