@@ -555,7 +555,6 @@
 
 
     function process2(event) {
-        if(!TEST) alert("MICHEL");
         var x = Math.round(event.acceleration.x);
         var y = Math.round(event.acceleration.y);
         var z = Math.round(event.acceleration.z);
@@ -579,6 +578,8 @@
                 }
             }
             else { //acquisition de points terminée
+
+                if(!TEST) alert("MICHEL");
                 acquisition = false;
                 /* On empêche la division par 0 qui peut se faire si le mouvement est parfait et
                  * qu'il ne provoque aucune accélération sur l'autre axe
