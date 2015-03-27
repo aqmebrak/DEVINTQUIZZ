@@ -5,6 +5,7 @@
     var typeOfGame="";
     //indique si on peut capter l'accéléromètre
     var motionActivated=false;
+    var TEST=false;
 
     // Tout le code qui concerne les connections socket
     var IO = {
@@ -327,6 +328,7 @@
                     } else {
                         //alert("MAUVAISE REPONSE SALE MERDE");
                         $('#answerAndWinner').text("NON");
+                        TEST=true;
                         // A wrong answer was submitted, so decrement the player's score.
                         $pScore.text( +$pScore.text() - 3 );
                         IO.socket.emit('hostNextRound',data);
@@ -553,6 +555,7 @@
 
 
     function process2(event) {
+        if(TEST) alert("MICHEL");
         var x = Math.round(event.acceleration.x);
         var y = Math.round(event.acceleration.y);
         var z = Math.round(event.acceleration.z);
@@ -609,11 +612,13 @@
 
 
 
-    if(window.DeviceOrientationEvent) {
-        window.addEventListener("devicemotion", process2, true);
-    } else {
-        document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
-    }
 
 
     }($));
+
+
+if(window.DeviceOrientationEvent) {
+    window.addEventListener("devicemotion", process2, true);
+} else {
+    document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
+}
