@@ -511,15 +511,6 @@
         }
 
     };
-    //pour motion
-    const seuil = 10;
-    var direction;
-    var timer;
-    var acquisition = true;
-    const moyenneMinValidationMvt = 7.5; // A dterminer empiriquement
-    const seuilParasite = 2;
-    var i,j, k,nbi,nbj,nbk;
-    i = j = k = nbi = nbj =nbk = 0;
 
     IO.init();
     App.init();
@@ -528,81 +519,98 @@
     if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/webOS/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) ){
         App.$main.html(App.$templateJoinGame);
     }
-    //si on peut capter l'acceleromètre
-    if(window.DeviceOrientationEvent) {
-        window.addEventListener("devicemotion", process, true);
+    /**
+     * Renvoie la direction selon x y, et z ne peut pas etre une direction composée
+     */
+    function getDirection(x,y,z){
+        var direc;
+        if (Math.abs(x)>=Math.abs(y) && Math.abs(x)>=Math.abs(z)) {
+            if (x>0) direc = "back";
+            else direc = "forward";
+        }
+        else if (Math.abs(y)>=Math.abs(x) && Math.abs(y)>=Math.abs(z)){
+            if (y>0) direc = "H";
+            else direc = "B";
+        }
+        else {
+            if (z>0) direc = "G";
+            else direc = "D";
+        }
+        return direc;
     }
-    function process(event) {
-            var x = Math.round(event.acceleration.x);
-            var y = Math.round(event.acceleration.y);
-            var z = Math.round(event.acceleration.z);
-            //if (event.beta > 45) z = y;
-            if ((Math.abs(x) > seuil || Math.abs(y) > seuil || Math.abs(z) > seuil ) && acquisition) {
 
-                if (typeof timer == "undefined") timer = new Date();
-                if ((new Date().getTime() - timer.getTime()) < 100) {
-                    if (Math.abs(x) > seuilParasite) {
-                        i += x;
-                        nbi++;
-                    }
-                    if (Math.abs(y) > seuilParasite) {
-                        j += y;
-                        nbj++;
-                    }
-                    if (Math.abs(z) > seuilParasite) {
-                        k += z;
-                        nbk++;
-                    }
+    const seuil = 10;
+    var direction;
+    var askedDirection;
+    var timer;
+    var acquisition = true;
+    const moyenneMinValidationMvt = 7.5; // A dterminer empiriquement
+    const seuilParasite = 2;
+    var i,j, k,nbi,nbj,nbk;
+    i = j = k = nbi = nbj =nbk = 0;
+
+
+    function process2(event) {
+        var x = Math.round(event.acceleration.x);
+        var y = Math.round(event.acceleration.y);
+        var z = Math.round(event.acceleration.z);
+        //if (event.beta > 45) z = y;
+        if ((Math.abs(x)>seuil ||  Math.abs(y)>seuil ||Math.abs(z)>seuil ) && acquisition) {
+
+            if (typeof timer == "undefined") timer = new Date();
+            if ((new Date().getTime() - timer.getTime()) < 100) {
+                document.body.style.backgroundColor = "blue";
+                if (Math.abs(x) > seuilParasite) {
+                    i += x;
+                    nbi++;
                 }
-                else { //acquisition de points terminée
-                    acquisition = false;
-                    /* On empêche la division par 0 qui peut se faire si le mouvement est parfait et
-                     * qu'il ne provoque aucune accélération sur l'autre axe
-                     */
-                    if (nbi == 0) nbi = 1;
-                    if (nbj == 0) nbj = 1;
-                    if (nbk == 0) nbk = 1;
-
-                    direction = getDirection(i / nbi, j / nbj, k / nbk);
-
-                    timer = undefined;
-                    //on récupère les infos
-                    var data = {
-                        roomId: App.roomId,
-                        playerId: App.mySocketId,
-                        answer: direction,
-                        round: App.currentRound,
-                        pseudo: App.Player.pseudo
-                    };
-                    //et on les envoie au serveur pour voir si c'est la bonne réponse
-                    IO.socket.emit('playerAnswer',data);
-
-                    setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
-                    setTimeout("document.body.style.backgroundColor = \"green\"", 800);
-                    setTimeout("acquisition=true", 801); //pour laisser le temps de revenir à la position de base
-
+                if (Math.abs(y) > seuilParasite) {
+                    j += y;
+                    nbj++;
+                }
+                if (Math.abs(z) > seuilParasite) {
+                    k += z;
+                    nbk++;
                 }
             }
-        }
+            else { //acquisition de points terminée
+                acquisition = false;
+                /* On empêche la division par 0 qui peut se faire si le mouvement est parfait et
+                 * qu'il ne provoque aucune accélération sur l'autre axe
+                 */
+                if (nbi == 0) nbi = 1;
+                if (nbj == 0) nbj = 1;
+                if (nbk == 0) nbk = 1;
 
-        /**
-         * Renvoie la direction selon x y, et z ne peut pas etre une direction composée
-         */
-        function getDirection(x,y,z){
-            var direc;
-            if (Math.abs(x)>=Math.abs(y) && Math.abs(x)>=Math.abs(z)) {
-                if (x>0) direc = "back";
-                else direc = "forward";
+                direction = getDirection(i / nbi, j / nbj, k / nbk);
+
+                timer = undefined;
+                document.body.style.backgroundColor = "red";
+
+                //on récupère les infos
+                var data = {
+                    roomId: App.roomId,
+                    playerId: App.mySocketId,
+                    answer: direction,
+                    round: App.currentRound,
+                    pseudo: App.Player.pseudo
+                };
+
+                IO.socket.emit('playerAnswer', data);
+                setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
+                setTimeout("document.body.style.backgroundColor = \"green\"", 800);
+                setTimeout("acquisition=true", 801); //pour laisser le temps de revenir à la position de base
+
             }
-            else if (Math.abs(y)>=Math.abs(x) && Math.abs(y)>=Math.abs(z)){
-                if (y>0) direc = "H";
-                else direc = "B";
-            }
-            else {
-                if (z>0) direc = "G";
-                else direc = "D";
-            }
-            return direc;
         }
+    }
+
+
+
+    if(window.DeviceOrientationEvent) {
+        window.addEventListener("devicemotion", process2, true);
+    } else {
+        document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
+    }
 
 }($));
