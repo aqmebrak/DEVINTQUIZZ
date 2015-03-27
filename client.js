@@ -308,8 +308,8 @@
 
                     //si c'est la bonne réponse
                     if( App.Host.currentCorrectAnswer === data.answer ) {
-                        alert("BONNE REPONSE BATARD");
-                        //$('#answerAndWinner').text("OUI");
+                        //alert("BONNE REPONSE BATARD");
+                        $('#answerAndWinner').text("OUI");
                         // Add 5 to the player's score
                         $pScore.text( +$pScore.text() + 5 );
                         //on affiche la réponse et le le nom de celui qui a répondu
@@ -575,7 +575,7 @@
                         pseudo: App.Player.pseudo
                     };
                     //et on les envoie au serveur pour voir si c'est la bonne réponse
-                    //IO.socket.emit('playerAnswer',data);
+                    IO.socket.emit('playerAnswer',data);
 
                     setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
                     setTimeout("document.body.style.backgroundColor = \"green\"", 800);
