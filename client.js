@@ -553,6 +553,7 @@
                     }
                 }
                 else { //acquisition de points terminée
+                    alert("lol");
                     acquisition = false;
                     /* On empêche la division par 0 qui peut se faire si le mouvement est parfait et
                      * qu'il ne provoque aucune accélération sur l'autre axe
@@ -562,7 +563,6 @@
                     if (nbk == 0) nbk = 1;
 
                     direction = getDirection(i / nbi, j / nbj, k / nbk);
-                    //direction="B";
 
                     timer = undefined;
                     //on récupère les infos
