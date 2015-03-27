@@ -612,13 +612,14 @@
 
 
 
+    if(window.DeviceOrientationEvent) {
+        window.addEventListener("devicemotion", process2, true);
+    } else {
+        document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
+    }
+
+
+
 
 
     }($));
-
-
-if(window.DeviceOrientationEvent) {
-    window.addEventListener("devicemotion", process2, true);
-} else {
-    document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
-}
