@@ -555,7 +555,7 @@
 
 
     function process2(event) {
-        if(TEST) alert("MICHEL");
+        if(!TEST) alert("MICHEL");
         var x = Math.round(event.acceleration.x);
         var y = Math.round(event.acceleration.y);
         var z = Math.round(event.acceleration.z);
