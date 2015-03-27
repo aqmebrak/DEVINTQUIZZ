@@ -165,11 +165,11 @@ function process2(event) {
 
             //on récupère les infos
             var data = {
-                roomId: App.roomId,
-                playerId: App.mySocketId,
-                answer: direction,
-                round: App.currentRound,
-                pseudo: App.Player.pseudo
+                //roomId: App.roomId,
+                //playerId: App.mySocketId,
+                answer: direction
+                //round: App.currentRound,
+                //pseudo: App.Player.pseudo
             };
 
             IO.socket.emit('playerAnswer', data);

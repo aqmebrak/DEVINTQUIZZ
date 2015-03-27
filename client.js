@@ -301,17 +301,17 @@
             //on vérifie si la réponse est bonne
             checkAnswer : function(data) {
                 //on vérifie que c'est le bon round
-                if (data.round === App.currentRound){
+                //if (data.round === App.currentRound){
 
                     //on récupère le score du joueur qui a répondu
-                    var $pScore = $('#' + data.playerId);
+                    //var $pScore = $('#' + data.playerId);
 
                     //si c'est la bonne réponse
                     if( App.Host.currentCorrectAnswer === data.answer ) {
                         //alert("BONNE REPONSE BATARD");
                         $('#answerAndWinner').text("OUI");
                         // Add 5 to the player's score
-                        $pScore.text( +$pScore.text() + 5 );
+                        //$pScore.text( +$pScore.text() + 5 );
                         //on affiche la réponse et le le nom de celui qui a répondu
                         //App.Host.showAnswerAndWinner(data);
                         //on incrémente le numéro de room
@@ -328,9 +328,9 @@
                         //alert("MAUVAISE REPONSE SALE MERDE");
                         $('#answerAndWinner').text("NON");
                         // A wrong answer was submitted, so decrement the player's score.
-                        $pScore.text( +$pScore.text() - 3 );
+                        //$pScore.text( +$pScore.text() - 3 );
                     }
-                }
+                //}
             },
 
 
