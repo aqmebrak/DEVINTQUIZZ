@@ -198,7 +198,7 @@ var questions = [
         "D" : [ "PATRICK" ],
         "B" : [ "CARLOS" ],
         "G" : [ "CAPTAIN CRABS" ],
-        "answer" : [ "A" ]
+        "answer" : [ "H" ]
     },
 
     {
