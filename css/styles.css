@@ -85,8 +85,8 @@ html, body {
 #B    { margin:0;  padding:1em;  }
 #G     { margin:0;  padding:1em;  width:6em; height:22em; float:left; margin-right:1.1em }
 #D     { margin:0;  padding:1em;  width:6em; height:22em; float:right; margin-left:1.1em }
-#center   { margin:0;  padding:1em;  padding-bottom:0em; }
-#center:after    { content:' '; clear:both; display:block; height:0; overflow:hidden }
+#C   { margin:0;  padding:1em;  padding-bottom:0em; }
+#C:after    { content:' '; clear:both; display:block; height:0; overflow:hidden }
 
 
 
