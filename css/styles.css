@@ -83,8 +83,8 @@ html, body {
 
 #H    { margin:0;  padding:1em;  }
 #B    { margin:0;  padding:1em;  }
-#G     { margin:0;  padding:1em;  width:6em; height:22em; float:left; margin-right:1.1em }
-#D     { margin:0;  padding:1em;  width:6em; height:22em; float:right; margin-left:1.1em }
+#G     { margin:0;  padding:1em;  width:6em; height:6em; float:left; margin-right:1.1em }
+#D     { margin:0;  padding:1em;  width:6em; height:6em; float:right; margin-left:1.1em }
 #C   { margin:0;  padding:1em;  padding-bottom:0em; }
 #C:after    { content:' '; clear:both; display:block; height:0; overflow:hidden }
 
