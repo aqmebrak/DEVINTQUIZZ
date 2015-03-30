@@ -8,18 +8,11 @@ Dark Purple : #A22FB0
 */
 
 html, body {
-    background-color: #eaf0d2;
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
 }
-
-#btnJouer,#btnScores{
-    width: 100%;
-}
-
-
 
 /* ******************************
               BUTTONS!
@@ -27,22 +20,31 @@ html, body {
    ****************************** */
 
 .btn {
-
+    text-align: center;
+    text-decoration: none;
+    background-color: #626fc4;
+    color: #1b3135;
+    height: 100%;
+    width: 100%;
 }
 
-.btn:focus {
-    background-color: #219161;
+.btn:hover {
+    color: lightgrey;
 }
 
-.btn:hover,
-.btn:focus {
-
+.titre {
+    background-color: #a08353;
+    text-align: center;
+    font-size: 470%;
+    color: whitesmoke;
 }
 
-.btn:active,
-.btn.active {
+/*.select{
+    font-size: 670%;
+}*/
 
-}
+
+
 
 
 

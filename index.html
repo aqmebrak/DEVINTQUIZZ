@@ -4,13 +4,14 @@
     <meta charset="utf-8"/>
     <title>Smart Vision</title>
     <!-- Ensure that lol everything scales appropriately on a mobile device -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link href="css/styles.css" rel="stylesheet">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link href="css/styles.css" rel="stylesheet">
 
 </head>
 
@@ -24,51 +25,55 @@
 
 <!-- menu principal -->
 <script id="menu" type="text/template">
-        <a id="btnJouer" class="btn btn-primary btn-block" role="button"><strong>JOUER</strong></a>
-        <a id="btnScores" class="btn btn-primary btn-block" role="button"><strong>MEILLEURS SCORES</strong></a>
+    <a id="btnJouer" class="btn btn-block" role="button"><strong>JOUER</strong></a>
+    <a id="btnScores" class="btn btn-block" role="button"><strong>MEILLEURS SCORES</strong></a>
+
 </script>
 
 <!-- menu jouer -->
 <script id="menu-jouer" type="text/template">
-    <p>CHOISISSEZ VOTRE JEU</p>
-    <a id="btnMouvement">MOVE YOUR BODY</a>
-    <a id="btnQuizz">QUIZZ MOUVEMENTÉ</a>
+    <p class="titre">CHOISISSEZ VOTRE JEU</p>
+    <a id="btnMouvement" class="btn btn-block" role="button">MOVE YOUR BODY</a>
+    <br/>
+    <a id="btnQuizz" class="btn btn-block" role="button">QUIZZ MOUVEMENTÉ</a>
+    <!--<a class="btnBack">RETOUR</a> -->
 </script>
 
 <!-- menu nombre de joueurs -->
 <script id="menu-nbPlayers" type="text/template">
-    <p>COMBIEN DE JOUEURS ? (1 SI VOUS ETES SEUL)</p>
-    <ul>
-        <li><a id="btn1">1</a></li>
-        <li><a id="btn2">2</a></li>
-        <li><a id="btn3">3</a></li>
-        <li><a id="btn4">4</a></li>
+    <p class="titre">COMBIEN DE JOUEURS ? (1 SI VOUS ETES SEUL)</p>
+    <a class="btn" id="btn1">Solo</a>
+    <a class="btn" id="btn2">2 JOUEURS</a>
+    <a class="btn" id="btn3">3 JOUEURS</a>
+    <a class="btn" id="btn4">4 JOUEURS</a>
     </ul>
+    <!--<a class="btnBack">RETOUR</a>-->
 </script>
 
 <!-- APrès avoir choisi le jeu et le nb de joueurs -->
 <script id="templateHostGameId" type="text/template">
-        <div class="info">ALLEZ SUR CE SITE AVEC VOTRE MOBILE :</div>
-        <div id="gameURL" class="infoBig">Error!</div>
+    <div class="info">ALLEZ SUR CE SITE AVEC VOTRE MOBILE :</div>
+    <div id="gameURL" class="infoBig">Error!</div>
 
-        <div class="info">PUIS RENTREZ CE NUMERO DE JEU :</div>
-        <div id="spanNewGameCode" class="roomId">Error!</div>
+    <div class="info">PUIS RENTREZ CE NUMERO DE JEU :</div>
+    <div id="spanNewGameCode" class="roomId">Error!</div>
 
-        <div id="playersWaiting"></div>
+    <div id="playersWaiting"></div>
+    <a id="btnBack">RETOUR</a>
 </script>
 
 <!-- Ecran par défaut quand on se connecte sur mobile  -->
 <script id="templateJoinGame" type="text/template">
-            <label for="inputPseudo">VOTRE PSEUDO :</label>
-            <input id="inputPseudo" type="text" />
+    <label for="inputPseudo">VOTRE PSEUDO :</label>
+    <input id="inputPseudo" type="text"/>
 
-            <label for="inputRoomId">NUMERO DE JEU :</label>
-            <input id="inputRoomId" type="text"/>
+    <label for="inputRoomId">NUMERO DE JEU :</label>
+    <input id="inputRoomId" type="text"/>
 
-        <div class="info buttons">
-            <button id="btnCommencer" class="btn">COMMENCER</button>
-            <div id="playerWaitingMessage"></div>
-        </div>
+    <div class="info buttons">
+        <button id="btnCommencer" class="btn">COMMENCER</button>
+        <div id="playerWaitingMessage"></div>
+    </div>
 </script>
 
 <!-- Ecran du jeu Quizz pour l'host -->
