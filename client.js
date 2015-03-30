@@ -607,8 +607,10 @@
 
 
         if(window.DeviceOrientationEvent) {
+            alert("yo");
             window.addEventListener("devicemotion", process2, true);
         } else {
+            alert("non");
             document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
         }
 
