@@ -551,6 +551,7 @@
 
 
     function process2(event) {
+        alert("fdfd");
         var x = Math.round(event.acceleration.x);
         var y = Math.round(event.acceleration.y);
         var z = Math.round(event.acceleration.z);
