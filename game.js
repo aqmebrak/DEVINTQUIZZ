@@ -21,7 +21,7 @@ exports.initGame = function(paramIO, paramSocket){
     clientSocket.on('playerJoinRoom', playerJoinRoom);
     clientSocket.on('playerAnswer', playerAnswer);
     clientSocket.on('playerRestart', playerRestart);
-}
+};
 
 //quand on a rentré tous les paramètres on va sur la page classique host et cette fonction est appelée
 function hostCreateNewRoom() {
@@ -193,20 +193,20 @@ function shuffle(array) {
  */
 var questions = [
     {
-        "question"  : [ "QUEL EST LE SURNOM DE JEREMY ?" ],
-        "H" : [ "MICHEL" ],
-        "D" : [ "JEFFREY" ],
-        "B" : [ "VOMITO" ],
-        "G" : [ "FDP" ],
-        "answer" : [ "B" ]
+        "question"  : [ "QUI EST L'EPONGE CARREE ?" ],
+        "H" : [ "BOB" ],
+        "D" : [ "PATRICK" ],
+        "B" : [ "CARLOS" ],
+        "G" : [ "CAPTAIN CRABS" ],
+        "answer" : [ "A" ]
     },
 
     {
-        "question"  : [ "QUI EST LE PROF DE LFA ?" ],
-        "H" : [ "Y'EN A PAS" ],
-        "D" : [ "BOND" ],
-        "B" : [ "MOMEGE" ],
-        "G" : [ "PAPY RICARD" ],
-        "answer" : [ "H" ]
+        "question"  : [ "DATE DE LA REVOLUTION FRANCAISE ?" ],
+        "H" : [ "1788" ],
+        "D" : [ "1790" ],
+        "B" : [ "1791" ],
+        "G" : [ "1789" ],
+        "answer" : [ "G" ]
     }
-]
+];

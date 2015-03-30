@@ -5,7 +5,6 @@
     var typeOfGame="";
     //indique si on peut capter l'accéléromètre
     var motionActivated=false;
-    var TEST=false;
 
     // Tout le code qui concerne les connections socket
     var IO = {
@@ -309,12 +308,10 @@
 
                     //si c'est la bonne réponse
                     if( App.Host.currentCorrectAnswer === data.answer ) {
-                        //alert("BONNE REPONSE BATARD");
-                        $('#answerAndWinner').text("OUI");
                         // Add 5 to the player's score
                         $pScore.text( +$pScore.text() + 5 );
                         //on affiche la réponse et le le nom de celui qui a répondu
-                        //App.Host.showAnswerAndWinner(data);
+                        App.Host.showAnswerAndWinner(data);
                         //on incrémente le numéro de room
                         App.currentRound += 1;
                         //on prépare les données à envoyer au serveur (roomId et le numéro de round)
@@ -327,8 +324,7 @@
 
                     } else {
                         //alert("MAUVAISE REPONSE SALE MERDE");
-                        $('#answerAndWinner').text("NON");
-                        TEST=true;
+                        //$('#answerAndWinner').text("NON");
                         // A wrong answer was submitted, so decrement the player's score.
                         $pScore.text( +$pScore.text() - 3 );
                         IO.socket.emit('hostNextRound',data);
@@ -578,8 +574,6 @@
                 }
             }
             else { //acquisition de points terminée
-
-                if(!TEST) alert("MICHEL");
                 acquisition = false;
                 /* On empêche la division par 0 qui peut se faire si le mouvement est parfait et
                  * qu'il ne provoque aucune accélération sur l'autre axe
@@ -609,18 +603,18 @@
 
             }
         }
+
+
+        if(window.DeviceOrientationEvent) {
+            window.addEventListener("devicemotion", process2, true);
+        } else {
+            document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
+        }
+
     }
 
 
-
-    if(window.DeviceOrientationEvent) {
-        window.addEventListener("devicemotion", process2, true);
-    } else {
-        document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
-    }
+}($));
 
 
 
-
-
-    }($));
