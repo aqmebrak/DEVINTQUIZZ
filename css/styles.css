@@ -59,7 +59,7 @@ html, body {
 
 }
 
-.bleu {
+/*.bleu {
     text-align: center;
     font-size: 570%;
     color: whitesmoke;
@@ -71,7 +71,7 @@ html, body {
     text-align: center;
     font-size: 570%;
     color: whitesmoke;
-}
+}*/
 
 .playerScore {
 
@@ -80,6 +80,11 @@ html, body {
 .playerName {
 
 }
+
+#H    { margin:0;  padding:1em;  }
+#B    { margin:0;  padding:1em;  }
+#G     { margin:0;  padding:1em;  width:6em; height:22em; float:left; margin-right:1.1em }
+#D     { margin:0;  padding:1em;  width:6em; height:22em; float:right; margin-left:1.1em }
 
 
 
