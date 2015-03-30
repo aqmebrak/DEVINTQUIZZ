@@ -289,10 +289,10 @@
                 $('#hostQuestion').text(data.question);
                 App.doTextFit('#hostQuestion');
                 //on affiche les proposition
-                $('#H').text("HAUT "+data.H);
-                $('#D').text("DROITE "+data.D);
-                $('#B').text("BAS "+data.B);
-                $('#G').text("GAUCHE "+data.G);
+                $('#H').text(data.H);
+                $('#D').text(data.D);
+                $('#B').text(data.B);
+                $('#G').text(data.G);
                 //on met à jour les infos du round courant (réponse et numéro de round)
                 App.Host.currentCorrectAnswer = data.answer;
                 App.Host.currentRound = data.round;
