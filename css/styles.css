@@ -12,6 +12,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
+    background-color: #b5ffe7;
 }
 
 /* ******************************
@@ -39,12 +40,46 @@ html, body {
     color: whitesmoke;
 }
 
-/*.select{
-    font-size: 670%;
-}*/
+.choix {
+    font-size: 490%;
+}
 
+.info {
+    background-color: #a08353;
+    text-align: center;
+    font-size: 370%;
+    color: whitesmoke;
+}
 
+.roomId, .infoBig {
+    text-align: center;
+    font-size: 570%;
+    color: whitesmoke;
+    background-color: #626fc4;
 
+}
+
+.bleu {
+    text-align: center;
+    font-size: 570%;
+    color: whitesmoke;
+    background-color: #626fc4;
+}
+
+.marron {
+    background-color: #a08353;
+    text-align: center;
+    font-size: 570%;
+    color: whitesmoke;
+}
+
+.playerScore {
+
+}
+
+.playerName {
+
+}
 
 
 

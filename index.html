@@ -33,25 +33,26 @@
 <!-- menu jouer -->
 <script id="menu-jouer" type="text/template">
     <p class="titre">CHOISISSEZ VOTRE JEU</p>
-    <a id="btnMouvement" class="btn btn-block" role="button">MOVE YOUR BODY</a>
+    <a id="btnMouvement" class="btn btn-block choix" role="button">MOVE YOUR BODY</a>
     <br/>
-    <a id="btnQuizz" class="btn btn-block" role="button">QUIZZ MOUVEMENTÉ</a>
+    <a id="btnQuizz" class="btn btn-block choix" role="button">QUIZZ MOUVEMENTÉ</a>
     <!--<a class="btnBack">RETOUR</a> -->
 </script>
 
 <!-- menu nombre de joueurs -->
 <script id="menu-nbPlayers" type="text/template">
-    <p class="titre">COMBIEN DE JOUEURS ? (1 SI VOUS ETES SEUL)</p>
-    <a class="btn" id="btn1">Solo</a>
-    <a class="btn" id="btn2">2 JOUEURS</a>
-    <a class="btn" id="btn3">3 JOUEURS</a>
-    <a class="btn" id="btn4">4 JOUEURS</a>
+    <p class="titre">COMBIEN DE JOUEURS ?</p>
+    <a class="btn choix" id="btn1">Solo</a>
+    <a class="btn choix" id="btn2">2 JOUEURS</a>
+    <a class="btn choix" id="btn3">3 JOUEURS</a>
+    <a class="btn choix" id="btn4">4 JOUEURS</a>
     </ul>
     <!--<a class="btnBack">RETOUR</a>-->
 </script>
 
 <!-- APrès avoir choisi le jeu et le nb de joueurs -->
 <script id="templateHostGameId" type="text/template">
+    <br/>
     <div class="info">ALLEZ SUR CE SITE AVEC VOTRE MOBILE :</div>
     <div id="gameURL" class="infoBig">Error!</div>
 
@@ -59,7 +60,7 @@
     <div id="spanNewGameCode" class="roomId">Error!</div>
 
     <div id="playersWaiting"></div>
-    <a id="btnBack">RETOUR</a>
+    <!--<a id="btnBack">RETOUR</a>-->
 </script>
 
 <!-- Ecran par défaut quand on se connecte sur mobile  -->
@@ -79,10 +80,10 @@
 <!-- Ecran du jeu Quizz pour l'host -->
 <script id="templateQuizzGame" type="text/template">
     <div id="hostQuestion">5</div>
-    <div id="H"></div>
-    <div id="D"></div>
-    <div id="B"></div>
-    <div id="G"></div>
+    <div id="H" class="bleu"></div>
+    <div id="D" class="marron"></div>
+    <div id="B" class="bleu"></div>
+    <div id="G" class="marron"></div>
     <div id="playerScores">
         <div id="player1Score" class="playerScore">
             <span class="score">0</span><span class="playerName">Player 1</span>
