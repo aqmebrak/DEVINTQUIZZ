@@ -551,13 +551,13 @@
     var lol=0;
 
     function process2(event) {
-        alert(lol++);
+
         var x = Math.round(event.acceleration.x);
         var y = Math.round(event.acceleration.y);
         var z = Math.round(event.acceleration.z);
         //if (event.beta > 45) z = y;
         if ((Math.abs(x)>seuil ||  Math.abs(y)>seuil ||Math.abs(z)>seuil ) && acquisition) {
-
+            alert(lol++);
             if (typeof timer == "undefined") timer = new Date();
             if ((new Date().getTime() - timer.getTime()) < 100) {
                 document.body.style.backgroundColor = "blue";
