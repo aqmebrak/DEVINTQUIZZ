@@ -167,10 +167,7 @@ var App = {
         //Quand on clique sur jouer dans le menu
         onJouer: function () {
             App.$main.html(App.$templateJouer);
-            var trad = document.querySelector('#trad');
-            trad.setAttribute("src", "http://translate.google.com/translate_tts?tl=fr&q=bonjour jérémy");
-            var player = document.querySelector('#player');
-            player.play();
+
         },
 
         //Quand on choisit le jeu des mouvements
@@ -288,7 +285,11 @@ var App = {
 
         //montre la question pour l'host
         newQuestion: function (data) {
-
+            $("#trad").attr("src","http://translate.google.com/translate_tts?tl=fr&q=bonjour jérémy");
+            //var trad = document.querySelector('#trad');
+            //trad.setAttribute("src", "http://translate.google.com/translate_tts?tl=fr&q=bonjour jérémy");
+            var player = document.querySelector('#player');
+            player.play();
             //on remplace la question dans le div
             $('#hostQuestion').text(data.question);
             App.doTextFit('#hostQuestion');
