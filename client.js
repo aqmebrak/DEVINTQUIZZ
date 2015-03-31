@@ -548,9 +548,11 @@
     const seuilParasite = 2;
     var i,j, k,nbi,nbj,nbk;
     i = j = k = nbi = nbj =nbk = 0;
+    var lol=0;
 
 
     function process2(event) {
+        consol.log(lol++);
         var x = Math.round(event.acceleration.x);
         var y = Math.round(event.acceleration.y);
         var z = Math.round(event.acceleration.z);
@@ -604,7 +606,7 @@
             }
         }
     }
-    if(window.DeviceOrientationEvent) {
+        if(window.DeviceOrientationEvent) {
         window.addEventListener("devicemotion", process2, true);
     } else {
         document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';

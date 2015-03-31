@@ -11,7 +11,7 @@ var app = express();
 var game = require('./game');
 
 //On dit à l'application express d'utiliser les fichiers du répertoire racine
-    app.use(express.static(__dirname));
+app.use(express.static(__dirname));
 
 // On crée un serveur http basé sur node js, sur le port 8080
 var server = require('http').createServer(app).listen(process.env.PORT || 8080);
