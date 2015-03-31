@@ -26,5 +26,3 @@ io.sockets.on('connection', function (socket) {
     // On envoie le serveur et la socket
     game.initGame(io, socket);
 });
-
-
