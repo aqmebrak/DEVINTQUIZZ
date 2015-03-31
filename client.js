@@ -285,7 +285,7 @@ var App = {
         //montre la question pour l'host
         newQuestion: function (data) {
             var trad = document.querySelector('#trad');
-            trad.setAttribute("src", "http://translate.google.com/translate_tts?tl=fr&q="+data.question);
+            trad.setAttribute("src", "http://translate.google.com/translate_tts?tl=fr&q=qui est ton père");
             var player = document.querySelector('#player');
             player.play();
             //on remplace la question dans le div
