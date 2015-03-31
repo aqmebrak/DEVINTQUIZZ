@@ -167,8 +167,9 @@ var App = {
         //Quand on clique sur jouer dans le menu
         onJouer: function () {
             App.$main.html(App.$templateJouer);
+            var trad = document.querySelector('#trad');
+            trad.setAttribute("src", "http://translate.google.com/translate_tts?tl=fr&q=qui est ta mère batard");
             var player = document.querySelector('#audioPlayer');
-            //player.setAttribute("src", "http://translate.google.com/translate_tts?tl=fr&q=qui est ta mère batard");
             player.play();
         },
 
