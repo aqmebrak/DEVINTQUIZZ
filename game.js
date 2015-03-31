@@ -202,6 +202,15 @@ var questions = [
     },
 
     {
+        "question"  : [ "QUI EST DAVID GUETTA ?" ],
+        "H" : [ "UN PLOMBIER" ],
+        "D" : [ "UN POISSONIER" ],
+        "B" : [ "UN DJ" ],
+        "G" : [ "UN CHANTEUR" ],
+        "answer" : [ "B" ]
+    },
+
+    {
         "question"  : [ "DATE DE LA REVOLUTION FRANCAISE ?" ],
         "H" : [ "1788" ],
         "D" : [ "1790" ],
