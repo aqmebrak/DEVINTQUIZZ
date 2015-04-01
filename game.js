@@ -138,12 +138,13 @@ function getQuestion(i) {
     // The first element in the randomized array will be displayed on the host screen.
     // The second element will be hidden in a list of decoys as the correct answer
     //var question = shuffle(questions[i].question);
-    var question = questions[i].question;
-    var answer = questions[i].answer;
-    var H = questions[i].H;
-    var D = questions[i].D;
-    var B = questions[i].B;
-    var G = questions[i].G;
+    var question = questions.questions[i].question;
+    console.log("question"+question);
+    var answer = questions.questions[i].answer;
+    var H = questions.questions[i].H;
+    var D = questions.questions[i].D;
+    var B = questions.questions[i].B;
+    var G = questions.questions[i].G;
 
     // Package the words into a single object.
     var questionData = {
