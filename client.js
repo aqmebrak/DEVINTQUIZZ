@@ -125,7 +125,6 @@ var App = {
         App.$templateNbPlayers = $('#menu-nbPlayers').html();
         App.$templateHostGameId = $('#templateHostGameId').html();
         App.$templateJoinGame = $('#templateJoinGame').html();
-        App.$templateCountdown = $('#countdown').html();
         App.$templateQuizzGame = $('#templateQuizzGame').html();
     },
 
@@ -261,17 +260,16 @@ var App = {
         //affiche le compte à rebour de l'host
         gameCountdown: function () {
             // on charge le template de jeu
-            App.$main.html(App.$templateCountdown);
-            App.doTextFit('#numbers');
+            App.$main.html(App.$templateQuizzGame);
+            App.doTextFit('#hostQuestion');
 
             //on commence le timer
-            var $secondsLeft = $('#numbers');
+            var $secondsLeft = $('#hostQuestion');
             App.countDown($secondsLeft, 5, function () {
                 //on commence à capter l'accéléromètre
                 motionActivated = true;
                 if (typeOfGame == "mvt") {
                     IO.socket.emit('hostMvtCountdownFinished', App.roomId);
-                    App.$main.html(App.$templateQuizzGame);
                 }
                 if (typeOfGame == "quizz") {
                     IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
@@ -486,7 +484,7 @@ var App = {
     //fonction toute faite qui fait un compte à rebour
     countDown: function ($el, startTime, callback) {
         $el.text(startTime);
-        App.doTextFit('#numbers');
+        App.doTextFit('#hostQuestion');
         var timer = setInterval(countItDown, 1000);
 
         function countItDown() {
