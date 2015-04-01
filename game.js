@@ -121,7 +121,6 @@ function playerRestart(data) {
  */
 function sendQuestion(questionsIndex, roomId) {
     var questionData = getQuestion(questionsIndex);
-    io.sockets.in(roomId).emit('playSound', questionData);
     io.sockets.in(roomId).emit('newQuestionData', questionData);
 }
 

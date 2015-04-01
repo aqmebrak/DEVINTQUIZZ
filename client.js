@@ -23,18 +23,9 @@ var IO = {
         IO.socket.on('playerJoinedRoom', IO.playerJoinedRoom);
         IO.socket.on('beginNewGame', IO.beginNewGame);
         IO.socket.on('newQuestionData', IO.onNewQuestionData);
-        IO.socket.on('playSound', IO.playSound);
         IO.socket.on('hostCheckAnswer', IO.hostCheckAnswer);
         //IO.socket.on('gameOver', IO.gameOver);
         IO.socket.on('error', IO.error);
-    },
-
-    playSound: function (data) {
-        $("#trad").attr("src","http://translate.google.com/translate_tts?tl=fr&q=bonjour jérémy");
-        //var trad = document.querySelector('#trad');
-        //trad.setAttribute("src", "http://translate.google.com/translate_tts?tl=fr&q=bonjour jérémy");
-        var player = document.querySelector('#player');
-        player.play();
     },
 
     /**
@@ -294,11 +285,6 @@ var App = {
 
         //montre la question pour l'host
         newQuestion: function (data) {
-            //$("#trad").attr("src","http://translate.google.com/translate_tts?tl=fr&q=bonjour jérémy");
-            //var trad = document.querySelector('#trad');
-            //trad.setAttribute("src", "http://translate.google.com/translate_tts?tl=fr&q=bonjour jérémy");
-            //var player = document.querySelector('#player');
-            //player.play();
             //on remplace la question dans le div
             $('#hostQuestion').text(data.question);
             App.doTextFit('#hostQuestion');
