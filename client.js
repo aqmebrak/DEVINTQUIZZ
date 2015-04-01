@@ -143,6 +143,13 @@ var App = {
         App.$doc.on('click', '#btnPlayerRestart', App.Player.onPlayerRestart);
     },
 
+    say : function(sentence) {
+        var src = "http://translate.google.com/translate_tts?tl=fr&q=" + sentence;
+        document.getElementById("sentence").childNodes[1].setAttribute("src", src);
+        document.getElementById("sentence").load();
+        document.getElementById("sentence").play();
+    },
+
 
     Host: {
 
@@ -287,6 +294,7 @@ var App = {
         newQuestion: function (data) {
             //on remplace la question dans le div
             $('#hostQuestion').text(data.question);
+            App.say(data.question);
             App.doTextFit('#hostQuestion');
             //on affiche les proposition
             $('#H').text(data.H);
