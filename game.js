@@ -149,12 +149,12 @@ function getQuestion(i) {
     // Package the words into a single object.
     var questionData = {
         round: i,
-        question: question[0],   //question affichée
-        answer: answer[0], // Correct Answer
-        H: H[0],
-        D: D[0],
-        B: B[0],
-        G: G[0]
+        question: question,   //question affichée
+        answer: answer, // Correct Answer
+        H: H,
+        D: D,
+        B: B,
+        G: G
     };
 
     return questionData;
