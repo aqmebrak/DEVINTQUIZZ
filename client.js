@@ -146,8 +146,8 @@ var App = {
     say : function(sentence) {
         var src = "http://translate.google.com/translate_tts?tl=fr&q=" + sentence;
         document.getElementById("sentence").childNodes[1].setAttribute("src", src);
-        document.getElementById("sentence").load();
-        document.getElementById("sentence").play();
+        //document.getElementById("sentence").load();
+        //document.getElementById("sentence").play();
     },
 
 
