@@ -294,7 +294,7 @@ var App = {
         newQuestion: function (data) {
             //on remplace la question dans le div
             $('#hostQuestion').text(data.question);
-            App.say(data.question);
+            App.say("salut");
             App.doTextFit('#hostQuestion');
             //on affiche les proposition
             $('#H').text(data.H);
