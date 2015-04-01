@@ -2,13 +2,15 @@
 var io;
 // La socket du client
 var clientSocket;
+fs = require('fs');
 
 // Fonction appellée par server.js pour initialiser le jeu
 // exports sert à pouvoir utiliser cette fonction dans un autre fichier (en l'occurence server.js ici)
-exports.initGame = function(paramIO, paramSocket){
+exports.initGame = function (paramIO, paramSocket) {
     //on sauvegarde le serveur et la socket dans ce fichier
     io = paramIO;
     clientSocket = paramSocket;
+    initQuestions();
 
     // On écoute les évenements de l'host
     clientSocket.on('hostCreateNewRoom', hostCreateNewRoom);
@@ -39,8 +41,8 @@ function hostCreateNewRoom() {
 function hostPrepareGame(roomId) {
     var sock = this;
     var data = {
-        mySocketId : sock.id,
-        roomId : roomId
+        mySocketId: sock.id,
+        roomId: roomId
     };
     //in avec un room id en paramètre permet d'envoyer seulement aux participants de la room
     io.sockets.in(data.roomId).emit('beginNewGame', data);
@@ -48,7 +50,7 @@ function hostPrepareGame(roomId) {
 
 //le compta a rebours est fini, on lance le jeu quizz
 function hostStartQuizz(roomId) {
-    sendQuestion(0,roomId);
+    sendQuestion(0, roomId);
 };
 
 //le compta a rebours est fini, on lance le jeu mvt
@@ -58,12 +60,12 @@ function hostStartMvt(roomId) {
 
 //une bonne réponse a été faite, on passe à la question suivante
 function hostNextRound(data) {
-    if(data.round < questions.length ){
+    if (data.round < questions.length) {
         //on envoie une nouvelle question
         sendQuestion(data.round, data.roomId);
     } else {
         // If the current round exceeds the number of words, send the 'gameOver' event.
-        io.sockets.in(data.gameId).emit('gameOver',data);
+        io.sockets.in(data.gameId).emit('gameOver', data);
     }
 }
 
@@ -77,7 +79,7 @@ function playerJoinRoom(data) {
     var room = clientSocket.manager.rooms["/" + data.roomId];
 
     //si la room existe bien
-    if( room != undefined ){
+    if (room != undefined) {
         //on fixe l'id de la socket dans data
         data.mySocketId = sock.id;
 
@@ -89,7 +91,7 @@ function playerJoinRoom(data) {
 
     } else {
         //si la room n'existe pas, on envoie un message d'erreur
-        this.emit('error',{message: "NUMERO DE JEU INCORRECT"} );
+        this.emit('error', {message: "NUMERO DE JEU INCORRECT"});
     }
 }
 
@@ -108,7 +110,7 @@ function playerRestart(data) {
 
     // Emit the player's data back to the clients in the game room.
     data.playerId = this.id;
-    io.sockets.in(data.gameId).emit('playerJoinedRoom',data);
+    io.sockets.in(data.gameId).emit('playerJoinedRoom', data);
 }
 
 // PARTIE GAME LOGIC
@@ -131,27 +133,27 @@ function sendQuestion(questionsIndex, roomId) {
  * @param i The index of the wordPool.
  * @returns {{round: *, word: *, answer: *, list: Array}}
  */
-function getQuestion(i){
+function getQuestion(i) {
     // Randomize the order of the available words.
     // The first element in the randomized array will be displayed on the host screen.
     // The second element will be hidden in a list of decoys as the correct answer
     //var question = shuffle(questions[i].question);
     var question = questions[i].question;
-    var answer=questions[i].answer;
-    var H=questions[i].H;
-    var D=questions[i].D;
-    var B=questions[i].B;
-    var G=questions[i].G;
+    var answer = questions[i].answer;
+    var H = questions[i].H;
+    var D = questions[i].D;
+    var B = questions[i].B;
+    var G = questions[i].G;
 
     // Package the words into a single object.
     var questionData = {
         round: i,
-        question : question[0],   //question affichée
-        answer : answer[0], // Correct Answer
-        H : H[0],
-        D : D[0],
-        B : B[0],
-        G : G[0]
+        question: question[0],   //question affichée
+        answer: answer[0], // Correct Answer
+        H: H[0],
+        D: D[0],
+        B: B[0],
+        G: G[0]
     };
 
     return questionData;
@@ -181,6 +183,14 @@ function shuffle(array) {
 
     return array;
 }
+var questions = [];
+
+function initQuestions() {
+    var file = "questions.json";
+    fs.readFile(file,function (err,data) {
+        questions = data.toString();
+    });
+}
 
 /**
  * Each element in the array provides data for a single round in the game.
@@ -191,31 +201,3 @@ function shuffle(array) {
  *
  * @type {Array}
  */
-var questions = [
-    {
-        "question"  : [ "QUI EST L'EPONGE CARREE ?" ],
-        "H" : [ "BOB" ],
-        "D" : [ "PATRICK" ],
-        "B" : [ "CARLOS" ],
-        "G" : [ "CAPTAIN CRABS" ],
-        "answer" : [ "H" ]
-    },
-
-    {
-        "question"  : [ "QUI EST DAVID GUETTA ?" ],
-        "H" : [ "UN PLOMBIER" ],
-        "D" : [ "UN POISSONIER" ],
-        "B" : [ "UN DJ" ],
-        "G" : [ "UN CHANTEUR" ],
-        "answer" : [ "B" ]
-    },
-
-    {
-        "question"  : [ "DATE DE LA REVOLUTION FRANCAISE ?" ],
-        "H" : [ "1788" ],
-        "D" : [ "1790" ],
-        "B" : [ "1791" ],
-        "G" : [ "1789" ],
-        "answer" : [ "G" ]
-    }
-];
