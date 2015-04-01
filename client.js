@@ -486,7 +486,7 @@ var App = {
     //fonction toute faite qui fait un compte à rebour
     countDown: function ($el, startTime, callback) {
         $el.text(startTime);
-        App.doTextFit('#hostQuestion');
+        App.doTextFit('#numbers');
         var timer = setInterval(countItDown, 1000);
 
         function countItDown() {
