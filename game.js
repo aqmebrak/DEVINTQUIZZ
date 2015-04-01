@@ -60,7 +60,7 @@ function hostStartMvt(roomId) {
 
 //une bonne réponse a été faite, on passe à la question suivante
 function hostNextRound(data) {
-    if (data.round < questions.length) {
+    if (data.round < questions.questions.length) {
         //on envoie une nouvelle question
         sendQuestion(data.round, data.roomId);
     } else {
