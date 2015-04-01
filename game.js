@@ -184,12 +184,13 @@ function shuffle(array) {
 
     return array;
 }
-var questions = [];
+var questions;
 
 function initQuestions() {
     var file = "questions.json";
     fs.readFile(file,function (err,data) {
         questions = data.toString();
+        questions = JSON.parse(questions);
     });
 }
 
