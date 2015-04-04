@@ -77,6 +77,8 @@
 
 <!-- Ecran du jeu Quizz pour l'host -->
 <script id="templateQuizzGame" type="text/template">
+    <audio controls="controls" id="sentence">
+        <source src=""/>Votre navigateur ne supporte pas le tag</audio>
     <div id="hostQuestion">5</div>
     <div id="H" class="bleu"></div>
     <div id="D" class="marron"></div>
@@ -85,7 +87,7 @@
     <div id="B" class="bleu"></div>
 
     <div id="playerScores">
-        <!-- Dans onNewRoomCreate on va charcher des div de cette forme en fct du nb de joueur
+        <!-- Dans gameCountdown on va charger des div de cette forme en fct du nb de joueur
         <div id="player1Score" class="playerScore">
             <span class="playerName">Player 1</span><span class="score">0</span>
         </div>

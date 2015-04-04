@@ -39,15 +39,7 @@ var IO = {
 
     //une room a été crée avec un id de room généré
     //data est de la forme {{ roomId, mySocketId }}
-    //on va aussi charger les div pour les scores des joueurs
     onNewRoomCreated: function (data) {
-        //var res="";
-        //for(var i= 0; i < nbPlayers; i++){
-            //var numPlayer=i+1;
-            //res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
-        //}
-        //$('#playerScores').html('<div id="player1Score" class="playerScore"><span class="playerName">Player 1</span><span class="score">0</span></div>');
-
         App.Host.gameInit(data);
     },
 
@@ -67,6 +59,7 @@ var IO = {
 
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
+        say("coucou comme ça va");
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
@@ -171,6 +164,13 @@ var App = {
          */
         currentCorrectAnswer: '',
 
+        say : function(sentence) {
+            var src = "http://translate.google.com/translate_tts?tl=fr&q=" + sentence;
+            document.getElementById("sentence").childNodes[1].setAttribute("src", src);
+            document.getElementById("sentence").load();
+            document.getElementById("sentence").play();
+        },
+
         //Quand on clique sur jouer dans le menu
         onJouer: function () {
             App.$main.html(App.$templateJouer);
@@ -263,13 +263,13 @@ var App = {
             App.$main.html(App.$templateQuizzGame);
             App.doTextFit('#hostQuestion');
 
+            //affiche le scores des joueurs
             var res="";
             for(var i= 0; i < nbPlayers; i++){
                 var numPlayer=i+1;
                 res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
             }
             $('#playerScores').html(res);
-            //$('#playerScores').html('<div id="player1Score" class="playerScore"><span class="playerName">Player 1</span><span class="score">0</span></div>');
 
             //on commence le timer
             var $secondsLeft = $('#hostQuestion');
