@@ -59,7 +59,7 @@ var IO = {
 
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        $('#sentence').html('<source src="http://translate.google.com/translate_tts?tl=fr&q='+data.question+'"/>');
+        $('#sentence').html('<source src="http://translate.google.com/translate_tts?tl=fr&q=salut comment ça va"/>');
         var player = document.querySelector('#sentence');
         player.play();
         //on met à jour le numéro du round
