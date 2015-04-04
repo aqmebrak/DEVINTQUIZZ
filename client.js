@@ -285,7 +285,8 @@ var App = {
                     //.html(App.Host.players[i].pseudo);
             //}
 
-            $('#player1Score').find('.playerName').html(App.Host.players[0].pseudo);
+            //$('#player1Score').find('.playerName').html(App.Host.players[0].pseudo);
+
             //for(var i= 0; i < App.Host.players.length; i++){
             //    //on stocke le num du joueur (à i=0 c'est le player1)
             //    var numPlayer=i+1;
@@ -294,7 +295,9 @@ var App = {
             //        .attr('id',App.Host.players[i].mySocketId);
             //}
             // Set the Score section on screen to 0 for each player.
-            $('#player1Score').find('.score').attr('id', App.Host.players[0].mySocketId);
+
+            //$('#player1Score').find('.score').attr('id', App.Host.players[0].mySocketId);
+
             //$('#player2Score').find('.score').attr('id',App.Host.players[1].mySocketId);
         },
 
