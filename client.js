@@ -47,8 +47,7 @@ var IO = {
             //res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
         //}
         //$('#playerScores').html('<div id="player1Score" class="playerScore"><span class="playerName">Player 1</span><span class="score">0</span></div>');
-        $('#playerScores').text('lol');
-        alert('#playerScores'.text);
+
         App.Host.gameInit(data);
     },
 
@@ -263,6 +262,9 @@ var App = {
             // on charge le template de jeu
             App.$main.html(App.$templateQuizzGame);
             App.doTextFit('#hostQuestion');
+
+            $('#playerScores').text('lol');
+            alert('#playerScores'.text);
 
             //on commence le timer
             var $secondsLeft = $('#hostQuestion');
