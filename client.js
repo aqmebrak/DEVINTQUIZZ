@@ -58,7 +58,7 @@ var IO = {
     },
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        App.Host.say("lol");
+        App.Host.say("coucou");
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
@@ -163,7 +163,7 @@ var App = {
         currentCorrectAnswer: '',
 
         say : function(sentence) {
-            var src = "http://translate.google.com/translate_tts?tl=fr&q=coucou";
+            var src = "http://translate.google.com/translate_tts?tl=fr&q="+sentence;
             $('#sentence').html('<source src='+src+'/>');
         },
 
