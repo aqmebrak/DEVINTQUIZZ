@@ -143,13 +143,6 @@ var App = {
         App.$doc.on('click', '#btnPlayerRestart', App.Player.onPlayerRestart);
     },
 
-    say : function(sentence) {
-        var src = "http://translate.google.com/translate_tts?tl=fr&q=" + sentence;
-        document.getElementById("sentence").childNodes[1].setAttribute("src", src);
-        document.getElementById("sentence").load();
-        document.getElementById("sentence").play();
-    },
-
 
     Host: {
 
@@ -294,7 +287,6 @@ var App = {
         newQuestion: function (data) {
             //on remplace la question dans le div
             $('#hostQuestion').text(data.question);
-            App.say("salut");
             App.doTextFit('#hostQuestion');
             //on affiche les proposition
             $('#H').text(data.H);
@@ -524,7 +516,7 @@ IO.init();
 App.init();
 
 //si on est sur mobile on charge direct le template Join
-if ((navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/webOS/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+if ((navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/webOS/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/iPod/i))) {
     App.$main.html(App.$templateJoinGame);
 }
 
@@ -568,7 +560,6 @@ function process2(event) {
     if ((Math.abs(x) > seuil || Math.abs(y) > seuil || Math.abs(z) > seuil ) && acquisition) {
         if (typeof timer == "undefined") timer = new Date();
         if ((new Date().getTime() - timer.getTime()) < 100) {
-            document.body.style.backgroundColor = "blue";
             if (Math.abs(x) > seuilParasite) {
                 i += x;
                 nbi++;
@@ -594,7 +585,6 @@ function process2(event) {
             direction = getDirection(i / nbi, j / nbj, k / nbk);
 
             timer = undefined;
-            document.body.style.backgroundColor = "red";
 
             //on récupère les infos
             var data = {
@@ -615,6 +605,4 @@ function process2(event) {
 }
 if (window.DeviceOrientationEvent) {
     window.addEventListener("devicemotion", process2, true);
-} else {
-    //document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
 }
