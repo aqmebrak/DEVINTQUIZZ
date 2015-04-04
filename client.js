@@ -285,7 +285,7 @@ var App = {
                     //.html(App.Host.players[i].pseudo);
             //}
 
-            $('.playerName').html(App.Host.players[0].pseudo);
+            $('#player1Score').find('.playerName').html(App.Host.players[0].pseudo);
 
             //for(var i= 0; i < App.Host.players.length; i++){
             //    //on stocke le num du joueur (à i=0 c'est le player1)
