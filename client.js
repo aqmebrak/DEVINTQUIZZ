@@ -59,7 +59,7 @@ var IO = {
 
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        say("coucou comme ça va");
+        App.Host.say("coucou comme ça va");
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
