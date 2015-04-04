@@ -59,7 +59,7 @@ var IO = {
 
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        var lol="qui est l'éponge carrée";
+        var lol="qui est le caca de mon fils";
         $('#sentence').html('<source src="http://translate.google.com/translate_tts?tl=fr&q='+lol+'"/>');
         var player = document.querySelector('#sentence');
         player.play();
