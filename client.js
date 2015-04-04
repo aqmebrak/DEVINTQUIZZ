@@ -59,9 +59,7 @@ var IO = {
 
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        $('#sentence').html('<source src="http://translate.google.com/translate_tts?tl=fr&q=salut comment ça va"/>');
-        var player = document.querySelector('#sentence');
-        player.play();
+        App.Host.say("sentence",data.question);
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
@@ -166,11 +164,10 @@ var App = {
          */
         currentCorrectAnswer: '',
 
-        say : function(sentence) {
-            var src = "http://translate.google.com/translate_tts?tl=fr&q=" + sentence;
-            document.getElementById("sentence").childNodes[1].setAttribute("src", src);
-            document.getElementById("sentence").load();
-            document.getElementById("sentence").play();
+        say : function(id,sentence) {
+            $('#'+id).html('<source src="http://translate.google.com/translate_tts?tl=fr&q='+sentence+'"/>');
+            var player = document.querySelector('#'+id);
+            player.play();
         },
 
         //Quand on clique sur jouer dans le menu
