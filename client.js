@@ -263,12 +263,13 @@ var App = {
             App.$main.html(App.$templateQuizzGame);
             App.doTextFit('#hostQuestion');
 
-            //var res="";
-            //for(var i= 0; i < nbPlayers; i++){
-                //var numPlayer=i+1;
-                //res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
-            //}
-            $('#playerScores').html('<div id="player1Score" class="playerScore"><span class="playerName">Player 1</span><span class="score">0</span></div>');
+            var res="";
+            for(var i= 0; i < nbPlayers; i++){
+                var numPlayer=i+1;
+                res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
+            }
+            $('#playerScores').html(res);
+            //$('#playerScores').html('<div id="player1Score" class="playerScore"><span class="playerName">Player 1</span><span class="score">0</span></div>');
 
             //on commence le timer
             var $secondsLeft = $('#hostQuestion');
