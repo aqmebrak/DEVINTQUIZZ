@@ -35,12 +35,19 @@ var IO = {
         // Cache a copy of the client's socket.IO session ID on the App
 
         App.mySocketId = IO.socket.socket.sessionid;
-        // console.log(data.message);
     },
 
     //une room a été crée avec un id de room généré
     //data est de la forme {{ roomId, mySocketId }}
+    //on va aussi charger les div pour les scores des joueurs
     onNewRoomCreated: function (data) {
+        var res="";
+        for(var i= 0; i < nbPlayers; i++){
+            var numPlayer=i+1;
+            res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
+        }
+        $('#playerScores').html(res);
+
         App.Host.gameInit(data);
     },
 
@@ -269,17 +276,27 @@ var App = {
                 }
             });
 
-            // Display the players' names on screen
-            $('#player1Score')
-                .find('.playerName')
-                .html(App.Host.players[0].pseudo);
+            //on affiche les pseudos des joueurs
+            for(var i= 0; i < App.Host.players.length; i++){
+                //on stocke le num du joueur (à i=0 c'est le player1)
+                var numPlayer=i+1;
+                $('#player'+numPlayer+'Score')
+                    .find('.playerName')
+                    .html(App.Host.players[i].pseudo);
+            }
 
             //$('#player2Score')
             //.find('.playerName')
             //.html(App.Host.players[1].playerName);
-
+            for(var i= 0; i < App.Host.players.length; i++){
+                //on stocke le num du joueur (à i=0 c'est le player1)
+                var numPlayer=i+1;
+                $('#player'+numPlayer+'Score')
+                    .find('.score')
+                    .attr('id',App.Host.players[i].mySocketId);
+            }
             // Set the Score section on screen to 0 for each player.
-            $('#player1Score').find('.score').attr('id', App.Host.players[0].mySocketId);
+            //$('#player1Score').find('.score').attr('id', App.Host.players[0].mySocketId);
             //$('#player2Score').find('.score').attr('id',App.Host.players[1].mySocketId);
         },
 
