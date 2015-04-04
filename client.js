@@ -41,7 +41,7 @@ var IO = {
     //data est de la forme {{ roomId, mySocketId }}
     //on va aussi charger les div pour les scores des joueurs
     onNewRoomCreated: function (data) {
-        var res="";
+        //var res="";
         //for(var i= 0; i < nbPlayers; i++){
             //var numPlayer=i+1;
             //res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
@@ -263,8 +263,12 @@ var App = {
             App.$main.html(App.$templateQuizzGame);
             App.doTextFit('#hostQuestion');
 
-            $('#playerScores').text('lol');
-            alert('#playerScores'.text);
+            //var res="";
+            //for(var i= 0; i < nbPlayers; i++){
+                //var numPlayer=i+1;
+                //res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
+            //}
+            $('#playerScores').html('<div id="player1Score" class="playerScore"><span class="playerName">Player 1</span><span class="score">0</span></div>');
 
             //on commence le timer
             var $secondsLeft = $('#hostQuestion');
