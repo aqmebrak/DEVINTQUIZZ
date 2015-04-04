@@ -56,28 +56,14 @@ var IO = {
     beginNewGame: function (data) {
         App[App.myRole].gameCountdown(data);
     },
-
-    lol: function(data){
-        var lol2="coucou";
-        $('#sentence').html('<source src="http://translate.google.com/translate_tts?tl=fr&q='+lol2+'"/>');
-        setTimeout(IO.lol3(data),8000);
-    },
-
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        IO.lol(data);
-
-    },
-
-    lol3: function(data){
-        var player = document.querySelector('#sentence');
-        player.play();
+        App.Host.say("lol");
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
         App[App.myRole].newQuestion(data);
     },
-
     //une réponse a été proposée, on vérifie si c'est bien l'host
     hostCheckAnswer: function (data) {
         if (App.myRole === 'Host') {
@@ -177,10 +163,8 @@ var App = {
         currentCorrectAnswer: '',
 
         say : function(sentence) {
-            var src = "http://translate.google.com/translate_tts?tl=fr&q=" + sentence;
-            document.getElementById("sentence").childNodes[1].setAttribute("src", src);
-            document.getElementById("sentence").load();
-            document.getElementById("sentence").play();
+            var src = "http://translate.google.com/translate_tts?tl=fr&q=coucou";
+            $('#sentence').html('<source src='+src+'/>');
         },
 
         //Quand on clique sur jouer dans le menu
