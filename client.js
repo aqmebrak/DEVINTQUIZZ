@@ -57,10 +57,19 @@ var IO = {
         App[App.myRole].gameCountdown(data);
     },
 
+    lol: function(){
+        var lol2="coucou comment ça va";
+        $('#sentence').html('<source src="http://translate.google.com/translate_tts?tl=fr&q='+lol2+'"/>');
+        setTimeout("IO.lol3()",8000);
+    },
+
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        var lol="qui est le caca de mon fils";
-        $('#sentence').html('<source src="http://translate.google.com/translate_tts?tl=fr&q='+lol+'"/>');
+        IO.lol();
+
+    },
+
+    lol3: function(data){
         var player = document.querySelector('#sentence');
         player.play();
         //on met à jour le numéro du round
