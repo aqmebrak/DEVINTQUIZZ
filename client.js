@@ -60,7 +60,7 @@ var IO = {
     lol: function(data){
         var lol2="coucou comment ça va";
         $('#sentence').html('<source src="http://translate.google.com/translate_tts?tl=fr&q='+lol2+'"/>');
-        setTimeout("IO.lol3(data)",8000);
+        setTimeout(IO.lol3(data),8000);
     },
 
     //quand le jeu envoie une nouvelle question
