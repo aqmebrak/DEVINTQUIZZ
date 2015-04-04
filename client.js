@@ -47,7 +47,7 @@ var IO = {
             //res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
         //}
         $('#playerScores').html('<div id="player1Score" class="playerScore"><span class="playerName">Player 1</span><span class="score">0</span></div>');
-
+        alert('#playerScores'.html);
         App.Host.gameInit(data);
     },
 
