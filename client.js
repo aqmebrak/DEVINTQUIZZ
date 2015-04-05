@@ -163,7 +163,8 @@ var App = {
         currentCorrectAnswer: '',
 
         say : function(sentence) {
-            var src = "http://translate.google.com/translate_tts?tl=fr&q=coucou%20michel";
+            var text=encodeURIComponent(sentence);
+            var src = "http://translate.google.com/translate_tts?tl=fr&q="+text;
             $('#sentence').html('<source src='+src+'/>');
         },
 
