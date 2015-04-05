@@ -58,7 +58,7 @@ var IO = {
     },
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        App.Host.say("qui est bob l'éponge");
+        App.Host.say("coucou");
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
