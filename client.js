@@ -58,7 +58,7 @@ var IO = {
     },
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        App.Host.say("coucou hugo");
+        App.Host.say(data.question);
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
@@ -282,23 +282,23 @@ var App = {
             });
 
             //on affiche les pseudos des joueurs
-            //for(var i= 0; i < App.Host.players.length; i++){
+            for(var i= 0; i < App.Host.players.length; i++){
                 //on stocke le num du joueur (à i=0 c'est le player1)
-                //var numPlayer=i+1;
-                //$('#player'+numPlayer+'Score')
-                    //.find('.playerName')
-                    //.html(App.Host.players[i].pseudo);
-            //}
+                var numPlayer=i+1;
+                $('#player'+numPlayer+'Score')
+                    .find('.playerName')
+                    .html(App.Host.players[i].pseudo);
+            }
 
-            $('#player1Score').find('.playerName').html(App.Host.players[0].pseudo);
+            //$('#player1Score').find('.playerName').html(App.Host.players[0].pseudo);
 
-            //for(var i= 0; i < App.Host.players.length; i++){
+            for(var i= 0; i < App.Host.players.length; i++){
             //    //on stocke le num du joueur (à i=0 c'est le player1)
-            //    var numPlayer=i+1;
-            //    $('#player'+numPlayer+'Score')
-            //        .find('.score')
-            //        .attr('id',App.Host.players[i].mySocketId);
-            //}
+                var numPlayer=i+1;
+                $('#player'+numPlayer+'Score')
+                    .find('.score')
+                    .attr('id',App.Host.players[i].mySocketId);
+            }
             // Set the Score section on screen to 0 for each player.
 
             //$('#player1Score').find('.score').attr('id', App.Host.players[0].mySocketId);
