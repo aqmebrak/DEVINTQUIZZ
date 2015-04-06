@@ -62,7 +62,7 @@ var IO = {
     onNewQuestionData: function (data) {
         //App.Host.say(data.question);
         if('speechSynthesis' in window){
-            var speech = new SpeechSynthesisUtterance('coucou les gars');
+            var speech = new SpeechSynthesisUtterance(data.question);
             speech.lang = 'fr-FR';
             window.speechSynthesis.speak(speech);
         }
@@ -70,6 +70,7 @@ var IO = {
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
         App[App.myRole].newQuestion(data);
+        nbAnswers=0;
     },
     //une réponse a été proposée, on vérifie si c'est bien l'host
     hostCheckAnswer: function (data) {
@@ -413,8 +414,8 @@ var App = {
             //on collecte les infos à envoyer au serveur
             var data = {
                 roomId: +($('#inputRoomId').val()),
-                pseudo: $('#inputPseudo').val() || 'Anonyme',
-                hasAnswered: false
+                pseudo: $('#inputPseudo').val() || 'Anonyme'
+                //hasAnswered: false
             };
 
             //on envoie donc la room id et le pseudo au serveur
