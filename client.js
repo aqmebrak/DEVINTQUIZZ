@@ -63,7 +63,7 @@ var IO = {
         //App.Host.say(data.question);
         if('speechSynthesis' in window){
             var speech = new SpeechSynthesisUtterance('coucou les gars');
-            speech.lang = 'fr';
+            speech.lang = 'fr-FR';
             window.speechSynthesis.speak(speech);
         }
         //on met à jour le numéro du round
