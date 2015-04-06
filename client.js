@@ -4,6 +4,8 @@ var nbPlayers = 2;
 var typeOfGame = "";
 //indique si on peut capter l'accéléromètre
 var motionActivated = false;
+//nb de joueurs ayant répondu à la question
+var nbAnswers=0;
 
 // Tout le code qui concerne les connections socket
 var IO = {
@@ -58,7 +60,12 @@ var IO = {
     },
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        App.Host.say(data.question);
+        //App.Host.say(data.question);
+        if('speechSynthesis' in window){
+            var speech = new SpeechSynthesisUtterance('coucou les gars');
+            speech.lang = 'fr';
+            window.speechSynthesis.speak(speech);
+        }
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
@@ -260,14 +267,13 @@ var App = {
             App.$main.html(App.$templateQuizzGame);
             App.doTextFit('#hostQuestion');
 
-            //affiche le scores des joueurs
+            //insère les div des scores en fct du nb de joueurs
             var res="";
             for(var i= 0; i < nbPlayers; i++){
                 var numPlayer=i+1;
-                res+='<div id="player'+numPlayer+'Score" class="playerScore"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span></div>';
+                res+='<div id="player'+numPlayer+'"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span><span class="answer"></span></div>';
             }
-            $('#playerScores').html(res);
-
+            $('#playerScoresAnswers').html(res);
             //on commence le timer
             var $secondsLeft = $('#hostQuestion');
             App.countDown($secondsLeft, 5, function () {
@@ -281,29 +287,23 @@ var App = {
                 }
             });
 
-            //on affiche les pseudos des joueurs
-            for(var i= 0; i < App.Host.players.length; i++){
+            //on affiche les pseudos des joueurs pour le score
+            for(var i= 0; i < App.Host.players.length; i++) {
                 //on stocke le num du joueur (à i=0 c'est le player1)
-                var numPlayer=i+1;
-                $('#player'+numPlayer+'Score')
+                var numPlayer = i + 1;
+                //on remplace par le pseudo du joueur
+                $('#player' + numPlayer)
                     .find('.playerName')
                     .html(App.Host.players[i].pseudo);
-            }
-
-            //$('#player1Score').find('.playerName').html(App.Host.players[0].pseudo);
-
-            for(var i= 0; i < App.Host.players.length; i++){
-            //    //on stocke le num du joueur (à i=0 c'est le player1)
-                var numPlayer=i+1;
-                $('#player'+numPlayer+'Score')
+                //on fixe l'id du joueur au score
+                $('#player' + numPlayer)
                     .find('.score')
-                    .attr('id',App.Host.players[i].mySocketId);
+                    .attr('id', App.Host.players[i].mySocketId);
+                //on fixe l'id du joueur à la réponse
+                $('#player' + numPlayer)
+                    .find('.answer')
+                    .attr('id', App.Host.players[i].mySocketId);
             }
-            // Set the Score section on screen to 0 for each player.
-
-            //$('#player1Score').find('.score').attr('id', App.Host.players[0].mySocketId);
-
-            //$('#player2Score').find('.score').attr('id',App.Host.players[1].mySocketId);
         },
 
         //montre la question pour l'host
@@ -325,15 +325,24 @@ var App = {
         checkAnswer: function (data) {
             //on vérifie que c'est le bon round
             if (data.round === App.currentRound) {
+                nbAnswers++;
 
-                //on récupère le score du joueur qui a répondu
-                var $pScore = $('#' + data.playerId);
+                //on récupère le score du joueur qui a répondu (l'id my socket id)
+                var $pScore = $('#score' + data.playerId);
 
+                $('#answer' + data.playerId).text("A REPONDU");
                 //si c'est la bonne réponse
                 if (App.Host.currentCorrectAnswer === data.answer) {
                     // Add 5 to the player's score
                     $pScore.text(+$pScore.text() + 5);
-                    //on affiche la réponse et le le nom de celui qui a répondu
+
+                } else {
+                    //alert("MAUVAISE REPONSE SALE MERDE");
+                    //$('#answerAndWinner').text("NON");
+                    // A wrong answer was submitted, so decrement the player's score.
+                    $pScore.text(+$pScore.text() - 3);
+                }
+                if(nbAnswers==nbPlayers){
                     App.Host.showAnswerAndWinner(data);
                     //on incrémente le numéro de room
                     App.currentRound += 1;
@@ -343,13 +352,6 @@ var App = {
                         round: App.currentRound
                     };
                     //on dit au serveur de commencer le prochain round
-                    IO.socket.emit('hostNextRound', data);
-
-                } else {
-                    //alert("MAUVAISE REPONSE SALE MERDE");
-                    //$('#answerAndWinner').text("NON");
-                    // A wrong answer was submitted, so decrement the player's score.
-                    $pScore.text(+$pScore.text() - 3);
                     IO.socket.emit('hostNextRound', data);
                 }
             }
@@ -411,7 +413,8 @@ var App = {
             //on collecte les infos à envoyer au serveur
             var data = {
                 roomId: +($('#inputRoomId').val()),
-                pseudo: $('#inputPseudo').val() || 'Anonyme'
+                pseudo: $('#inputPseudo').val() || 'Anonyme',
+                hasAnswered: false
             };
 
             //on envoie donc la room id et le pseudo au serveur
