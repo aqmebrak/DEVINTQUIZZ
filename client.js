@@ -68,10 +68,9 @@ var IO = {
             //window.speechSynthesis.speak(speech);
             //speech.onend=IO.sayAnswers(data);
             var u = new SpeechSynthesisUtterance();
-            u.text = 'Hello World';
-            u.lang = 'en-US';
-            u.rate = 1.2;
-            u.onend = function(event) { alert('Finished in ' + event.elapsedTime + ' seconds.'); }
+            u.text = data.question;
+            u.lang = 'fr-FR';
+            u.onend = function(event) { IO.sayAnswers(); };
             speechSynthesis.speak(u);
         }
         //on met à jour le numéro du round
