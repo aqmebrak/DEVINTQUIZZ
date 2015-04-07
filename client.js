@@ -60,7 +60,7 @@ var IO = {
     },
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        //App.Host.say(data.question);
+        //App.Host.say(data.question);LOL
         if('speechSynthesis' in window){
             var speech = new SpeechSynthesisUtterance();
             speech.text(data.question);
