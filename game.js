@@ -191,15 +191,6 @@ function initQuestions() {
     fs.readFile(file,function (err,data) {
         questions = data.toString();
         questions = JSON.parse(questions);
+        questions=shuffle(questions);
     });
 }
-
-/**
- * Each element in the array provides data for a single round in the game.
- *
- * In each round, two random "words" are chosen as the host word and the correct answer.
- * Five random "decoys" are chosen to make up the list displayed to the player.
- * The correct answer is randomly inserted into the list of chosen decoys.
- *
- * @type {Array}
- */

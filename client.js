@@ -60,13 +60,7 @@ var IO = {
     },
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        //App.Host.say(data.question);LOL
         if('speechSynthesis' in window){
-            //var speech = new SpeechSynthesisUtterance();
-            //speech.text(data.question);
-            //speech.lang = 'fr-FR';
-            //window.speechSynthesis.speak(speech);
-            //speech.onend=IO.sayAnswers(data);
             var u = new SpeechSynthesisUtterance();
             u.text = data.question;
             u.lang = 'fr-FR';
