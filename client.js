@@ -62,15 +62,24 @@ var IO = {
     onNewQuestionData: function (data) {
         //App.Host.say(data.question);
         if('speechSynthesis' in window){
-            var speech = new SpeechSynthesisUtterance(data.question);
+            var speech = new SpeechSynthesisUtterance();
+            speech.text(data.question);
             speech.lang = 'fr-FR';
             window.speechSynthesis.speak(speech);
+            speech.onend=IO.sayAnswers(data);
         }
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
         App[App.myRole].newQuestion(data);
         nbAnswers=0;
+    },
+
+    sayAnswers : function(data){
+        var speech = new SpeechSynthesisUtterance();
+        speech.text(data.H);
+        speech.lang = 'fr-FR';
+        window.speechSynthesis.speak(speech);
     },
     //une réponse a été proposée, on vérifie si c'est bien l'host
     hostCheckAnswer: function (data) {
