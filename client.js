@@ -70,7 +70,7 @@ var IO = {
             var u = new SpeechSynthesisUtterance();
             u.text = data.question;
             u.lang = 'fr-FR';
-            u.onend = function(event) { IO.sayAnswers(data); };
+            u.onend = function() { IO.sayAnswers(data); };
             speechSynthesis.speak(u);
         }
         //on met à jour le numéro du round
@@ -82,10 +82,23 @@ var IO = {
 
     sayAnswers : function(data){
         var speech = new SpeechSynthesisUtterance();
-        speech.text=data.H;
-        speech.text="bob le petit enculé de sa mère";
-        speech.text="maman";
+        speech.text="En haut "+data.H;
         speech.lang = 'fr-FR';
+        u.onend = function() {
+            speech.text="à droite "+data.D;
+            u.onend = function() {
+                speech.text="En bas "+data.B;
+                u.onend = function() {
+                    speech.text="à gauche "+data.G;
+                    u.onend = function() {
+                        //COUNTDOWN AVANT DE REPONDRE
+                    };
+                    window.speechSynthesis.speak(speech);
+                };
+                window.speechSynthesis.speak(speech);
+            };
+            window.speechSynthesis.speak(speech);
+        };
         window.speechSynthesis.speak(speech);
     },
     //une réponse a été proposée, on vérifie si c'est bien l'host
