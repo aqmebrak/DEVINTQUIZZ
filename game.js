@@ -137,7 +137,7 @@ function getQuestion(i) {
     // Randomize the order of the available words.
     // The first element in the randomized array will be displayed on the host screen.
     // The second element will be hidden in a list of decoys as the correct answer
-    //var question = shuffle(questions[i].question);
+    //var question = shuffle(questions[i].question);lol
     alert(questions.question[0]);
     var lol=shuffle(questions.questions);
     alert(lol[0]);
