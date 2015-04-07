@@ -82,7 +82,7 @@ var IO = {
 
     sayAnswers : function(data){
         var speech = new SpeechSynthesisUtterance();
-        speech.text(data.H);
+        speech.text=data.H;
         speech.lang = 'fr-FR';
         window.speechSynthesis.speak(speech);
     },
