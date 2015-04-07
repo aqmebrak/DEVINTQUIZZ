@@ -66,7 +66,7 @@ var IO = {
             speech.text(data.question);
             speech.lang = 'fr-FR';
             window.speechSynthesis.speak(speech);
-            speech.onend=IO.sayAnswers(data);
+            //speech.onend=IO.sayAnswers(data);
         }
         //on met à jour le numéro du round
         App.currentRound = data.round;
