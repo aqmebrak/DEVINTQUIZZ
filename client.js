@@ -310,13 +310,13 @@ var App = {
         //montre la question pour l'host
         newQuestion: function (data) {
             //on remplace la question dans le div
-            $('#hostQuestion').text(data.question);
+            $('#hostQuestion').text(data.question.toUpperCase());
             App.doTextFit('#hostQuestion');
             //on affiche les proposition
-            $('#H').text(data.H);
-            $('#D').text(data.D);
-            $('#B').text(data.B);
-            $('#G').text(data.G);
+            $('#H').text(data.H.toUpperCase());
+            $('#D').text(data.D.toUpperCase());
+            $('#B').text(data.B.toUpperCase());
+            $('#G').text(data.G.toUpperCase());
             //on met à jour les infos du round courant (réponse et numéro de round)
             App.Host.currentCorrectAnswer = data.answer;
             App.Host.currentRound = data.round;

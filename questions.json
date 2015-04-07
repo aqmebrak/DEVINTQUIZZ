@@ -1,23 +1,23 @@
 {
   "questions": [
     {
-      "question": "QUI EST L'EPONGE CARREE ?",
-      "H": "BOB",
-      "D": "PATRICK",
-      "B": "CARLOS",
-      "G": "CAPTAIN CRABS",
+      "question": "Qui est l'éponge carrée ?",
+      "H": "Bob",
+      "D": "Patrick",
+      "B": "Carlos",
+      "G": "Captaine Crabs",
       "answer": "H"
     },
     {
-      "question": "QUI EST DAVID GUETTA ?",
-      "H": "UN PLOMBIER",
-      "D": "UN POISSONIER",
-      "B": "UN DJ",
-      "G": "UN CHANTEUR",
+      "question": "Qui est David Guetta ?",
+      "H": "Un plombier",
+      "D": "Un poissonnier",
+      "B": "Un DJ",
+      "G": "Un chanteur",
       "answer": "B"
     },
     {
-      "question": "DATE DE LA REVOLUTION FRANCAISE ?",
+      "question": "Date de la révolution française ?",
       "H": "1788",
       "D": "1790",
       "B": "1791",
