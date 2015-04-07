@@ -138,9 +138,9 @@ function getQuestion(i) {
     // The first element in the randomized array will be displayed on the host screen.
     // The second element will be hidden in a list of decoys as the correct answer
     //var question = shuffle(questions[i].question);lol
-    alert(questions.question[0]);
-    var lol=shuffle(questions.questions);
-    alert(lol[0]);
+    //alert(questions.question[0]);
+    //var lol=shuffle(questions.questions);
+    //alert(lol[0]);
     var question = questions.questions[i].question;
     console.log("question"+question);
     var answer = questions.questions[i].answer;
