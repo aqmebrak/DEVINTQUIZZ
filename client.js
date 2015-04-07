@@ -63,9 +63,9 @@ var IO = {
         //App.Host.say(data.question);LOL
         if('speechSynthesis' in window){
             var speech = new SpeechSynthesisUtterance();
-            speech.text(data.question);
-            speech.lang = 'fr-FR';
-            window.speechSynthesis.speak(speech);
+            //speech.text(data.question);
+            //speech.lang = 'fr-FR';
+            //window.speechSynthesis.speak(speech);
             //speech.onend=IO.sayAnswers(data);
         }
         //on met à jour le numéro du round
