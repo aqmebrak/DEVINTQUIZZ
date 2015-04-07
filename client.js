@@ -84,13 +84,13 @@ var IO = {
         var speech = new SpeechSynthesisUtterance();
         speech.text="En haut "+data.H;
         speech.lang = 'fr-FR';
-        u.onend = function() {
+        speech.onend = function() {
             speech.text="à droite "+data.D;
-            u.onend = function() {
+            speech.onend = function() {
                 speech.text="En bas "+data.B;
-                u.onend = function() {
+                speech.onend = function() {
                     speech.text="à gauche "+data.G;
-                    u.onend = function() {
+                    speech.onend = function() {
                         //COUNTDOWN AVANT DE REPONDRE
                     };
                     window.speechSynthesis.speak(speech);
