@@ -62,11 +62,17 @@ var IO = {
     onNewQuestionData: function (data) {
         //App.Host.say(data.question);LOL
         if('speechSynthesis' in window){
-            var speech = new SpeechSynthesisUtterance();
+            //var speech = new SpeechSynthesisUtterance();
             //speech.text(data.question);
             //speech.lang = 'fr-FR';
             //window.speechSynthesis.speak(speech);
             //speech.onend=IO.sayAnswers(data);
+            var u = new SpeechSynthesisUtterance();
+            u.text = 'Hello World';
+            u.lang = 'en-US';
+            u.rate = 1.2;
+            u.onend = function(event) { alert('Finished in ' + event.elapsedTime + ' seconds.'); }
+            speechSynthesis.speak(u);
         }
         //on met à jour le numéro du round
         App.currentRound = data.round;
