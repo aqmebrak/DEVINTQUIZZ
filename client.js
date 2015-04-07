@@ -70,7 +70,7 @@ var IO = {
             var u = new SpeechSynthesisUtterance();
             u.text = data.question;
             u.lang = 'fr-FR';
-            u.onend = function(event) { IO.sayAnswers(); };
+            u.onend = function(event) { IO.sayAnswers(data); };
             speechSynthesis.speak(u);
         }
         //on met à jour le numéro du round
