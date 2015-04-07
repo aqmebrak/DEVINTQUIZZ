@@ -191,6 +191,6 @@ function initQuestions() {
     fs.readFile(file,function (err,data) {
         questions = data.toString();
         questions = JSON.parse(questions);
-        //questions=shuffle(questions);
+        questions=shuffle(questions.questions);
     });
 }
