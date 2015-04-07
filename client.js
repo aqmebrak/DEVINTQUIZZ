@@ -84,6 +84,7 @@ var IO = {
         var speech = new SpeechSynthesisUtterance();
         speech.text=data.H;
         speech.text="bob le petit enculé de sa mère";
+        speech.text="maman";
         speech.lang = 'fr-FR';
         window.speechSynthesis.speak(speech);
     },
