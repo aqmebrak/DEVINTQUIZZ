@@ -348,11 +348,10 @@ var App = {
         checkAnswer: function (data) {
             //on vérifie que c'est le bon round
             if (data.round === App.currentRound) {
-                nbAnswers++;
+                //nbAnswers++;
 
                 //on récupère le score du joueur qui a répondu (l'id my socket id)
                 var $pScore = $('#score' + data.playerId);
-                alert('score' + data.playerId);
                 $('#answer' + data.playerId).text("A REPONDU");
                 //si c'est la bonne réponse
                 if (App.Host.currentCorrectAnswer === data.answer) {
