@@ -243,7 +243,7 @@ var App = {
 
         //affiche la bonne réponse et celui qui a répondu
         showAnswerAndWinner: function (data) {
-            $('.answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
+            $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
             for(var i= 0; i < nbPlayers; i++){
                 $('#answer'+App.Host.players[i].mySocketId).text('A REPONDU '+$('#'+App.Host.players[i].answer).text());
                 if(App.Host.currentCorrectAnswer === App.Host.players[i].answer){
@@ -368,20 +368,20 @@ var App = {
             if (data.round === App.currentRound) {
                 nbAnswers++;
                 //on récupère le score du joueur qui a répondu (l'id my socket id)
-                //var $pScore = $('#score' + data.playerId);
+                var $pScore = $('#score' + data.playerId);
 
                 //on affiche que le joueuer a répondu
                 $('#answer' + data.playerId).text("A REPONDU");
                 //si c'est la bonne réponse
                 if (App.Host.currentCorrectAnswer === data.answer) {
                     // Add 5 to the player's score
-                    //$pScore.text(+$pScore.text() + 10);
+                    $pScore.text(+$pScore.text() + 10);
 
                 } else {
                     //alert("MAUVAISE REPONSE SALE MERDE");
                     //$('#answerAndWinner').text("NON");
                     // A wrong answer was submitted, so decrement the player's score.
-                    //$pScore.text(+$pScore.text() + 5);
+                    $pScore.text(+$pScore.text() + 5);
                 }
                 App.Host.players[data.index].answer=data.answer;
                 if(nbAnswers==nbPlayers){

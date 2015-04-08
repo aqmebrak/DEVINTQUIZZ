@@ -118,12 +118,12 @@ html, body {
     margin-left: 1.1em
 }
 
-.answerAndWinner {
+#answerAndWinner {
     margin: 0;
     padding: 0em;
 }
 
-.answerAndWinner:after {
+#answerAndWinner:after {
     content: ' ';
     clear: both;
     display: block;

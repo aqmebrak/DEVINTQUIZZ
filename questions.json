@@ -24,5 +24,203 @@
       "G": "1789",
       "answer": "G"
     }
+    ,
+    {
+      "question": "Au Moyen-Âge, comment appelait-on les villages fortifiés ?",
+      "H": "Bastide",
+      "D": "Château fort",
+      "B": "Rempart",
+      "G": "Tour",
+      "answer": "N"
+    }
+    ,
+    {
+      "question": "De quelle série de six films un champion de boxe est-il la vedette ?",
+      "H": "Randy",
+      "D": "Rambo",
+      "B": "Ritchie",
+      "G": "Rocky",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Quelle est la capitale de la Nouvelle-Zélande ?",
+      "H": "Dublin",
+      "D": "Wellington",
+      "B": "Sydney",
+      "G": "Auckland",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Quel nom porte le logiciel de traitement de texte mis au point par Microsoft ?",
+      "H": "PowerPoint",
+      "D": "Excel",
+      "B": "Access",
+      "G": "Word",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Quel pays a pour capitale Katmandou ",
+      "H": "Le Népal",
+      "D": "Le Tibet",
+      "B": "La Corée du Sud",
+      "G": "Le Pakistan",
+      "answer": "N"
+    }
+    ,
+    {
+      "question": "À quelle classe animale le scorpion appartient-il ?",
+      "H": "Aux reptiles",
+      "D": "Aux insectes",
+      "B": "Aux arachnides",
+      "G": "Aux mammifères",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Quelle est la plus petite unité de mémoire utilisable sur un ordinateur ?",
+      "H": "Le mega",
+      "D": "Le giga",
+      "B": "Le byte",
+      "G": "Le bit",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Qui fut le premier européen à arriver aux Philippines ?",
+      "H": "Christophe Colomb",
+      "D": "Magellan",
+      "B": "Vasco de Gama",
+      "G": "Mauperthuis",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Quelle est la plus grande tortue marine connue à ce jour ?",
+      "H": "La tortue ninja",
+      "D": "La tortue argneuse",
+      "B": "La tortue franche",
+      "G": "La tortue luth",
+      "answer": "N"
+    }
+    ,
+    {
+      "question": "Quel animal est le plus rapide à terre ?",
+      "H": "Le guépard",
+      "D": "Le léopard",
+      "B": "La panthère noire",
+      "G": "Le lynx",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Avec quoi mesure-t-on la profondeur des océans ?",
+      "H": "Un radar",
+      "D": "Un sonar",
+      "B": "Un compteur Geiger",
+      "G": "Un sextant",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Quel os du squelette humain est le plus long et le plus solide ?",
+      "H": "Le carpe",
+      "D": "Le radius",
+      "B": "Le fémur",
+      "G": "Le cubitus",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Quel arbre est connu pour être le plus grand au monde ?",
+      "H": ">Le chêne",
+      "D": "Le pin",
+      "B": "Le hêtre",
+      "G": "Le séquoia",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Combien de bras a une étoile de mer ?",
+      "H": "20",
+      "D": "5",
+      "B": "2",
+      "G": "150",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Le saucisson et le jambon proviennent de quel animal?",
+      "H": "Le cochon",
+      "D": "Le mouton",
+      "B": "Le melchor",
+      "G": "L'abeille",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Quel animal dort le plus? ",
+      "H": "Le caméléon",
+      "D": "Le hamster",
+      "B": "Le chien",
+      "G": "Le chat",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Que signifie le carton jaune dans un match de football? ",
+      "H": "Un changement de joueur",
+      "D": "Un avertissement",
+      "B": "Un changement de météo",
+      "G": "L'expulsion",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Comment appelle-t-on l'action de récolter le raisin? ",
+      "H": "La vinification",
+      "D": "La moisson",
+      "B": "La vendange",
+      "G": "Le récoltage",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Quel est le fruit qui ne pousse PAS sur un des arbres ?",
+      "H": "Pomme",
+      "D": "Carottes",
+      "B": "Poires",
+      "G": "Abricots",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Un internaute, qu'est-ce que c'est?",
+      "H": "Un remplaçant au football",
+      "D": "Un utilisateur d'Internet",
+      "B": "Un champion international de natation",
+      "G": "Un employé d'intermarché",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Boire la tasse, cela veut dire... ",
+      "H": "boire trop de café ",
+      "D": "boire une tasse en porcelaine",
+      "B": "avaler de l'eau en nageant",
+      "G": "boire dans une tasse",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Quel est le plus haut sommet du monde? ",
+      "H": "L'Everest ",
+      "D": "Le mont Blanc",
+      "B": "Le Kilimandjaro",
+      "G": "Le MonKoubi",
+      "answer": "H"
+    }
   ]
 }
