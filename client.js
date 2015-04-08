@@ -244,12 +244,12 @@ var App = {
         showAnswerAndWinner: function (data) {
             $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
             for(var i= 0; i < nbPlayers; i++){
-                $('#answer'+App.Host.players[i].socketId).text('A REPONDU '+$('#'+App.Host.players[i].answer).text());
+                $('#answer'+App.Host.players[i].mySocketId).text('A REPONDU '+$('#'+App.Host.players[i].answer).text());
                 if(App.Host.currentCorrectAnswer === App.Host.players[i].answer){
-                    $('#answer'+App.Host.players[i].socketId).text($('#answer'+App.Host.players[i].socketId).text()+' BRAVO');
+                    $('#answer'+App.Host.players[i].mySocketId).text($('#answer'+App.Host.players[i].mySocketId).text()+' BRAVO');
                 }
                 else{
-                    $('#answer'+App.Host.players[i].socketId).text($('#answer'+App.Host.players[i].socketId).text()+' DOMMAGE');
+                    $('#answer'+App.Host.players[i].mySocketId).text($('#answer'+App.Host.players[i].mySocketId).text()+' DOMMAGE');
                 }
             }
         },
@@ -667,7 +667,7 @@ function process2(event) {
                 index: App.Player.index
             };
             //on stocke l'id du player
-            App.Host.players[App.Player.index].idSocket=App.mySocketId;
+            //App.Host.players[App.Player.index].idSocket=App.mySocketId;
 
             IO.socket.emit('playerAnswer', data);
             setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
