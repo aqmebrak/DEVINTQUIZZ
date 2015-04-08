@@ -246,7 +246,7 @@ var App = {
         showAnswerAndWinner: function (data) {
             $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
             for(var i= 0; i < nbPlayers; i++){
-                $('#answer'+App.Host.players[i].mySocketId).text('A REPONDU '+$('#'+App.Host.players[i].answer).text());
+                $('#answer'+App.Host.players[i].mySocketId).text('A REPONDU '+App.Host.players[i].answer);
                 if(App.Host.currentCorrectAnswer === App.Host.players[i].answer){
                     $('#answer'+App.Host.players[i].mySocketId).text($('#answer'+App.Host.players[i].mySocketId).text()+' BRAVO');
                 }
