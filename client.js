@@ -6,6 +6,8 @@ var typeOfGame = "";
 var motionActivated = false;
 //nb de joueurs ayant répondu à la question
 var nbAnswers=0;
+//index du tableau des players (chaque player aura son index)
+var indexPlayer=0;
 
 // Tout le code qui concerne les connections socket
 var IO = {
@@ -99,7 +101,7 @@ var IO = {
         if (App.myRole === 'Host') {
             //si on est en phase de réponse
             if (motionActivated) {
-                App.Host.checkAnswer(data);
+                App.Host.stockAnswer(data);
             }
         }
     },
@@ -187,10 +189,11 @@ var App = {
         //nombre de joueurs qui ont rejoint la room
         nbPlayersInRoom: 0,
 
-        /**
-         * A reference to the correct answer for the current round.
-         */
+        //la réponse du round courant (soit H, B, G, D)
         currentCorrectAnswer: '',
+
+        //la réponse du round courant sous sa vraie forme (David Guetta, 1789)...
+        currentCorrectAnswerString:'',
 
         say : function(sentence) {
             var text=encodeURIComponent(sentence);
@@ -239,7 +242,7 @@ var App = {
 
         //affiche la bonne réponse et celui qui a répondu
         showAnswerAndWinner: function (data) {
-            $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswer + " BRAVO A " + data.pseudo);
+            $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
         },
 
 
@@ -341,14 +344,19 @@ var App = {
             $('#G').text(data.G.toUpperCase());
             //on met à jour les infos du round courant (réponse et numéro de round)
             App.Host.currentCorrectAnswer = data.answer;
+            App.Host.currentCorrectAnswerString= $('#'+data.answer).text();
             App.Host.currentRound = data.round;
         },
 
-        //on vérifie si la réponse est bonne
-        checkAnswer: function (data) {
+        checkAnswer: function(){
+
+        },
+
+        //stock la réponse du player
+        stockAnswer: function (data) {
             //on vérifie que c'est le bon round
             if (data.round === App.currentRound) {
-                //nbAnswers++;
+                nbAnswers++;
 
                 //on récupère le score du joueur qui a répondu (l'id my socket id)
                 var $pScore = $('#score' + data.playerId);
@@ -356,14 +364,16 @@ var App = {
                 //si c'est la bonne réponse
                 if (App.Host.currentCorrectAnswer === data.answer) {
                     // Add 5 to the player's score
-                    $pScore.text(+$pScore.text() + 5);
+                    //$pScore.text(+$pScore.text() + 10);
 
                 } else {
                     //alert("MAUVAISE REPONSE SALE MERDE");
                     //$('#answerAndWinner').text("NON");
                     // A wrong answer was submitted, so decrement the player's score.
-                    $pScore.text(+$pScore.text() - 3);
+                    //$pScore.text(+$pScore.text() + 5);
                 }
+                App.Host.players[data.index].answer=data.answer;
+                alert(App.Host.players[data.index].answer);
                 if(nbAnswers==nbPlayers){
                     App.Host.showAnswerAndWinner(data);
                     //on incrémente le numéro de room
@@ -430,15 +440,18 @@ var App = {
         // le pseudo du player
         pseudo: '',
 
+        index:0,
+
         //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
         onPlayerCommencer: function () {
+            App.Player.index=indexPlayer;
             //on collecte les infos à envoyer au serveur
             var data = {
                 roomId: +($('#inputRoomId').val()),
                 pseudo: $('#inputPseudo').val() || 'Anonyme'
                 //hasAnswered: false
             };
-
+            indexPlayer++;
             //on envoie donc la room id et le pseudo au serveur
             IO.socket.emit('playerJoinRoom', data);
 
@@ -640,7 +653,8 @@ function process2(event) {
                 playerId: App.mySocketId,
                 answer: direction,
                 round: App.currentRound,
-                pseudo: App.Player.pseudo
+                pseudo: App.Player.pseudo,
+                index: App.Player.index
             };
 
             IO.socket.emit('playerAnswer', data);
