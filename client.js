@@ -243,6 +243,15 @@ var App = {
         //affiche la bonne réponse et celui qui a répondu
         showAnswerAndWinner: function (data) {
             $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
+            for(var i= 0; i < nbPlayers; i++){
+                $('#answer'+App.Host.players[i].socketId).text('A REPONDU '+$('#'+App.Host.players[i].answer).text());
+                if(App.Host.currentCorrectAnswer === App.Host.players[i].answer){
+                    $('#answer'+App.Host.players[i].socketId).text($('#answer'+App.Host.players[i].socketId).text()+' BRAVO');
+                }
+                else{
+                    $('#answer'+App.Host.players[i].socketId).text($('#answer'+App.Host.players[i].socketId).text()+' DOMMAGE');
+                }
+            }
         },
 
 
@@ -348,7 +357,7 @@ var App = {
             App.Host.currentRound = data.round;
         },
 
-        checkAnswer: function(){
+        checkAnswers: function(){
 
         },
 
@@ -357,9 +366,10 @@ var App = {
             //on vérifie que c'est le bon round
             if (data.round === App.currentRound) {
                 nbAnswers++;
-
                 //on récupère le score du joueur qui a répondu (l'id my socket id)
-                var $pScore = $('#score' + data.playerId);
+                //var $pScore = $('#score' + data.playerId);
+
+                //on affiche que le joueuer a répondu
                 $('#answer' + data.playerId).text("A REPONDU");
                 //si c'est la bonne réponse
                 if (App.Host.currentCorrectAnswer === data.answer) {
@@ -373,7 +383,6 @@ var App = {
                     //$pScore.text(+$pScore.text() + 5);
                 }
                 App.Host.players[data.index].answer=data.answer;
-                alert(App.Host.players[data.index].answer);
                 if(nbAnswers==nbPlayers){
                     App.Host.showAnswerAndWinner(data);
                     //on incrémente le numéro de room
@@ -383,8 +392,9 @@ var App = {
                         roomId: App.roomId,
                         round: App.currentRound
                     };
+                    setTimeout("IO.socket.emit('hostNextRound', data);", 3000);
                     //on dit au serveur de commencer le prochain round
-                    IO.socket.emit('hostNextRound', data);
+
                 }
             }
         },
@@ -656,6 +666,8 @@ function process2(event) {
                 pseudo: App.Player.pseudo,
                 index: App.Player.index
             };
+            //on stocke l'id du player
+            App.Host.players[App.Player.index].idSocket=App.mySocketId;
 
             IO.socket.emit('playerAnswer', data);
             setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
