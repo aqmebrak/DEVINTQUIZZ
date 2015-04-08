@@ -74,6 +74,7 @@ var IO = {
         //on actualise la question pour l'host et le player
         App[App.myRole].newQuestion(data);
         nbAnswers=0;
+        $('#answerAndWinner').text('');
     },
 
     sayAnswers : function(data){
