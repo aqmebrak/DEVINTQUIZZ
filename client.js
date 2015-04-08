@@ -321,11 +321,11 @@ var App = {
                 //on fixe l'id du joueur au score
                 $('#player' + numPlayer)
                     .find('.score')
-                    .attr('id', App.Host.players[i].mySocketId);
+                    .attr('id', 'score'+App.Host.players[i].mySocketId);
                 //on fixe l'id du joueur à la réponse
                 $('#player' + numPlayer)
                     .find('.answer')
-                    .attr('id', App.Host.players[i].mySocketId);
+                    .attr('id', 'answer'+App.Host.players[i].mySocketId);
             }
         },
 
