@@ -243,7 +243,7 @@ var App = {
 
         //affiche la bonne réponse et celui qui a répondu
         showAnswerAndWinner: function (data) {
-            $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
+            $('.answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
             for(var i= 0; i < nbPlayers; i++){
                 $('#answer'+App.Host.players[i].mySocketId).text('A REPONDU '+$('#'+App.Host.players[i].answer).text());
                 if(App.Host.currentCorrectAnswer === App.Host.players[i].answer){
@@ -394,7 +394,7 @@ var App = {
                         round: App.currentRound
                     };
                     lol=data;
-                    setTimeout(App.Host.haha, 5000);
+                    setTimeout(App.Host.haha, 7000);
                     //on dit au serveur de commencer le prochain round
 
                 }
