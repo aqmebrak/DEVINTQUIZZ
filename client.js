@@ -385,7 +385,6 @@ var App = {
                 }
                 App.Host.players[data.index].answer=data.answer;
                 if(nbAnswers==nbPlayers){
-                    lol=data;
                     App.Host.showAnswerAndWinner(data);
                     //on incrémente le numéro de room
                     App.currentRound += 1;
@@ -394,7 +393,8 @@ var App = {
                         roomId: App.roomId,
                         round: App.currentRound
                     };
-                    setTimeout(App.Host.haha, 3000);
+                    lol=data;
+                    setTimeout(App.Host.haha, 5000);
                     //on dit au serveur de commencer le prochain round
 
                 }
