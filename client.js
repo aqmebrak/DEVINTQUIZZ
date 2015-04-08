@@ -667,7 +667,7 @@ function process2(event) {
                 index: App.Player.index
             };
             //on stocke l'id du player
-            App.Host.players[App.Player.index].idSocket=App.mySocketId;
+            //App.Host.players[App.Player.index].idSocket=App.mySocketId;
 
             IO.socket.emit('playerAnswer', data);
             setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
