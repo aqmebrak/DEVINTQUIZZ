@@ -392,7 +392,7 @@ var App = {
                         roomId: App.roomId,
                         round: App.currentRound
                     };
-                    setTimeout("IO.socket.emit('hostNextRound', data);", 3000);
+                    setTimeout(IO.socket.emit('hostNextRound', data), 3000);
                     //on dit au serveur de commencer le prochain round
 
                 }
