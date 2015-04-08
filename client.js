@@ -35,7 +35,6 @@ var IO = {
      */
     onConnected: function () {
         // Cache a copy of the client's socket.IO session ID on the App
-
         App.mySocketId = IO.socket.socket.sessionid;
     },
 
@@ -353,7 +352,7 @@ var App = {
 
                 //on récupère le score du joueur qui a répondu (l'id my socket id)
                 var $pScore = $('#score' + data.playerId);
-                alert('score' + data.mySocketId);
+                alert('score' + data.playerId);
                 $('#answer' + data.playerId).text("A REPONDU");
                 //si c'est la bonne réponse
                 if (App.Host.currentCorrectAnswer === data.answer) {

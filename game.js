@@ -10,6 +10,7 @@ exports.initGame = function (paramIO, paramSocket) {
     //on sauvegarde le serveur et la socket dans ce fichier
     io = paramIO;
     clientSocket = paramSocket;
+    clientSocket.emit('connected');
     initQuestions();
 
     // On écoute les évenements de l'host
