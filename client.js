@@ -8,6 +8,7 @@ var motionActivated = false;
 var nbAnswers=0;
 //index du tableau des players (chaque player aura son index)
 var indexPlayer=0;
+var lol;
 
 // Tout le code qui concerne les connections socket
 var IO = {
@@ -384,6 +385,7 @@ var App = {
                 }
                 App.Host.players[data.index].answer=data.answer;
                 if(nbAnswers==nbPlayers){
+                    lol=data;
                     App.Host.showAnswerAndWinner(data);
                     //on incrémente le numéro de room
                     App.currentRound += 1;
@@ -392,11 +394,15 @@ var App = {
                         roomId: App.roomId,
                         round: App.currentRound
                     };
-                    setTimeout(IO.socket.emit('hostNextRound', data), 3000);
+                    setTimeout(App.Host.haha, 3000);
                     //on dit au serveur de commencer le prochain round
 
                 }
             }
+        },
+
+        haha: function(){
+            IO.socket.emit('hostNextRound', lol)
         },
 
 
