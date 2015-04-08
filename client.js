@@ -353,7 +353,7 @@ var App = {
 
                 //on récupère le score du joueur qui a répondu (l'id my socket id)
                 var $pScore = $('#score' + data.playerId);
-                alert('score' + data.playerId);
+                alert('score' + data.mySocketId);
                 $('#answer' + data.playerId).text("A REPONDU");
                 //si c'est la bonne réponse
                 if (App.Host.currentCorrectAnswer === data.answer) {
