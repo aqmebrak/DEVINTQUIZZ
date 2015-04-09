@@ -244,10 +244,11 @@ var App = {
 
         //affiche la bonne réponse et celui qui a répondu
         showAnswerAndWinner: function (data) {
-            $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
+            var bonneRep="La bonne réponse était " + App.Host.currentCorrectAnswerString;
+            $('#answerAndWinner').text(bonneRep.toUpperCase());
             if('speechSynthesis' in window && App.myRole=="Host"){
                 var u = new SpeechSynthesisUtterance();
-                u.text = $('#answerAndWinner').text();
+                u.text = bonneRep;
                 u.lang = 'fr-FR';
                 speechSynthesis.speak(u);
             }
