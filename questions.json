@@ -40,7 +40,7 @@
       "D": "Rambo",
       "B": "Ritchie",
       "G": "Rocky",
-      "answer": "G"
+      "answer": "D"
     }
     ,
     {
@@ -100,10 +100,10 @@
     {
       "question": "Quelle est la plus grande tortue marine connue à ce jour ?",
       "H": "La tortue ninja",
-      "D": "La tortue argneuse",
-      "B": "La tortue franche",
+      "D": "Donatello",
+      "B": "La mini tortue",
       "G": "La tortue luth",
-      "answer": "H"
+      "answer": "G"
     }
     ,
     {
@@ -135,7 +135,7 @@
     ,
     {
       "question": "Quel arbre est connu pour être le plus grand au monde ?",
-      "H": ">Le chêne",
+      "H": "Le chêne",
       "D": "Le pin",
       "B": "Le hêtre",
       "G": "Le séquoia",
@@ -222,5 +222,16 @@
       "G": "Le MonKoubi",
       "answer": "H"
     }
+    ,
+    {
+      "question": "Le grand disque rouge du drapeau japonais représente... ",
+      "H": "Le sang de l'empereur",
+      "D": "Un disque rouge",
+      "B": "Un ballon de foot rouge",
+      "G": "le Soleil",
+      "answer": "G"
+    }
+    
+    
   ]
 }
