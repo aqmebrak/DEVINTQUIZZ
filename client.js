@@ -384,9 +384,7 @@ var App = {
                 if (App.Host.currentCorrectAnswer === data.answer) {
                     // Add 5 to the player's score
                     $pScore.text(+$pScore.text() + 10);
-                    if (navigator.vibrate) {
-                        navigator.vibrate([300, 300, 300]);
-                    }
+
 
                 } else {
                     //alert("MAUVAISE REPONSE SALE MERDE");
@@ -687,6 +685,9 @@ function process2(event) {
             //App.Host.players[App.Player.index].idSocket=App.mySocketId;
 
             IO.socket.emit('playerAnswer', data);
+            if (navigator.vibrate) {
+                navigator.vibrate([300, 300, 300]);
+            }
             setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
             setTimeout("document.body.style.backgroundColor = \"green\"", 800);
             setTimeout("acquisition=true", 801); //pour laisser le temps de revenir à la position de base
