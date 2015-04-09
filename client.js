@@ -247,7 +247,7 @@ var App = {
             $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
             if('speechSynthesis' in window && App.myRole=="Host"){
                 var u = new SpeechSynthesisUtterance();
-                u.text = $('#answerAndWinner');
+                u.text = $('#answerAndWinner').text();
                 u.lang = 'fr-FR';
                 speechSynthesis.speak(u);
             }
