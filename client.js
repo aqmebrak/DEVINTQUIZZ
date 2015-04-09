@@ -62,7 +62,7 @@ var IO = {
     },
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        if('speechSynthesis' in window){
+        if('speechSynthesis' in window && App.myRole=="Host"){
             var u = new SpeechSynthesisUtterance();
             u.text = data.question;
             u.lang = 'fr-FR';
@@ -245,6 +245,12 @@ var App = {
         //affiche la bonne réponse et celui qui a répondu
         showAnswerAndWinner: function (data) {
             $('#answerAndWinner').text("LA BONNE REPONSE ETAIT " + App.Host.currentCorrectAnswerString);
+            if('speechSynthesis' in window && App.myRole=="Host"){
+                var u = new SpeechSynthesisUtterance();
+                u.text = $('#answerAndWinner');
+                u.lang = 'fr-FR';
+                speechSynthesis.speak(u);
+            }
             for(var i= 0; i < nbPlayers; i++){
                 $('#answer'+App.Host.players[i].mySocketId).text('A REPONDU '+App.Host.players[i].answer);
                 if(App.Host.currentCorrectAnswer === App.Host.players[i].answer){
@@ -377,6 +383,9 @@ var App = {
                 if (App.Host.currentCorrectAnswer === data.answer) {
                     // Add 5 to the player's score
                     $pScore.text(+$pScore.text() + 10);
+                    if (navigator.vibrate) {
+                        navigator.vibrate([300, 300, 300]);
+                    }
 
                 } else {
                     //alert("MAUVAISE REPONSE SALE MERDE");
