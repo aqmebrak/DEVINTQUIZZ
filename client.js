@@ -8,6 +8,7 @@ var motionActivated = false;
 var nbAnswers = 0;
 //index du tableau des players (chaque player aura son index)
 var indexPlayer = 0;
+var currentQuestion;
 var lol;
 
 // Tout le code qui concerne les connections socket
@@ -62,6 +63,7 @@ var IO = {
     },
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
+        currentQuestion=data;
         if ('speechSynthesis' in window && App.myRole == "Host") {
             var u = new SpeechSynthesisUtterance();
             u.text = data.question;
@@ -235,7 +237,7 @@ var App = {
                 speechSynthesis.speak(u);
             }
             for (var i = 0; i < nbPlayers; i++) {
-                $('#answer' + App.Host.players[i].mySocketId).text('A REPONDU ' + App.Host.players[i].answer);
+                $('#answer' + App.Host.players[i].mySocketId).text('A REPONDU ' + $('#' + data.answer).text());
                 if (App.Host.currentCorrectAnswer === App.Host.players[i].answer) {
                     $('#answer' + App.Host.players[i].mySocketId).text($('#answer' + App.Host.players[i].mySocketId).text() + ' BRAVO');
                 }
