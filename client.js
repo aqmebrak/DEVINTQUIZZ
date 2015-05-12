@@ -106,6 +106,9 @@ var IO = {
             //si on est en phase de réponse
             if (motionActivated) {
                 App.Host.stockAnswer(data);
+                if (navigator.vibrate) {
+                    navigator.vibrate([300, 300, 300]);
+                }
             }
         }
     },
@@ -155,7 +158,6 @@ var App = {
         App.$doc = $(document);
         App.$main = $('#main');
         App.$templateMenu = $('#menu').html();
-        App.$templateJouer = $('#menu-jouer').html();
         App.$templateNbPlayers = $('#menu-nbPlayers').html();
         App.$templateHostGameId = $('#templateHostGameId').html();
         App.$templateJoinGame = $('#templateJoinGame').html();
@@ -165,10 +167,8 @@ var App = {
     //initialise les différents listeners qui vont écouter les évènements émis par le serveur socket
     //puis lance la fonction appropriée
     initListeners: function () {
-        App.$doc.on('click', '#btnJouer', App.Host.onJouer);
+        App.$doc.on('click', '#btnJouer', App.Host.onQuizz);
         App.$doc.on('click', '#btnScores', App.Host.onJoinClick);
-        App.$doc.on('click', '#btnMouvement', App.Host.onMouvement);
-        App.$doc.on('click', '#btnQuizz', App.Host.onQuizz);
         App.$doc.on('click', '#btn1', App.Host.on1);
         App.$doc.on('click', '#btn2', App.Host.on2);
         App.$doc.on('click', '#btn3', App.Host.on3);
@@ -198,30 +198,10 @@ var App = {
 
         //la réponse du round courant sous sa vraie forme (David Guetta, 1789)...
         currentCorrectAnswerString: '',
-
-        say: function (sentence) {
-            var text = encodeURIComponent(sentence);
-            var src = "http://translate.google.com/translate_tts?tl=fr&q=" + text;
-            $('#sentence').html('<source src=' + src + '/>');
-        },
-
-        //Quand on clique sur jouer dans le menu
-        onJouer: function () {
-            App.$main.html(App.$templateJouer);
-
-        },
-
-        //Quand on choisit le jeu des mouvements
-        onMouvement: function () {
-            //on sauvegarde la décision
-            typeOfGame = "mvt";
-            App.$main.html(App.$templateNbPlayers);
-        },
-
+        
         //Quand on choisit le jeu du quizz
         onQuizz: function () {
             //on sauvegarde la décision
-            typeOfGame = "quizz";
             App.$main.html(App.$templateNbPlayers);
         },
 
@@ -279,7 +259,7 @@ var App = {
         //affiche le template de l'host avec le lien goog gl et le room id...
         displayNewGameScreen: function () {
             App.$main.html(App.$templateHostGameId);
-            $('#gameURL').text("goo.gl/wQLS6f");
+            $('#gameURL').text("http://devintquizz.herokuapp.com/");
             App.doTextFit('#gameURL');
             $('#spanNewGameCode').text(App.roomId);
         },
@@ -329,12 +309,7 @@ var App = {
             App.countDown($secondsLeft, 5, function () {
                 //on commence à capter l'accéléromètre
                 motionActivated = true;
-                if (typeOfGame == "mvt") {
-                    IO.socket.emit('hostMvtCountdownFinished', App.roomId);
-                }
-                if (typeOfGame == "quizz") {
-                    IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
-                }
+                IO.socket.emit('hostQuizzCountdownFinished', App.roomId);
             });
 
             //on affiche les pseudos des joueurs pour le score
@@ -691,9 +666,6 @@ function process2(event) {
             //App.Host.players[App.Player.index].idSocket=App.mySocketId;
 
             IO.socket.emit('playerAnswer', data);
-            if (navigator.vibrate) {
-                navigator.vibrate([300, 300, 300]);
-            }
             setTimeout("i = j = k = nbi = nbj = nbk= 0;", 800);
             setTimeout("document.body.style.backgroundColor = \"green\"", 800);
             setTimeout("acquisition=true", 801); //pour laisser le temps de revenir à la position de base
