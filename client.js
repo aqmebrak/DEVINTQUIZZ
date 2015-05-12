@@ -9,7 +9,7 @@ var nbAnswers = 0;
 //index du tableau des players (chaque player aura son index)
 var indexPlayer = 0;
 var currentQuestion;
-var lol;
+var prepareNextRound;
 
 // Tout le code qui concerne les connections socket
 var IO = {
@@ -385,7 +385,7 @@ var App = {
                         roomId: App.roomId,
                         round: App.currentRound
                     };
-                    lol = data;
+                    prepareNextRound = data;
                     setTimeout(App.Host.haha, 7000);
                     //on dit au serveur de commencer le prochain round
 
@@ -394,7 +394,11 @@ var App = {
         },
 
         haha: function () {
-            IO.socket.emit('hostNextRound', lol)
+            IO.socket.emit('hostNextRound', prepareNextRound)
+            //on vide le contenu des reponses
+            for (var i = 0; i < nbPlayers; i++) {
+                $('#answer' + App.Host.players[i].mySocketId).text();
+            }
         },
 
 
@@ -618,7 +622,7 @@ const moyenneMinValidationMvt = 7.5; // A dterminer empiriquement
 const seuilParasite = 2;
 var i, j, k, nbi, nbj, nbk;
 i = j = k = nbi = nbj = nbk = 0;
-var lol = 0;
+var prepareNextRound = 0;
 
 function process2(event) {
 
