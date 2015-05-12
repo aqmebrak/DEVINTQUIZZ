@@ -73,13 +73,15 @@ html, body {
     font-size: 500%;
     color: whitesmoke;
     background-color: #5540bf;
+    border-style: solid;
+    border-width: 15px;
+    border-color: #013;
+
 }
 
-.marron {
-    /* background-color: #a08353;
-     text-align: center;
-     font-size: 500%;
-     color: whitesmoke;*/
+#H, #B {
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 #answerAndWinner {
@@ -94,6 +96,8 @@ html, body {
     display: block;
     height: 0;
     overflow: hidden;
+    font-size: 200%;
+
 }
 
 .centerD {
@@ -107,15 +111,6 @@ html, body {
     justify-content: center;
 }
 
-.playerName {
+.playerName, .score, .answer {
     font-size: 200%;
 }
-
-.score {
-    font-size: 200%;
-}
-
-.answer {
-    font-size: 200%;
-}
-
