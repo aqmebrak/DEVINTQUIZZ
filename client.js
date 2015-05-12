@@ -5,9 +5,9 @@ var typeOfGame = "";
 //indique si on peut capter l'accéléromètre
 var motionActivated = false;
 //nb de joueurs ayant répondu à la question
-var nbAnswers=0;
+var nbAnswers = 0;
 //index du tableau des players (chaque player aura son index)
-var indexPlayer=0;
+var indexPlayer = 0;
 var lol;
 
 // Tout le code qui concerne les connections socket
@@ -62,32 +62,34 @@ var IO = {
     },
     //quand le jeu envoie une nouvelle question
     onNewQuestionData: function (data) {
-        if('speechSynthesis' in window && App.myRole=="Host"){
+        if ('speechSynthesis' in window && App.myRole == "Host") {
             var u = new SpeechSynthesisUtterance();
             u.text = data.question;
             u.lang = 'fr-FR';
-            u.onend = function() { IO.sayAnswers(data); };
+            u.onend = function () {
+                IO.sayAnswers(data);
+            };
             speechSynthesis.speak(u);
         }
         //on met à jour le numéro du round
         App.currentRound = data.round;
         //on actualise la question pour l'host et le player
         App[App.myRole].newQuestion(data);
-        nbAnswers=0;
+        nbAnswers = 0;
         $('#answerAndWinner').text('');
     },
 
-    sayAnswers : function(data){
+    sayAnswers: function (data) {
         var speech = new SpeechSynthesisUtterance();
-        speech.text="En haut "+data.H;
+        speech.text = "En haut " + data.H;
         speech.lang = 'fr-FR';
-        speech.onend = function() {
-            speech.text="à droite "+data.D;
-            speech.onend = function() {
-                speech.text="En bas "+data.B;
-                speech.onend = function() {
-                    speech.text="à gauche "+data.G;
-                    speech.onend = function() {
+        speech.onend = function () {
+            speech.text = "à droite " + data.D;
+            speech.onend = function () {
+                speech.text = "En bas " + data.B;
+                speech.onend = function () {
+                    speech.text = "à gauche " + data.G;
+                    speech.onend = function () {
                         //COUNTDOWN AVANT DE REPONDRE
                     };
                     window.speechSynthesis.speak(speech);
@@ -195,12 +197,12 @@ var App = {
         currentCorrectAnswer: '',
 
         //la réponse du round courant sous sa vraie forme (David Guetta, 1789)...
-        currentCorrectAnswerString:'',
+        currentCorrectAnswerString: '',
 
-        say : function(sentence) {
-            var text=encodeURIComponent(sentence);
-            var src = "http://translate.google.com/translate_tts?tl=fr&q="+text;
-            $('#sentence').html('<source src='+src+'/>');
+        say: function (sentence) {
+            var text = encodeURIComponent(sentence);
+            var src = "http://translate.google.com/translate_tts?tl=fr&q=" + text;
+            $('#sentence').html('<source src=' + src + '/>');
         },
 
         //Quand on clique sur jouer dans le menu
@@ -244,21 +246,21 @@ var App = {
 
         //affiche la bonne réponse et celui qui a répondu
         showAnswerAndWinner: function (data) {
-            var bonneRep="La bonne réponse était " + App.Host.currentCorrectAnswerString;
+            var bonneRep = "La bonne réponse était " + App.Host.currentCorrectAnswerString;
             $('#answerAndWinner').text(bonneRep.toUpperCase());
-            if('speechSynthesis' in window && App.myRole=="Host"){
+            if ('speechSynthesis' in window && App.myRole == "Host") {
                 var u = new SpeechSynthesisUtterance();
                 u.text = bonneRep;
                 u.lang = 'fr-FR';
                 speechSynthesis.speak(u);
             }
-            for(var i= 0; i < nbPlayers; i++){
-                $('#answer'+App.Host.players[i].mySocketId).text('A REPONDU '+App.Host.players[i].answer);
-                if(App.Host.currentCorrectAnswer === App.Host.players[i].answer){
-                    $('#answer'+App.Host.players[i].mySocketId).text($('#answer'+App.Host.players[i].mySocketId).text()+' BRAVO');
+            for (var i = 0; i < nbPlayers; i++) {
+                $('#answer' + App.Host.players[i].mySocketId).text('A REPONDU ' + App.Host.players[i].answer);
+                if (App.Host.currentCorrectAnswer === App.Host.players[i].answer) {
+                    $('#answer' + App.Host.players[i].mySocketId).text($('#answer' + App.Host.players[i].mySocketId).text() + ' BRAVO');
                 }
-                else{
-                    $('#answer'+App.Host.players[i].mySocketId).text($('#answer'+App.Host.players[i].mySocketId).text()+' DOMMAGE');
+                else {
+                    $('#answer' + App.Host.players[i].mySocketId).text($('#answer' + App.Host.players[i].mySocketId).text() + ' DOMMAGE');
                 }
             }
         },
@@ -312,10 +314,14 @@ var App = {
             App.doTextFit('#hostQuestion');
 
             //insère les div des scores en fct du nb de joueurs
-            var res="";
-            for(var i= 0; i < nbPlayers; i++){
-                var numPlayer=i+1;
-                res+='<div id="player'+numPlayer+'"><span class="playerName">Player '+numPlayer+'</span><span class="score">0</span><span class="answer"></span></div>';
+            var res = "";
+            for (var i = 0; i < nbPlayers; i++) {
+                var numPlayer = i + 1;
+                res += '<div id="player' + numPlayer + '"><strong>' +
+                    '<span class="playerName">Player ' + numPlayer + '</span><br/>' +
+                    '<span class="score">0</span><br/>' +
+                    '<span class="answer"></span><br/>' +
+                    '</strong></div>';
             }
             $('#playerScoresAnswers').html(res);
             //on commence le timer
@@ -332,7 +338,7 @@ var App = {
             });
 
             //on affiche les pseudos des joueurs pour le score
-            for(var i= 0; i < App.Host.players.length; i++) {
+            for (var i = 0; i < App.Host.players.length; i++) {
                 //on stocke le num du joueur (à i=0 c'est le player1)
                 var numPlayer = i + 1;
                 //on remplace par le pseudo du joueur
@@ -342,11 +348,11 @@ var App = {
                 //on fixe l'id du joueur au score
                 $('#player' + numPlayer)
                     .find('.score')
-                    .attr('id', 'score'+App.Host.players[i].mySocketId);
+                    .attr('id', 'score' + App.Host.players[i].mySocketId);
                 //on fixe l'id du joueur à la réponse
                 $('#player' + numPlayer)
                     .find('.answer')
-                    .attr('id', 'answer'+App.Host.players[i].mySocketId);
+                    .attr('id', 'answer' + App.Host.players[i].mySocketId);
             }
         },
 
@@ -362,11 +368,11 @@ var App = {
             $('#G').text(data.G.toUpperCase());
             //on met à jour les infos du round courant (réponse et numéro de round)
             App.Host.currentCorrectAnswer = data.answer;
-            App.Host.currentCorrectAnswerString= $('#'+data.answer).text();
+            App.Host.currentCorrectAnswerString = $('#' + data.answer).text();
             App.Host.currentRound = data.round;
         },
 
-        checkAnswers: function(){
+        checkAnswers: function () {
 
         },
 
@@ -392,8 +398,8 @@ var App = {
                     // A wrong answer was submitted, so decrement the player's score.
                     $pScore.text(+$pScore.text() + 5);
                 }
-                App.Host.players[data.index].answer=data.answer;
-                if(nbAnswers==nbPlayers){
+                App.Host.players[data.index].answer = data.answer;
+                if (nbAnswers == nbPlayers) {
                     App.Host.showAnswerAndWinner(data);
                     //on incrémente le numéro de room
                     App.currentRound += 1;
@@ -402,7 +408,7 @@ var App = {
                         roomId: App.roomId,
                         round: App.currentRound
                     };
-                    lol=data;
+                    lol = data;
                     setTimeout(App.Host.haha, 7000);
                     //on dit au serveur de commencer le prochain round
 
@@ -410,7 +416,7 @@ var App = {
             }
         },
 
-        haha: function(){
+        haha: function () {
             IO.socket.emit('hostNextRound', lol)
         },
 
@@ -465,11 +471,11 @@ var App = {
         // le pseudo du player
         pseudo: '',
 
-        index:0,
+        index: 0,
 
         //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
         onPlayerCommencer: function () {
-            App.Player.index=indexPlayer;
+            App.Player.index = indexPlayer;
             //on collecte les infos à envoyer au serveur
             var data = {
                 roomId: +($('#inputRoomId').val()),

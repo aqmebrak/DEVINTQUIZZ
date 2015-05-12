@@ -20,7 +20,7 @@ html, body {
      (Inspired by Bootstrap 3.0)
    ****************************** */
 
-.btn {
+.btn-large {
    text-align: center;
    text-decoration: none;
    background-color: #bf4e43;
