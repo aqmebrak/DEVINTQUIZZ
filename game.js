@@ -17,7 +17,6 @@ exports.initGame = function (paramIO, paramSocket) {
     clientSocket.on('hostCreateNewRoom', hostCreateNewRoom);
     clientSocket.on('hostRoomFull', hostPrepareGame);
     clientSocket.on('hostQuizzCountdownFinished', hostStartQuizz);
-    clientSocket.on('hostMvtCountdownFinished', hostStartMvt);
     clientSocket.on('hostNextRound', hostNextRound);
 
     // On écoute les évenements du player
@@ -52,11 +51,6 @@ function hostPrepareGame(roomId) {
 //le compta a rebours est fini, on lance le jeu quizz
 function hostStartQuizz(roomId) {
     sendQuestion(0, roomId);
-};
-
-//le compta a rebours est fini, on lance le jeu mvt
-function hostStartMvt(roomId) {
-    //TODO JEFFRAY ET CHRISTOF
 };
 
 //une bonne réponse a été faite, on passe à la question suivante
