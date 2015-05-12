@@ -11,8 +11,7 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
-    <link rel="stylesheet" href="css/styles.css">
+    <link id="pagestyle" rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body>
@@ -29,10 +28,10 @@
     <a id="btnJouer" class="btn btn-block" role="button"><strong>JOUER</strong></a>
     <a id="btnScores" class="btn btn-block" role="button"><strong>MEILLEURS SCORES</strong></a>
     <ul id="nav">
-        <li><a href="#" rel="/css/style1.css">Larger Text</a></li>
-        <li><a href="#" rel="/css/style2.css">Something Different</a></li>
-        <li><a href="#" rel="css/styles.css">Default CSS</a></li>
+        <li><button href="#" rel="/css/style1.css" onclick="changeCSS('style2.css',0);">Larger Text</button></li>
+        <li><button href="#" rel="css/styles.css" onclick="changeCSS('styles.css',0);">Default CSS</button></li>
     </ul>
+
 </script>
 
 <!-- menu nombre de joueurs -->
@@ -45,7 +44,7 @@
     <!--<a class="btnBack">RETOUR</a>-->
 </script>
 
-<!-- APrès avoir choisi le jeu et le nb de joueurs -->
+<!-- Après avoir choisi le jeu et le nb de joueurs -->
 <script id="templateHostGameId" type="text/template">
     <br/>
     <div class="info">ALLEZ SUR CE SITE AVEC VOTRE MOBILE :</div>
@@ -75,31 +74,47 @@
 <!-- Ecran du jeu Quizz pour l'host -->
 <script id="templateQuizzGame" type="text/template">
     <audio autoplay="autoplay" id="sentence"></audio>
-    <div id="hostQuestion">5</div>
-    <div id="H" class="bleu"></div>
-    <div id="D" class="marron"></div>
-    <div id="G" class="marron"></div>
-    <div id="answerAndWinner"></div>
-    <div id="B" class="bleu"></div>
-
-    <div id="playerScoresAnswers">
-        <!-- Dans gameCountdown on va charger des div de cette forme en fct du nb de joueur
-        <div id="player1Score" class="playerScore">
-        <div id="player1">
-            <span class="playerName">Player 1</span><span class="score" id="scoreMysocketid">0</span><span class="answer" id="answerMysocket..."></span>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="hostQuestion">5</div>
         </div>
- -->
+        <div class="row">
+            <div id="H" class="bleu"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 bleu centerG">
+                <span id="G"></span>
+            </div>
+            <div class="col-md-4">
+                <span id="playerScoresAnswers"></span>
+                <br/>
+                <span id="answerAndWinner"></span>
+            </div>
+            <div class="col-md-4 bleu centerD">
+                <span id="D"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div id="B" class="bleu"></div>
+        </div>
     </div>
 
-</script>
 
+    <!-- Dans gameCountdown on va charger des div de cette forme en fct du nb de joueur
+<div id="player1Score" class="playerScore">
+<div id="player1">
+    <span class="playerName">Player 1</span><span class="score" id="scoreMysocketid">0</span><span class="answer" id="answerMysocket..."></span>
+</div>
+-->
+
+</script>
+<script src="loadCSS.js"></script>
 <script src="libs/jquery-2.1.3.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="libs/textFit.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <!-- app.js is where all the client-side Anagrammatix game logic -->
 <script src="client.js"></script>
-<script src="loadCSS.js"></script>
 
 
 </body>
