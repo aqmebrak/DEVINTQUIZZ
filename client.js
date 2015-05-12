@@ -397,7 +397,7 @@ var App = {
             IO.socket.emit('hostNextRound', prepareNextRound)
             //on vide le contenu des reponses
             for (var i = 0; i < nbPlayers; i++) {
-                $('#answer' + App.Host.players[i].mySocketId).text();
+                $('#answer' + App.Host.players[i].mySocketId).text('');
             }
         },
 
