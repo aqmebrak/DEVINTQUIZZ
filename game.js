@@ -2,7 +2,6 @@
 var io;
 // La socket du client
 var clientSocket;
-var difficulty;
 fs = require('fs');
 
 // Fonction appellée par server.js pour initialiser le jeu
@@ -12,7 +11,10 @@ exports.initGame = function (paramIO, paramSocket) {
     io = paramIO;
     clientSocket = paramSocket;
     clientSocket.emit('connected');
-    initQuestionsFacile();
+    //initQuestionsFacile();
+    //initQuestionsMoyen();
+    //initQuestionsDifficile();
+
     // On écoute les évenements de l'host
     clientSocket.on('hostCreateNewRoom', hostCreateNewRoom);
     clientSocket.on('facile', facile);
@@ -41,14 +43,14 @@ function hostCreateNewRoom() {
 };
 
 function facile() {
-    difficulty='facile';
+    initQuestionsFacile();
 };
 
 function moyen() {
-    difficulty='moyen';
+    initQuestionsMoyen();
 };
 function difficile() {
-    difficulty='difficile';
+    initQuestionsDifficile();
 };
 
 //tout le monde a rejoint la room, on l'indique à l'host
@@ -69,34 +71,13 @@ function hostStartQuizz(roomId) {
 
 //une bonne réponse a été faite, on passe à la question suivante
 function hostNextRound(data) {
-    if(difficulty=='facile'){
-        if (data.round < questionsFacile.questions.length) {
-            //on envoie une nouvelle question
-            sendQuestion(data.round, data.roomId);
-        } else {
-            // If the current round exceeds the number of words, send the 'gameOver' event.
-            io.sockets.in(data.gameId).emit('gameOver', data);
-        }
+    if (data.round < questions.questions.length) {
+        //on envoie une nouvelle question
+        sendQuestion(data.round, data.roomId);
+    } else {
+        // If the current round exceeds the number of words, send the 'gameOver' event.
+        io.sockets.in(data.gameId).emit('gameOver', data);
     }
-    else if(difficulty=='moyen'){
-        if (data.round < questionsMoyen.questions.length) {
-            //on envoie une nouvelle question
-            sendQuestion(data.round, data.roomId);
-        } else {
-            // If the current round exceeds the number of words, send the 'gameOver' event.
-            io.sockets.in(data.gameId).emit('gameOver', data);
-        }
-    }
-    else {
-        if (data.round < questionsDifficile.questions.length) {
-            //on envoie une nouvelle question
-            sendQuestion(data.round, data.roomId);
-        } else {
-            // If the current round exceeds the number of words, send the 'gameOver' event.
-            io.sockets.in(data.gameId).emit('gameOver', data);
-        }
-    }
-
 }
 
 //on capte ce message quand le player a cliqué sur commencer
@@ -171,38 +152,13 @@ function getQuestion(i) {
     //alert(questions.question[0]);
     //var lol=shuffle(questions.questions);
     //alert(lol[0]);
-    var question;
-    var answer;
-    var H;
-    var D;
-    var B;
-    var G;
-    if(difficulty=='facile'){
-        question = questionsFacile.questions[i].question;
-        answer = questionsFacile.questions[i].answer;
-        H = questionsFacile.questions[i].H;
-        D = questionsFacile.questions[i].D;
-        B = questionsFacile.questions[i].B;
-        G = questionsFacile.questions[i].G;
-    }
-
-    else if(difficulty=='moyen'){
-        question = questionsMoyen.questions[i].question;
-        answer = questionsMoyen.questions[i].answer;
-        H = questionsMoyen.questions[i].H;
-        D = questionsMoyen.questions[i].D;
-        B = questionsMoyen.questions[i].B;
-        G = questionsMoyen.questions[i].G;
-    }
-
-    else{
-        question = questionsDifficile.questions[i].question;
-        answer = questionsDifficile.questions[i].answer;
-        H = questionsDifficile.questions[i].H;
-        D = questionsDifficile.questions[i].D;
-        B = questionsDifficile.questions[i].B;
-        G = questionsDifficile.questions[i].G;
-    }
+    var question = questions.questions[i].question;
+    console.log("question"+question);
+    var answer = questions.questions[i].answer;
+    var H = questions.questions[i].H;
+    var D = questions.questions[i].D;
+    var B = questions.questions[i].B;
+    var G = questions.questions[i].G;
 
     // Package the words into a single object.
     var questionData = {
@@ -242,32 +198,29 @@ function shuffle(array) {
 
     return array;
 }
-var questionsFacile;
-var questionsMoyen;
-var questionsDifficile;
-
+var questions;
 function initQuestionsFacile() {
     var file = "questionsFacile.json";
     fs.readFile(file,function (err,data) {
-        questionsFacile = data.toString();
-        questionsFacile = JSON.parse(questionsFacile);
+        questions = data.toString();
+        questions = JSON.parse(questions);
 
     });
 }
 
 function initQuestionsMoyen() {
     var file = "questionsMoyen.json";
-    //fs.readFile(file,function (err,data) {
-    //    questionsMoyen = data.toString();
-    //    questionsMoyen = JSON.parse(questionsMoyen);
-    //
-    //});
+    fs.readFile(file,function (err,data) {
+        questions = data.toString();
+        questions = JSON.parse(questions);
+
+    });
 }
 
 function initQuestionsDifficile() {
-    //var file = "questionsDifficile.json";
-    //fs.readFile(file,function (err,data) {
-    //    questionsDifficile = data.toString();
-    //    questionsDifficile = JSON.parse(questionsDifficile);
-    //});
+    var file = "questionsDifficile.json";
+    fs.readFile(file,function (err,data) {
+        questions = data.toString();
+        questions = JSON.parse(questions);
+    });
 }
