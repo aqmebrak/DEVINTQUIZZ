@@ -229,19 +229,16 @@ var App = {
         },
 
         onFacile: function () {
-            nbPlayers = 1;
             IO.socket.emit('facile');
             IO.socket.emit('hostCreateNewRoom');
         },
 
         onMoyen: function () {
-            nbPlayers = 2;
             IO.socket.emit('moyen');
             IO.socket.emit('hostCreateNewRoom');
         },
 
         onDifficile: function () {
-            nbPlayers = 3;
             IO.socket.emit('difficile');
             IO.socket.emit('hostCreateNewRoom');
         },
