@@ -1,0 +1,125 @@
+{
+  "questions": [
+    {
+      "question": "Qui est l'éponge carrée ?",
+      "H": "Bob",
+      "D": "Patrick",
+      "B": "Carlos",
+      "G": "Captaine Crabs",
+      "answer": "H",
+      "d" : 1
+    },
+    {
+      "question": "Qui est David Guetta ?",
+      "H": "Un plombier",
+      "D": "Un poissonnier",
+      "B": "Un DJ",
+      "G": "Un chanteur",
+      "answer": "B",
+      "d" : 1
+
+    }
+    ,
+    {
+      "question": "Qui est le champion de boxe ?",
+      "H": "Randy",
+      "D": "Rambo",
+      "B": "Ritchie",
+      "G": "Rocky",
+      "answer": "G",
+      "d" : 1
+
+    }
+    ,
+    {
+      "question": "Quel nom porte le logiciel de traitement de texte mis au point par Microsoft ?",
+      "H": "PowerPoint",
+      "D": "Excel",
+      "B": "Access",
+      "G": "Word",
+      "answer": "G",
+      "d" : 1
+    }
+    
+    ,
+    {
+      "question": "Quelle est la plus grande tortue marine connue à ce jour ?",
+      "H": "La tortue ninja",
+      "D": "Donatello",
+      "B": "La mini tortue",
+      "G": "La tortue luth",
+      "answer": "G",
+      "d" : 1
+    }
+    
+    ,
+    {
+      "question": "Que signifie le carton jaune dans un match de football ? ",
+      "H": "Un changement de joueur",
+      "D": "Un avertissement",
+      "B": "Un changement de météo",
+      "G": "L'expulsion",
+      "answer": "D",
+      "d" : 1
+    }
+    ,
+    {
+      "question": "Comment appelle-t-on l'action de récolter le raisin? ",
+      "H": "La vinification",
+      "D": "La moisson",
+      "B": "La vendange",
+      "G": "Le récoltage",
+      "answer": "B",
+      "d" : 1
+    }
+    ,
+    {
+      "question": "Quel est l'aliment qui ne pousse PAS sur un arbre ?",
+      "H": "Pomme",
+      "D": "Carottes",
+      "B": "Poires",
+      "G": "Abricots",
+      "answer": "D",
+      "d" : 1
+    }
+    ,
+    {
+      "question": "Boire la tasse, cela veut dire... ",
+      "H": "boire trop de café ",
+      "D": "boire une tasse en porcelaine",
+      "B": "avaler de l'eau en nageant",
+      "G": "boire dans une tasse",
+      "answer": "B",
+      "d" : 1
+    }
+     ,
+    {
+      "question": "La pétanque se joue avec ... ",
+      "H": "Des sacs",
+      "D": "De l'eau",
+      "B": "Un cochonnet",
+      "G": "Un ordinateur",
+      "answer": "B",
+      "d" : 1
+    } ,
+    {
+      "question": "Une télévision fonctionne grâce à...",
+      "H": "Du jus de pomme",
+      "D": "Des chocapics",
+      "B": "De l'electricité",
+      "G": "Du vent ",
+      "answer": "B",
+      "d" : 1
+    } ,
+    {
+      "question": "Dans une heure il y a ...",
+      "H": "60 minutes",
+      "D": "Trois luxmètres",
+      "B": "0,1 clowns",
+      "G": "10 litres de pastis",
+      "answer": "H",
+      "d" : 1
+    } 
+    
+  ]
+}

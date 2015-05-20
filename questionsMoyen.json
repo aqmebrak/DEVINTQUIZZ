@@ -1,0 +1,178 @@
+{
+  "questions": [
+    
+    {
+      "question": "Date de la révolution française ?",
+      "H": "1788",
+      "D": "1790",
+      "B": "1791",
+      "G": "1789",
+      "answer": "G",
+      "d" : 2
+    }
+    
+    ,
+    {
+      "question": "Quel pays a pour capitale Katmandou ?",
+      "H": "Le Népal",
+      "D": "Le Tibet",
+      "B": "La Corée du Sud",
+      "G": "Le Pakistan",
+      "answer": "H",
+      "d" : 2
+    }  
+    ,
+    {
+      "question": "Quelle est la plus petite unité de mémoire utilisable sur un ordinateur ?",
+      "H": "Le mega",
+      "D": "Le giga",
+      "B": "Le byte",
+      "G": "Le bit",
+      "answer": "G",
+      "d" : 2
+    } 
+    ,
+    {
+      "question": "Quel animal est le plus rapide à terre ?",
+      "H": "Le guépard",
+      "D": "Le léopard",
+      "B": "La panthère noire",
+      "G": "Le lynx",
+      "answer": "H",
+      "d" : 2
+    }
+   
+    ,
+    {
+      "question": "Quel arbre est connu pour être le plus grand au monde ?",
+      "H": "Le chêne",
+      "D": "Le pin",
+      "B": "Le hêtre",
+      "G": "Le séquoia",
+      "answer": "G",
+      "d" : 2
+    }
+    ,
+    {
+      "question": "Combien de bras a une étoile de mer ?",
+      "H": "20",
+      "D": "5",
+      "B": "2",
+      "G": "150",
+      "answer": "D",
+      "d" : 2
+    }
+    ,
+    {
+      "question": "Le saucisson et le jambon proviennent de quel animal ?",
+      "H": "Le cochon",
+      "D": "Le mouton",
+      "B": "Le melchor",
+      "G": "L'abeille",
+      "answer": "H",
+      "d" : 2
+    }
+    ,
+    {
+      "question": "Quel animal dort le plus ? ",
+      "H": "Le caméléon",
+      "D": "Le hamster",
+      "B": "Le koala",
+      "G": "Le chat",
+      "answer": "B",
+      "d" : 2
+    }
+    
+    ,
+    {
+      "question": "Un internaute, qu'est-ce que c'est?",
+      "H": "Un remplaçant au football",
+      "D": "Un utilisateur d'Internet",
+      "B": "Un champion international de natation",
+      "G": "Un employé d'intermarché",
+      "answer": "D",
+      "d" : 2
+    }
+    
+    ,
+    {
+      "question": "Quel est le plus haut sommet du monde? ",
+      "H": "L'Everest ",
+      "D": "Le mont Blanc",
+      "B": "Le Kilimandjaro",
+      "G": "Le MonKoubi",
+      "answer": "H",
+      "d" : 2
+    }
+    ,
+    {
+      "question": "Le grand disque rouge du drapeau japonais représente... ",
+      "H": "Le sang de l'empereur",
+      "D": "Un disque rouge",
+      "B": "Un ballon de foot rouge",
+      "G": "le Soleil",
+      "answer": "G",
+      "d" : 2
+    }
+    
+     ,
+    {
+      "question": "Qui est le président des états-unis ?",
+      "H": "Georges Clooney",
+      "D": "Barack Obama",
+      "B": "Lance Armstrong",
+      "G": "Al Capone",
+      "answer": "D",
+      "d" : 2
+    }  ,
+    {
+      "question": "Quel est le nom du docteur dans Cluedo ?",
+      "H": "Moutarde",
+      "D": "Olive",
+      "B": "Orange",
+      "G": "Jekill",
+      "answer": "D",
+      "d" : 2
+    } ,
+   
+    
+    {
+      "question": "Combien y'a t-il d'habitants à Nice?",
+      "H": "10000",
+      "D": "350000",
+      "B": "100 millions",
+      "G": "2 millions",
+      "answer": "D",
+      "d" : 2
+    } ,
+    
+    
+    {
+      "question": "Quelle est la racine carrée de 900 ?",
+      "H": "18",
+      "D": "30",
+      "B": "18000",
+      "G": "90",
+      "answer": "D",
+      "d" : 2
+    },
+    {
+      "question": "Où la ville de Chicago est-elle bâtie ?",
+      "H": "En bord de mer",
+      "D": "En pleine terre",
+      "B": "Au bord d'un lac",
+      "G": "Dans l'espace",
+      "answer": "B",
+      "d" : 2
+    },
+    {
+      "question": "Qu'est-ce qu'une caravelle ?",
+      "H": "Un bateau",
+      "D": "Un avion",
+      "B": "Les deux",
+      "G": "Aucun des deux",
+      "answer": "G",
+      "d" : 2
+    }
+  ]
+}

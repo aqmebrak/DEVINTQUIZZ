@@ -1,7 +1,5 @@
 //nb de joueurs par défaut
 var nbPlayers = 2;
-//indique le jeu choisi ("quizz" ou "mvt")
-var typeOfGame = "";
 //indique si on peut capter l'accéléromètre
 var motionActivated = false;
 //nb de joueurs ayant répondu à la question
@@ -161,6 +159,7 @@ var App = {
         App.$main = $('#main');
         App.$templateMenu = $('#menu').html();
         App.$templateNbPlayers = $('#menu-nbPlayers').html();
+        App.$templateDifficulty = $('#menu-difficulty').html();
         App.$templateHostGameId = $('#templateHostGameId').html();
         App.$templateJoinGame = $('#templateJoinGame').html();
         App.$templateQuizzGame = $('#templateQuizzGame').html();
@@ -175,6 +174,9 @@ var App = {
         App.$doc.on('click', '#btn2', App.Host.on2);
         App.$doc.on('click', '#btn3', App.Host.on3);
         App.$doc.on('click', '#btn4', App.Host.on4);
+        App.$doc.on('click', '#btnFacile', App.Host.onFacile);
+        App.$doc.on('click', '#btnMoyen', App.Host.onMoyen);
+        App.$doc.on('click', '#btnDifficile', App.Host.onDifficile);
         App.$doc.on('click', '#btnCommencer', App.Player.onPlayerCommencer);
         App.$doc.on('click', '#btnPlayerRestart', App.Player.onPlayerRestart);
     },
@@ -209,22 +211,41 @@ var App = {
 
         on1: function () {
             nbPlayers = 1;
-            IO.socket.emit('hostCreateNewRoom');
+            App.$main.html(App.$templateDifficulty);
         },
 
         on2: function () {
             nbPlayers = 2;
-            IO.socket.emit('hostCreateNewRoom');
+            App.$main.html(App.$templateDifficulty);
         },
 
         on3: function () {
             nbPlayers = 3;
-            IO.socket.emit('hostCreateNewRoom');
+            App.$main.html(App.$templateDifficulty);
         },
         on4: function () {
             nbPlayers = 4;
+            App.$main.html(App.$templateDifficulty);
+        },
+
+        onFacile: function () {
+            nbPlayers = 1;
+            IO.socket.emit('facile');
             IO.socket.emit('hostCreateNewRoom');
         },
+
+        onMoyen: function () {
+            nbPlayers = 2;
+            IO.socket.emit('moyen');
+            IO.socket.emit('hostCreateNewRoom');
+        },
+
+        onDifficile: function () {
+            nbPlayers = 3;
+            IO.socket.emit('difficile');
+            IO.socket.emit('hostCreateNewRoom');
+        },
+
 
         //affiche la bonne réponse et celui qui a répondu
         showAnswerAndWinner: function (data) {

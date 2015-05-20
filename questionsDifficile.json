@@ -1,0 +1,173 @@
+{
+  "questions": [
+    
+    {
+      "question": "Au Moyen-Âge, comment appelait-on les villages fortifiés ?",
+      "H": "Bastide",
+      "D": "Château fort",
+      "B": "Rempart",
+      "G": "Tour",
+      "answer": "H",
+      "d" : 3
+    }
+    
+    ,
+    {
+      "question": "Quelle est la capitale de la Nouvelle-Zélande ?",
+      "H": "Dublin",
+      "D": "Wellington",
+      "B": "Sydney",
+      "G": "Auckland",
+      "answer": "D",
+      "d" : 3
+    }
+    
+    ,
+    {
+      "question": "À quelle classe animale le scorpion appartient-il ?",
+      "H": "Aux reptiles",
+      "D": "Aux insectes",
+      "B": "Aux arachnides",
+      "G": "Aux mammifères",
+      "answer": "B",
+      "d" : 3
+    }
+   
+    ,
+    {
+      "question": "Qui fut le premier européen à arriver aux Philippines ?",
+      "H": "Christophe Colomb",
+      "D": "Magellan",
+      "B": "Vasco de Gama",
+      "G": "Mauperthuis",
+      "answer": "D",
+      "d" : 3
+    }
+    
+    {
+      "question": "Avec quoi mesure-t-on la profondeur des océans ?",
+      "H": "Un radar",
+      "D": "Un sonar",
+      "B": "Un compteur Geiger",
+      "G": "Un sextant",
+      "answer": "D",
+      "d" : 3
+    }
+    ,
+    {
+      "question": "Quel os du squelette humain est le plus long et le plus solide ?",
+      "H": "Le carpe",
+      "D": "Le radius",
+      "B": "Le fémur",
+      "G": "Le cubitus",
+      "answer": "B",
+      "d" : 3
+    }
+    ,
+    {
+      "question": "Quel homme n'est PAS un ancien empereur romain ?",
+      "H": "César",
+      "D": "Auguste",
+      "B": "Caligula",
+      "G": "Caracalla",
+      "answer": "H",
+      "d" : 3
+    }
+    ,
+    {
+      "question": "Un mile représente environ...",
+      "H": "10000 kilomètres",
+      "D": "3 centimètres",
+      "B": "1.6 kilometres",
+      "G": "35 grammes",
+      "answer": "B",
+      "d" : 3
+    } ,
+     
+    {
+      "question": "Sur quelle surface on ne joue PAS au tennis?",
+      "H": "Le gazon",
+      "D": "La terre battue",
+      "B": "Le sable",
+      "G": "La moquette",
+      "answer": "B",
+      "d" : 3
+    } ,
+    {
+      "question": "Quel ville a construit le premier métro ?",
+      "H": "Rome",
+      "D": "Paris",
+      "B": "Berlin",
+      "G": "Londres",
+      "answer": "G",
+      "d" : 3
+    } ,
+    {
+      "question": "Comment appelle-t-on un bateau à trois coques?",
+      "H": "Un tricoque",
+      "D": "Un trois-voiles",
+      "B": "Un trois-coques",
+      "G": "Un trimaran",
+      "answer": "G",
+      "d" : 3
+    } ,
+    {
+      "question": "Lequel de ces 5 sens manque au serpent?",
+      "H": "L'ouïe",
+      "D": "La vue",
+      "B": "Le goût",
+      "G": "Le toucher",
+      "answer": "H",
+      "d" : 3
+    }
+    ,
+    {
+      "question": "Quelle est la captiale de l'Inde ?",
+      "H": "Calcutta",
+      "D": "Bombay",
+      "B": "New Dehli",
+      "G": "Paris",
+      "answer": "B",
+      "d" : 3
+    }
+    ,
+    {
+      "question": "Quelle territoire n'est pas dans la Grande Bretagne?",
+      "H": "L'écosse",
+      "D": "L'irlande du Nord",
+      "B": "Le pays de Galle",
+      "G": "L'angleterre",
+      "answer": "D",
+      "d" : 3
+    }
+    ,
+    {
+      "question": "Qu'est-ce qu'un gibbon ?",
+      "H": "Un oiseau",
+      "D": "Un singe",
+      "B": "Une forme de jambon",
+      "G": "Un serpent",
+      "answer": "D",
+      "d" : 3
+    }
+    ,
+    {
+      "question": "Quel est le nom de l'Avare de Molière ?",
+      "H": "Harpagon",
+      "D": "Tartuffe",
+      "B": "Géronte",
+      "G": "Don quichotte",
+      "answer": "H",
+      "d" : 3
+    },
+    {
+      "question": "Quelle est la bonne réponse ?",
+      "H": "La réponse D",
+      "D": "Tout sauf cette réponse",
+      "B": "La H n'indique pas la bonne réponse",
+      "G": "la bonne réponse",
+      "answer": "G",
+      "d" : 3
+    }
+  ]
+}
