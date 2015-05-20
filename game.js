@@ -251,26 +251,26 @@ var questionsDifficile;
 
 function initQuestionsFacile() {
     var file = "questionsFacile.json";
-    fs.readFile(file,function (err,data) {
-        questionsFacile = data.toString();
-        questionsFacile = JSON.parse(questionsFacile);
-
-    });
+    //fs.readFile(file,function (err,data) {
+    //    questionsFacile = data.toString();
+    //    questionsFacile = JSON.parse(questionsFacile);
+    //
+    //});
 }
 
 function initQuestionsMoyen() {
     var file = "questionsMoyen.json";
-    fs.readFile(file,function (err,data) {
-        questionsMoyen = data.toString();
-        questionsMoyen = JSON.parse(questionsMoyen);
-
-    });
+    //fs.readFile(file,function (err,data) {
+    //    questionsMoyen = data.toString();
+    //    questionsMoyen = JSON.parse(questionsMoyen);
+    //
+    //});
 }
 
 function initQuestionsDifficile() {
-    var file = "questionsDifficile.json";
-    fs.readFile(file,function (err,data) {
-        questionsDifficile = data.toString();
-        questionsDifficile = JSON.parse(questionsDifficile);
-    });
+    //var file = "questionsDifficile.json";
+    //fs.readFile(file,function (err,data) {
+    //    questionsDifficile = data.toString();
+    //    questionsDifficile = JSON.parse(questionsDifficile);
+    //});
 }
