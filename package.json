@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "express": "~4.9.x",
-    "socket.io": "0.9"
+    "socket.io": "0.9",
+    "fs": "latest"
   },
   "engines": {
     "node": "0.10.x"

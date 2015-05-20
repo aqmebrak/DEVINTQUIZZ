@@ -272,6 +272,5 @@ function initQuestionsDifficile() {
     fs.readFile(file,function (err,data) {
         questionsDifficile = data.toString();
         questionsDifficile = JSON.parse(questionsDifficile);
-
     });
 }
