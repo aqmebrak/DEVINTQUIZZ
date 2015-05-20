@@ -13,9 +13,6 @@ exports.initGame = function (paramIO, paramSocket) {
     clientSocket = paramSocket;
     clientSocket.emit('connected');
     initQuestionsFacile();
-    initQuestionsMoyen();
-    initQuestionsDifficile();
-
     // On écoute les évenements de l'host
     clientSocket.on('hostCreateNewRoom', hostCreateNewRoom);
     clientSocket.on('facile', facile);
@@ -251,11 +248,11 @@ var questionsDifficile;
 
 function initQuestionsFacile() {
     var file = "questionsFacile.json";
-    //fs.readFile(file,function (err,data) {
-    //    questionsFacile = data.toString();
-    //    questionsFacile = JSON.parse(questionsFacile);
-    //
-    //});
+    fs.readFile(file,function (err,data) {
+        questionsFacile = data.toString();
+        questionsFacile = JSON.parse(questionsFacile);
+
+    });
 }
 
 function initQuestionsMoyen() {
