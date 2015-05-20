@@ -1,18 +1,15 @@
 /*
-
- Dark Green : #78BD4C
-  Mid Green : #A8FF56
-       Lite : #ECFFE0
-Dark Purple : #A22FB0
-
+ ROUGE/BLANC
 */
 
 html, body {
-   height: 100%;
-   width: 100%;
-   margin: 0;
-   padding: 0;
-   background-color: #b5ffe7;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    /*FOND DU SITE*/
+    background-color: rgba(255, 105, 111, 0.27);
 }
 
 /* ******************************
@@ -21,107 +18,108 @@ html, body {
    ****************************** */
 
 .btn-large {
-   text-align: center;
-   text-decoration: none;
-   background-color: #5540bf;
-   color: #1b3135;
-   height: 100%;
-   width: 100%;
+    text-align: center;
+    text-decoration: none;
+    /*COULEUR BOUTON*/
+    background-color: rgb(138, 57, 63);
+    /*TEXTE BOUTON*/
+    color: whitesmoke;
+    height: 100%;
+    width: 100%;
 }
 
 .btn:hover {
-   color: lightgrey;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+
+}
+
+#menu-nbPlayers {
+    width: 100%;
+    height: 100%;
 }
 
 .titre {
-   background-color: #a08353;
-   text-align: center;
-   font-size: 400%;
-   color: whitesmoke;
+    background-color: rgb(138, 57, 63);
+    text-align: center;
+    font-size: 700%;
+    color: whitesmoke;
 }
 
 .choix {
-   font-size: 410%;
+    font-size: 550%;
+
 }
 
 .info {
-   background-color: #a08353;
-   text-align: center;
-   font-size: 300%;
-   color: whitesmoke;
+    background-color: rgb(138, 57, 63);
+    text-align: center;
+    font-size: 300%;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+
 }
 
 .roomId, .infoBig {
-   text-align: center;
-   font-size: 570%;
-   color: whitesmoke;
-   background-color: #5540bf;
+    text-align: center;
+    font-size: 570%;
+    color: whitesmoke;
+    background-color: rgb(138, 57, 63);
+    border: 2px solid whitesmoke;
 
 }
 
 .bleu {
-   text-align: center;
-   font-size: 500%;
-   color: whitesmoke;
-   background-color: #5540bf;
-}
-
-.marron {
-   background-color: #a08353;
-   text-align: center;
-   font-size: 500%;
-   color: whitesmoke;
-}
-
-.playerScore {
+    text-align: center;
+    font-size: 500%;
+    color: whitesmoke;
+    background-color: rgb(138, 57, 63);
+    border-style: solid;
+    border-width: 15px;
+    border-color: whitesmoke;
 
 }
 
-.playerName {
-
-}
-
-#H {
-   margin: 0;
-   padding: 0em;
-}
-
-#B {
-   margin: 0;
-   padding: 0em;
-}
-
-#G {
-   margin: 0;
-   padding: 0em;
-   width: 6em;
-   height: 6em;
-   float: left;
-   margin-right: 1.1em
-}
-
-#D {
-   margin: 0;
-   padding: 0em;
-   width: 6em;
-   height: 6em;
-   float: right;
-   margin-left: 1.1em
+#H, #B {
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 #answerAndWinner {
-   margin: 0;
-   padding: 0em;
+    margin: 0;
+    padding: 0em;
+    font-size: 200%;
 }
 
 #answerAndWinner:after {
-   content: ' ';
-   clear: both;
-   display: block;
-   height: 0;
-   overflow: hidden
+    content: ' ';
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    font-size: 200%;
+
 }
 
+.centerD {
+    align-items: center;
+    justify-content: center;
+}
 
+.centerG {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.playerName, .score, .answer {
+    font-size: 200%;
+}
 
+#hostQuestion {
+    color: whitesmoke;
+}
+
+#pseudo, #numero, #playerScoresAnswers, #answerAndWinner {
+    color: whitesmoke;
+}

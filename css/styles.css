@@ -1,10 +1,5 @@
 /*
-
- Dark Green : #78BD4C
-  Mid Green : #A8FF56
-       Lite : #ECFFE0
-Dark Purple : #A22FB0
-
+BLANC/NOIR
 */
 
 html, body {
@@ -14,7 +9,7 @@ html, body {
     padding: 0;
 
     /*FOND DU SITE*/
-    background-color: #fffca6;
+    background-color: rgba(43, 43, 36, 1);
 }
 
 /* ******************************
@@ -26,15 +21,17 @@ html, body {
     text-align: center;
     text-decoration: none;
     /*COULEUR BOUTON*/
-    background-color: #6463bf;
+    background-color: #090908;
     /*TEXTE BOUTON*/
-    color: #ffa582;
+    color: whitesmoke;
     height: 100%;
     width: 100%;
 }
 
 .btn:hover {
     color: whitesmoke;
+    border: 2px solid whitesmoke;
+
 }
 
 #menu-nbPlayers {
@@ -43,7 +40,7 @@ html, body {
 }
 
 .titre {
-    background-color: rgba(140, 74, 38, 1);
+    background-color: #090908;
     text-align: center;
     font-size: 700%;
     color: whitesmoke;
@@ -51,20 +48,24 @@ html, body {
 
 .choix {
     font-size: 550%;
+
 }
 
 .info {
-    background-color: #a08353;
+    background-color: #090908;
     text-align: center;
     font-size: 300%;
     color: whitesmoke;
+    border: 2px solid whitesmoke;
+
 }
 
 .roomId, .infoBig {
     text-align: center;
     font-size: 570%;
     color: whitesmoke;
-    background-color: #5540bf;
+    background-color: #090908;
+    border: 2px solid whitesmoke;
 
 }
 
@@ -72,10 +73,10 @@ html, body {
     text-align: center;
     font-size: 500%;
     color: whitesmoke;
-    background-color: #5540bf;
+    background-color: #090908;
     border-style: solid;
     border-width: 15px;
-    border-color: #013;
+    border-color: whitesmoke;
 
 }
 
@@ -113,4 +114,12 @@ html, body {
 
 .playerName, .score, .answer {
     font-size: 200%;
+}
+
+#hostQuestion {
+    color: whitesmoke;
+}
+
+#pseudo, #numero, #playerScoresAnswers, #answerAndWinner {
+    color: whitesmoke;
 }
