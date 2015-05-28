@@ -477,6 +477,7 @@ var App = {
         //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
         onPlayerCommencer: function () {
             App.Player.index = indexPlayer;
+            console.log(App.Player.index)
             //on collecte les infos à envoyer au serveur
             var data = {
                 roomId: +($('#inputRoomId').val()),
