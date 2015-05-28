@@ -119,7 +119,151 @@
       "G": "10 litres de pastis",
       "answer": "H",
       "d" : 1
-    } 
+    }
+    ,
+    {
+      "question": "Qu'est ce qu'un café sans cafféine ?",
+      "H": "Un café",
+      "B": "Un décafféiné",
+      "G": "un coca",
+      "D": "un cappucino",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Quelle est la spécialité de la ville de Dijon ?",
+      "H": "Le chocolat",
+      "B": "Le miel",
+      "G": "La moutarde",
+      "D": "Le cidre",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Qu'est-ce que le Nil ?",
+      "H": "Un fleuve",
+      "B": "Un tissu",
+      "G": "Une fleur",
+      "D": "Un t-shirt",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Quelle est l'évolution de Pikachu ?",
+      "H": "Racaillou",
+      "B": "Raichu",
+      "G": "Smogogo",
+      "D": "Chenipan",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "De quoi s'occupe l'association 30 millions d'amis ?",
+      "H": "Du nucléaire",
+      "B": "Des animeaux",
+      "G": "De la pollution",
+      "D": "De la paix",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Qu'a la girafe au bout de ses pattes ?",
+      "H": "Des sabots",
+      "B": "Des fers",
+      "G": "Des bottes",
+      "D": "Rien",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Sur quel continent vivent les girafes ?",
+      "H": "Afrique",
+      "B": "Asie",
+      "G": "Europe",
+      "D": "Amérique",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Quel est le nom de la femelle du tigre ?",
+      "H": "La tigronne",
+      "B": "La tigresque",
+      "G": "La tigresse",
+      "D": "La tigre",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Dans quelle ville habite Babar ?",
+      "H": "Cityville",
+      "B": "Floreville",
+      "G": "Babarville",
+      "D": "Celesteville",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Quel est le chien le plus bête de l'Ouest ?",
+      "H": "Rintintin",
+      "B": "Rantanplan",
+      "G": "Snoopy",
+      "D": "Snoop-Dog",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Completez : Avoir une mémoire .. ?",
+      "H": "D'éléphants",
+      "B": "De sauterelle",
+      "G": "De renard",
+      "D": "De limace",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Completez : Etre têtu comme .. ?",
+      "H": "Un serpent",
+      "B": "Un ours",
+      "G": "Une mule",
+      "D": "Un singe",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Qu'adorent les souris ?",
+      "H": "Le fromage",
+      "B": "Le  pain",
+      "G": "Les noisettes",
+      "D": "Le jambon",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Le chat adore m'attraper, je suis ?",
+      "H": "Un rat",
+      "B": "Un chien",
+      "G": "Une coccinelle",
+      "D": "Une souris",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "J'ai une poche ventrale, je suis ?",
+      "H": "Un chat",
+      "B": "Un kangourou",
+      "G": "Un singe",
+      "D": "Un aigle",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Qui distribue le courrier ?",
+      "H": "Le boucher",
+      "B": "Le livreur",
+      "G": "Le conducteur",
+      "D": "Le facteur",
+      "answer": "D"
+    }
     
   ]
 }

@@ -174,5 +174,123 @@
       "answer": "G",
       "d" : 2
     }
+    ,
+    {
+      "question": "Qui a développé la PS3 ?",
+      "H": "LG",
+      "B": "Sony",
+      "G": "Microsoft",
+      "D": "Nintendo",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Quel est le jeu le plus vendu sur PS3 ?",
+      "H": "Call Of Duty Modern Warfare 3",
+      "B": "Bang Bang Racing",
+      "G": "Adibou",
+      "D": "Uncharted",
+      "answer": "H"
+       
+    }
+    ,
+    {
+      "question": "La danse sacrée des All Blacks est le .. ?",
+      "H": "Haka",
+      "B": "Samoa",
+      "G": "Hip-Hop",
+      "D": "Break Dance",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Il fut le support de l'écriture en Egypte.",
+      "H": "Le  papier",
+      "B": "Le sable",
+      "G": "Le papyrus",
+      "D": "Le papy russe",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Quelle est la capitale du Japon?",
+      "H": "Fukushima",
+      "B": "Nagazaki",
+      "G": "Pekin",
+      "D": "Tokyo",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Dans quel pays trouve-t-on les grandes pyramides ?",
+      "H": "France",
+      "B": "Groenland",
+      "G": "Nicaragua",
+      "D": "Egypte",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "De quelle nationalité est Christiano Ronaldo ?",
+      "H": "Espagnol",
+      "B": "Portugais",
+      "G": "Brésilien",
+      "D": "Italien",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Où se trouve la pyramide du Louvre ?",
+      "H": "Paris",
+      "B": "Barcelone",
+      "G": "Bruxelles",
+      "D": "Helsinki",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Comment naissent les jeunes tigres ?",
+      "H": "Sourds",
+      "B": "Sans pattes",
+      "G": "Aveugles",
+      "D": "Aveugles et sourds",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Par qui a été développée la Xbox 360 ?",
+      "H": "Microsoft",
+      "B": "Sony",
+      "G": "Nintendo",
+      "D": "Samsung",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Comment s'appelle le service en ligne de la Xbox 360 ?",
+      "H": "Xbox Market",
+      "B": "Xbox Live",
+      "G": "Xbox Shop",
+      "D": "Xbox Play",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Quel est le jeu le plus vendu de la Xbox 360 ?",
+      "H": "Call Of Duty Black Ops 2",
+      "B": "Halo 4",
+      "G": "Kinect Adventures",
+      "D": "Skyrim",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Que mangent les poules ?",
+      "H": "Avoine",
+      "B": "Blé",
+      "G": "Myrtilles",
+      "D": "Soufre",
+      "answer": "B"
+    }
   ]
 }

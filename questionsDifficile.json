@@ -43,7 +43,7 @@
       "answer": "D",
       "d" : 3
     }
-    
+    ,
     {
       "question": "Avec quoi mesure-t-on la profondeur des océans ?",
       "H": "Un radar",
@@ -159,15 +159,123 @@
       "G": "Don quichotte",
       "answer": "H",
       "d" : 3
-    },
+    }
+    ,
     {
-      "question": "Quelle est la bonne réponse ?",
-      "H": "La réponse D",
-      "D": "Tout sauf cette réponse",
-      "B": "La H n'indique pas la bonne réponse",
-      "G": "la bonne réponse",
-      "answer": "G",
-      "d" : 3
+      "question": " Un des pays voisins du Maroc est ..",
+      "H": "L'angola",
+      "B": "La Tunisie",
+      "G": "L'égypte",
+      "D": "L'algérie",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Qui est le plus ancien syndicat français ? ",
+      "H": "La CFDT",
+      "B": "La CGT",
+      "G": "Le FEN",
+      "D": "Le FN",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Où a lieu la fête des Couleurs ?",
+      "H": "En Inde",
+      "B": "En Corée de Sud",
+      "G": "En Pakistan",
+      "D": "En Chine",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Que signifie le D commun au CD et au DVD ?",
+      "H": "Digital",
+      "B": "Diffusion",
+      "G": "Disque",
+      "D": "Domaine",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Qui a inventé le Cubisme ?",
+      "H": "Kadinsky",
+      "B": "Degas",
+      "G": "Braque",
+      "D": "Picasso",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Quelle est la capitale du Pérou",
+      "H": "Lima",
+      "B": "Cusco",
+      "G": "Ecuador",
+      "D": "La paz",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Le mot 'savon' vient du latin ..",
+      "H": "sapo",
+      "B": "sato",
+      "G": "savo",
+      "D": "sano",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Quelle est l'origine du savon ?",
+      "H": "Egyptienne",
+      "B": "Grecque",
+      "G": "Romaine",
+      "D": "Gauloise",
+      "answer": "D"
+    }
+    ,
+    {
+      "question": "Quelle est la capitale de l'Europe ?",
+      "H": "Paris",
+      "B": "Bruxelles",
+      "G": "Londres",
+      "D": "Strasbourg",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Qui chante 'Imagine' ?",
+      "H": "James Brown",
+      "B": "Mickael Jackson",
+      "G": "John Lennon",
+      "D": "Michael Bublé",
+      "answer": "G"
+    }
+    ,
+    {
+      "question": "Quel est le nom de notre galaxie ?",
+      "H": "La Terre",
+      "B": "La Voie Lactée",
+      "G": "L'Univers",
+      "D": "Andromède",
+      "answer": "B"
+    }
+    ,
+    {
+      "question": "Qui est le personnage principal de Final Fantasy IV ?",
+      "H": "Cecil",
+      "B": "Rosa",
+      "G": "Kain",
+      "D": "Sephiroth",
+      "answer": "H"
+    }
+    ,
+    {
+      "question": "Qu'est-ce qu'un ésitériophile collectionne ?",
+      "H": "Les timbres",
+      "B": "Les papillons",
+      "G": "Les cerfs-volants",
+      "D": "Les titres de transport",
+      "answer": "D"
     }
   ]
 }
