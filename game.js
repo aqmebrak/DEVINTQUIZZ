@@ -3,6 +3,7 @@ var io;
 // La socket du client
 var clientSocket;
 fs = require('fs');
+var indexPlayer=0;
 
 // Fonction appellée par server.js pour initialiser le jeu
 // exports sert à pouvoir utiliser cette fonction dans un autre fichier (en l'occurence server.js ici)
@@ -23,6 +24,7 @@ exports.initGame = function (paramIO, paramSocket) {
     clientSocket.on('hostRoomFull', hostPrepareGame);
     clientSocket.on('hostQuizzCountdownFinished', hostStartQuizz);
     clientSocket.on('hostNextRound', hostNextRound);
+    clientSocket.on('indexPlayer', goIndexPlayer);
 
     // On écoute les évenements du player
     clientSocket.on('playerJoinRoom', playerJoinRoom);
@@ -40,6 +42,11 @@ function hostCreateNewRoom() {
 
     // on rejoint la room et on attend les autres joueurs
     this.join(roomId.toString());
+};
+
+function goIndexPlayer() {
+    this.emit('ok',indexPlayer);
+    indexPlayer++;
 };
 
 function facile() {

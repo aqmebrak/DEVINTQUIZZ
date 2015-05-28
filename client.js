@@ -28,6 +28,7 @@ var IO = {
         IO.socket.on('beginNewGame', IO.beginNewGame);
         IO.socket.on('newQuestionData', IO.onNewQuestionData);
         IO.socket.on('hostCheckAnswer', IO.hostCheckAnswer);
+        IO.socket.on('ok', App.Player.onPlayerCommencer2);
         //IO.socket.on('gameOver', IO.gameOver);
         IO.socket.on('error', IO.error);
     },
@@ -476,17 +477,19 @@ var App = {
 
         //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
         onPlayerCommencer: function () {
-            App.Player.index = indexPlayer;
-            alert(App.Player.index);
-            //on collecte les infos à envoyer au serveur
+            IO.socket.emit('indexPlayer');
+
+        },
+
+        //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
+        onPlayerCommencer2: function (ind) {
             var data = {
                 roomId: +($('#inputRoomId').val()),
                 pseudo: $('#inputPseudo').val() || 'Anonyme',
-                index: indexPlayer
+                index: ind
                 //hasAnswered: false
             };
             App.Host.players.push(data);
-            indexPlayer++;
             //on envoie donc la room id et le pseudo au serveur
             IO.socket.emit('playerJoinRoom', data);
 
