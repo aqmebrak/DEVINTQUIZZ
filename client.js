@@ -5,7 +5,7 @@ var motionActivated = false;
 //nb de joueurs ayant répondu à la question
 var nbAnswers = 0;
 //index du tableau des players (chaque player aura son index)
-var indexPlayer = 0;
+var indexPlayer;
 var currentQuestion;
 var prepareNextRound;
 
@@ -16,7 +16,7 @@ var IO = {
     init: function () {
         IO.socket = io.connect();
         IO.initListeners();
-
+        indexPlayer=0;
     },
 
     //initialise les différents listeners qui vont écouter les évènements émis par le serveur socket
