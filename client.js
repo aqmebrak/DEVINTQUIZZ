@@ -478,11 +478,11 @@ var App = {
         //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
         onPlayerCommencer: function () {
             IO.socket.emit('indexPlayer');
-
         },
 
         //quand le joueur clique sur commencer sur son mobile, après avoir rentré son pseudo et l'id de la room
         onPlayerCommencer2: function (ind) {
+            alert(ind);
             var data = {
                 roomId: +($('#inputRoomId').val()),
                 pseudo: $('#inputPseudo').val() || 'Anonyme',
