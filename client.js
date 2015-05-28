@@ -255,6 +255,7 @@ var App = {
                 speechSynthesis.speak(u);
             }
             for (var i = 0; i < nbPlayers; i++) {
+                console.log(App.Host.players[i].pseudo);
                 var s='';
                 if (App.Host.currentCorrectAnswer === App.Host.players[i].answer) {
                     s=' BRAVO';
