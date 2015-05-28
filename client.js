@@ -262,11 +262,7 @@ var App = {
                 else {
                     s=' DOMMAGE';
                 }
-                $('#answer' + App.Host.players[i].mySocketId).text('A REPONDU ' + $('#' + data.answer).text()+s);
-                var u = new SpeechSynthesisUtterance();
-                u.text = '#answer' + App.Host.players[i].mySocketId;
-                u.lang = 'fr-FR';
-                speechSynthesis.speak(u);
+                $('#answer' + App.Host.players[i].mySocketId).text('A REPONDU ' + $('#' + App.Host.players[i].answer).text()+s);
             }
         },
 
