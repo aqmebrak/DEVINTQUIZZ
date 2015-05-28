@@ -298,7 +298,7 @@ var App = {
                 .text('LE JOUEUR ' + data.pseudo + ' A REJOINT LA PARTIE');
 
             //on stocke les informations du player
-
+            App.Host.players.push(data);
             //on incrémente le nb de joueurs dans la room
             App.Host.nbPlayersInRoom += 1;
             //si le nb de joueur correspond au nb voulu
