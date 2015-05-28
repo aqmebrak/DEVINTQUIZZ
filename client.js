@@ -255,13 +255,18 @@ var App = {
                 speechSynthesis.speak(u);
             }
             for (var i = 0; i < nbPlayers; i++) {
-                $('#answer' + App.Host.players[i].mySocketId).text('A REPONDU ' + $('#' + data.answer).text());
+                var s='';
                 if (App.Host.currentCorrectAnswer === App.Host.players[i].answer) {
-                    $('#answer' + App.Host.players[i].mySocketId).text($('#answer' + App.Host.players[i].mySocketId).text() + ' BRAVO');
+                    s=' BRAVO';
                 }
                 else {
-                    $('#answer' + App.Host.players[i].mySocketId).text($('#answer' + App.Host.players[i].mySocketId).text() + ' DOMMAGE');
+                    s=' DOMMAGE';
                 }
+                $('#answer' + App.Host.players[i].mySocketId).text('A REPONDU ' + $('#' + data.answer).text()+s);
+                var u = new SpeechSynthesisUtterance();
+                u.text = '#answer' + App.Host.players[i].mySocketId;
+                u.lang = 'fr-FR';
+                speechSynthesis.speak(u);
             }
         },
 
