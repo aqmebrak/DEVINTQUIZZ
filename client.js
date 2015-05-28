@@ -255,7 +255,6 @@ var App = {
                 speechSynthesis.speak(u);
             }
             for (var i = 0; i < nbPlayers; i++) {
-                console.log(App.Host.players[i].pseudo);
                 var s='';
                 if (App.Host.currentCorrectAnswer === App.Host.players[i].answer) {
                     s=' BRAVO';
@@ -299,7 +298,7 @@ var App = {
                 .text('LE JOUEUR ' + data.pseudo + ' A REJOINT LA PARTIE');
 
             //on stocke les informations du player
-            App.Host.players.push(data);
+
             //on incrémente le nb de joueurs dans la room
             App.Host.nbPlayersInRoom += 1;
             //si le nb de joueur correspond au nb voulu
@@ -377,6 +376,7 @@ var App = {
         stockAnswer: function (data) {
             //on vérifie que c'est le bon round
             if (data.round === App.currentRound) {
+                console.log(data.index);
                 nbAnswers++;
                 //on récupère le score du joueur qui a répondu (l'id my socket id)
                 var $pScore = $('#score' + data.playerId);
@@ -480,9 +480,11 @@ var App = {
             //on collecte les infos à envoyer au serveur
             var data = {
                 roomId: +($('#inputRoomId').val()),
-                pseudo: $('#inputPseudo').val() || 'Anonyme'
+                pseudo: $('#inputPseudo').val() || 'Anonyme',
+                index: indexPlayer
                 //hasAnswered: false
             };
+            App.Host.players.push(data);
             indexPlayer++;
             //on envoie donc la room id et le pseudo au serveur
             IO.socket.emit('playerJoinRoom', data);
